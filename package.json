@@ -1,0 +1,61 @@
+{
+  "name": "festivals",
+  "version": "0.1.0",
+  "description": "All festivals in one place.",
+  "main": "./lib/festivals.js",
+  "dependencies": {
+    "assert-plus": "^0.1.5",
+    "async": "^0.9.0",
+    "config": "^1.12.0",
+    "festivals-model": "^0.1.1",
+    "firebase": "^2.2.4",
+    "keen-js": "^3.2.4",
+    "moment": "^2.10.2",
+    "my-restify-api": "Zenedith/npm-my-restify-api#6d467485726bf1002508f1433e4ee267c7d7ccd1",
+    "newrelic": "^1.18.5",
+    "node-uuid": "^1.4.3",
+    "tough-cookie": "^1.1.0",
+    "winston": "^1.0.0",
+    "winston-loggly": "^1.1.0"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "hippie": "^0.3.0",
+    "istanbul": "^0.3.13",
+    "mocha": "^2.2.4",
+    "rewire": "^2.3.3"
+  },
+  "scripts": {
+    "prepublish": "npm prune",
+    "test": "mocha --recursive  --timeout 6000 test",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks --recursive  --timeout 6000 test",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --recursive  --timeout 6000 test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/festivals-platform/npm-festivals.git"
+  },
+  "bugs": {
+    "url": "https://github.com/festivals-platform/npm-festivals/issues"
+  },
+  "keywords": [
+    "festival",
+    "event",
+    "place",
+    "fantasy",
+    "community",
+    "convent"
+  ],
+  "author": {
+    "name": "Zenedith",
+    "email": "zenedith@wp.pl"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/festivals-platform/npm-festivals",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "readmeFilename": "README.md",
+  "_id": "festivals@0.1.0",
+  "_from": "festivals@^0.1.0"
+}
