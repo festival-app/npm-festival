@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/festivals.svg)](http://badge.fury.io/js/festivals)
 [![Coverage Status](https://coveralls.io/repos/festivals-platform/npm-festivals/badge.png?branch=master)](https://coveralls.io/r/festivals-platform/npm-festivals?branch=master)
 [![Build Status](https://travis-ci.org/festivals-platform/npm-festivals.svg?branch=master)](https://travis-ci.org/festivals-platform/npm-festivals)
-[![Dependency Status](https://david-dm.org/Zenedith/npm-my-restify-api.svg)](https://david-dm.org/Zenedith/npm-my-restify-api)
+[![Dependency Status](https://david-dm.org/festivals-platform/npm-festivals.svg)](https://david-dm.org/festivals-platform/npm-festivals)
 
 [![NPM](https://nodei.co/npm/festivals.png?downloads=true&stars=true)](https://nodei.co/npm/festivals/)
 
