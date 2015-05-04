@@ -7,7 +7,7 @@
     "assert-plus": "^0.1.5",
     "async": "^0.9.0",
     "config": "^1.12.0",
-    "festivals-model": "^0.1.1",
+    "festivals-model": "^0.1.2",
     "firebase": "^2.2.4",
     "keen-js": "^3.2.4",
     "moment": "^2.10.2",
