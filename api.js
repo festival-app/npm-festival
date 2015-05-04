@@ -1,12 +1,16 @@
-require('newrelic');
+//require('newrelic');
 var fs = require('fs');
 var myRestifyApi = require('my-restify-api');
 //var UnauthorizedError = myRestifyApi.error.UnauthorizedError;
 var oauth = myRestifyApi.plugin.oauth;
 var festivalsController = require('./lib/controller/festivals');
+var eventsController = require('./lib/controller/events');
 var logger = require('./lib/logger/logger').logger;
 
 var FESTIVALS_PATH = '/api/festivals';
+var FESTIVALS_ID_PATH = FESTIVALS_PATH + '/:id';
+var FESTIVALS_EVENTS_PATH = FESTIVALS_ID_PATH + '/events';
+var FESTIVALS_EVENTS_ID_PATH = FESTIVALS_EVENTS_PATH + '/:eid';
 
 fs.readFile('config/public.key', function (err, data) {
   if (err) {
@@ -76,6 +80,30 @@ fs.readFile('config/public.key', function (err, data) {
         authMethod: authHandler,
         cache: cacheHandler,
         controllerMethod: festivalsController.getFestivalsV1
+      },
+      {
+        options: {
+          path: FESTIVALS_ID_PATH, version: '1.0.0'
+        },
+        authMethod: authHandler,
+        cache: cacheHandler,
+        controllerMethod: festivalsController.getFestivalV1
+      },
+      {
+        options: {
+          path: FESTIVALS_EVENTS_PATH, version: '1.0.0'
+        },
+        authMethod: authHandler,
+        cache: cacheHandler,
+        controllerMethod: eventsController.getFestivalEventsV1
+      },
+      {
+        options: {
+          path: FESTIVALS_EVENTS_ID_PATH, version: '1.0.0'
+        },
+        authMethod: authHandler,
+        cache: cacheHandler,
+        controllerMethod: eventsController.getFestivalEventV1
       }
     ]
   };

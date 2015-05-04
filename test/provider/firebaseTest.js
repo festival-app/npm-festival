@@ -81,6 +81,26 @@ describe('firebase test', function () {
     });
   });
 
+  it('should get festival', function (done) {
+
+    firebaseProvider.getFestival(festivalId, function (err, festival) {
+      should.not.exist(err);
+      should.exist(festival);
+
+      festival.id.should.be.equal(festivalId);
+      should.exist(festival.name);
+      should.exist(festival.description);
+      should.exist(festival.tags);
+      should.exist(festival.mainImage);
+      festival.createdAt.should.be.equal(createdAt);
+      festival.updatedAt.should.be.equal(createdAt);
+      should.exist(festival.duration);
+      should.exist(festival.locations);
+
+      done();
+    });
+  });
+
   it('should create festival place', function (done) {
 
     placeId = uuid.v4();
@@ -162,6 +182,27 @@ describe('firebase test', function () {
       event.duration.should.be.equal(duration);
       event.place.should.be.equal(placeId);
       event.category.should.be.equal(category);
+      event.createdAt.should.be.equal(createdAt);
+      event.updatedAt.should.be.equal(createdAt);
+
+      done();
+    });
+  });
+
+  it('should get festival event', function (done) {
+
+    firebaseProvider.getFestivalEvent(festivalId, eventId, function (err, event) {
+      should.not.exist(err);
+      should.exist(event);
+
+      event.id.should.be.equal(eventId);
+      should.exist(event.name);
+      should.exist(event.description);
+      should.exist(event.tags);
+      should.exist(event.mainImage);
+      should.exist(event.duration);
+      should.exist(event.place);
+      should.exist(event.category);
       event.createdAt.should.be.equal(createdAt);
       event.updatedAt.should.be.equal(createdAt);
 
