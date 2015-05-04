@@ -13,6 +13,8 @@ var LocationBuilder = festivalsModel.model.location.LocationBuilder;
 var ImageBuilder = festivalsModel.model.image.ImageBuilder;
 var PlaceBuilder = festivalsModel.model.place.PlaceBuilder;
 var EventBuilder = festivalsModel.model.event.EventBuilder;
+var SearchFestivalEventsRequestBuilder = festivalsModel.model.searchFestivalEventsRequest.SearchFestivalEventsRequestBuilder;
+var SearchFestivalsRequestBuilder = festivalsModel.model.searchFestivalsRequest.SearchFestivalsRequestBuilder;
 
 describe('firebase test', function () {
 
@@ -96,6 +98,27 @@ describe('firebase test', function () {
       festival.updatedAt.should.be.equal(createdAt);
       should.exist(festival.duration);
       should.exist(festival.locations);
+
+      done();
+    });
+  });
+
+
+  it('should get festivals collection', function (done) {
+
+    var searchFestivalsRequest = new SearchFestivalsRequestBuilder()
+      //.withName(name)
+      //.withCountry(country)
+      //.withStartAt(startAt)
+      //.withLimit(limit)
+      //.withOffset(offset)
+      .build();
+
+    firebaseProvider.getFestivals(searchFestivalsRequest, function (err, events) {
+      should.not.exist(err);
+      should.exist(events);
+      should.exist(events.total);
+      should.exist(events.festivals);
 
       done();
     });
@@ -205,6 +228,28 @@ describe('firebase test', function () {
       should.exist(event.category);
       event.createdAt.should.be.equal(createdAt);
       event.updatedAt.should.be.equal(createdAt);
+
+      done();
+    });
+  });
+
+  it('should get festival events collection', function (done) {
+
+    var searchFestivalEventsRequest = new SearchFestivalEventsRequestBuilder()
+      //.withName(name)
+      //.withPlace(place)
+      //.withStartAt(startAt)
+      //.withFinishAt(finishAt)
+      //.withCategory(category)
+      //.withLimit(limit)
+      //.withOffset(offset)
+      .build();
+
+    firebaseProvider.getFestivalEvents(festivalId, searchFestivalEventsRequest, function (err, events) {
+      should.not.exist(err);
+      should.exist(events);
+      should.exist(events.total);
+      should.exist(events.events);
 
       done();
     });

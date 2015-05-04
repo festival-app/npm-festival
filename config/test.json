@@ -1,0 +1,7 @@
+{
+  "provider": {
+    "firebase": {
+      "url": "https://festivals-travis.firebaseio.com"
+    }
+  }
+}
