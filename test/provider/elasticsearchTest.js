@@ -3,7 +3,7 @@ var moment = require('moment');
 var chai = require('chai');
 var should = chai.should();
 var expect = chai.expect;
-var firebaseProvider = require('../../lib/provider/fireabase');
+var elasticsearchProvider = require('../../lib/provider/elasticsearch');
 
 var festivalsModel = require('festivals-model');
 
@@ -16,7 +16,7 @@ var EventBuilder = festivalsModel.model.event.EventBuilder;
 var SearchFestivalEventsRequestBuilder = festivalsModel.model.searchFestivalEventsRequest.SearchFestivalEventsRequestBuilder;
 var SearchFestivalsRequestBuilder = festivalsModel.model.searchFestivalsRequest.SearchFestivalsRequestBuilder;
 
-describe('firebase provider test', function () {
+describe('elastic search provider test', function () {
 
   var festivalId = null;
   var placeId = null;
@@ -65,7 +65,7 @@ describe('firebase provider test', function () {
       .withLocations(locations)
       .build();
 
-    firebaseProvider.createFestival(newFestival, function (err, festival) {
+    elasticsearchProvider.createFestival(newFestival, function (err, festival) {
       should.not.exist(err);
       should.exist(festival);
 
@@ -85,7 +85,7 @@ describe('firebase provider test', function () {
 
   it('should get festival', function (done) {
 
-    firebaseProvider.getFestival(festivalId, function (err, festival) {
+    elasticsearchProvider.getFestival(festivalId, function (err, festival) {
       should.not.exist(err);
       should.exist(festival);
 
@@ -114,7 +114,7 @@ describe('firebase provider test', function () {
       //.withOffset(offset)
       .build();
 
-    firebaseProvider.getFestivals(searchFestivalsRequest, function (err, events) {
+    elasticsearchProvider.getFestivals(searchFestivalsRequest, function (err, events) {
       should.not.exist(err);
       should.exist(events);
       should.exist(events.total);
@@ -147,7 +147,7 @@ describe('firebase provider test', function () {
       .withOpeningTimes(openingTimes)
       .build();
 
-    firebaseProvider.createFestivalPlace(festivalId, newPlace, function (err, place) {
+    elasticsearchProvider.createFestivalPlace(festivalId, newPlace, function (err, place) {
       should.not.exist(err);
       should.exist(place);
 
@@ -193,7 +193,7 @@ describe('firebase provider test', function () {
       .withUpdatedAt(createdAt)
       .build();
 
-    firebaseProvider.createFestivalEvent(festivalId, newEvent, function (err, event) {
+    elasticsearchProvider.createFestivalEvent(festivalId, newEvent, function (err, event) {
       should.not.exist(err);
       should.exist(event);
 
@@ -214,7 +214,7 @@ describe('firebase provider test', function () {
 
   it('should get festival event', function (done) {
 
-    firebaseProvider.getFestivalEvent(festivalId, eventId, function (err, event) {
+    elasticsearchProvider.getFestivalEvent(festivalId, eventId, function (err, event) {
       should.not.exist(err);
       should.exist(event);
 
@@ -245,7 +245,7 @@ describe('firebase provider test', function () {
       //.withOffset(offset)
       .build();
 
-    firebaseProvider.getFestivalEvents(festivalId, searchFestivalEventsRequest, function (err, events) {
+    elasticsearchProvider.getFestivalEvents(festivalId, searchFestivalEventsRequest, function (err, events) {
       should.not.exist(err);
       should.exist(events);
       should.exist(events.total);
