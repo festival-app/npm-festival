@@ -1,4 +1,4 @@
-//require('newrelic');
+require('newrelic');
 var fs = require('fs');
 var myRestifyApi = require('my-restify-api');
 //var UnauthorizedError = myRestifyApi.error.UnauthorizedError;
