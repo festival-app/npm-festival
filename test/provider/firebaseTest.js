@@ -47,9 +47,9 @@ describe('firebase provider test', function () {
       .build();
 
     var mainImage = new ImageBuilder()
-      .withSmall('http://small')
-      .withMedium('http://medium')
-      .withLarge('http://large')
+      .withSmall('http://podgk.pl/wp-content/uploads/2011/06/dni_fantastyki_podgk.jpg')
+      .withMedium('http://podgk.pl/wp-content/uploads/2011/06/dni_fantastyki_podgk.jpg')
+      .withLarge('http://melanzowniatv.znadplanszy.pl/wp-content/uploads/sites/52/2015/04/pyrkon-1030x579.png')
       .build();
 
     var locations = [location];
@@ -175,9 +175,9 @@ describe('firebase provider test', function () {
       .build();
 
     var mainImage = new ImageBuilder()
-      .withSmall('http://small')
-      .withMedium('http://medium')
-      .withLarge('http://large')
+      .withSmall('http://szuflada.net/wp-content/uploads/2013/05/dni_fantastyki_szuflada.net_.jpg')
+      .withMedium('http://szuflada.net/wp-content/uploads/2013/05/dni_fantastyki_szuflada.net_.jpg')
+      .withLarge('http://szuflada.net/wp-content/uploads/2013/05/dni_fantastyki_szuflada.net_.jpg')
       .build();
 
     var newEvent = new EventBuilder()
