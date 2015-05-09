@@ -5,14 +5,14 @@ var should = chai.should();
 var expect = chai.expect;
 var firebaseProvider = require('../../lib/provider/fireabase');
 
-var festivalsModel = require('festivals-model');
+var FestivalBuilder = require('../../lib/domain/festival').FestivalBuilder;
+var DurationBuilder = require('../../lib/domain/duration').DurationBuilder;
+var LocationBuilder = require('../../lib/domain/location').LocationBuilder;
+var ImageBuilder = require('../../lib/domain/image').ImageBuilder;
+var PlaceBuilder = require('../../lib/domain/place').PlaceBuilder;
+var EventBuilder = require('../../lib/domain/event').EventBuilder;
 
-var FestivalBuilder = festivalsModel.model.festival.FestivalBuilder;
-var DurationBuilder = festivalsModel.model.duration.DurationBuilder;
-var LocationBuilder = festivalsModel.model.location.LocationBuilder;
-var ImageBuilder = festivalsModel.model.image.ImageBuilder;
-var PlaceBuilder = festivalsModel.model.place.PlaceBuilder;
-var EventBuilder = festivalsModel.model.event.EventBuilder;
+var festivalsModel = require('festivals-model');
 var SearchFestivalEventsRequestBuilder = festivalsModel.model.searchFestivalEventsRequest.SearchFestivalEventsRequestBuilder;
 var SearchFestivalsRequestBuilder = festivalsModel.model.searchFestivalsRequest.SearchFestivalsRequestBuilder;
 
@@ -34,7 +34,6 @@ describe('firebase provider test', function () {
     var duration = new DurationBuilder()
       .withStartAt(createdAt)
       .withFinishAt(finishAt)
-      .withPeriodMs(28000)
       .build();
 
     var location = new LocationBuilder()
@@ -44,13 +43,16 @@ describe('firebase provider test', function () {
       .withStreet('location-street')
       .withZip('location-zip')
       .withOpeningTimes([])
+      .withFestival(festivalId)
       .build();
 
-    var mainImage = new ImageBuilder()
-      .withSmall('http://podgk.pl/wp-content/uploads/2011/06/dni_fantastyki_podgk.jpg')
-      .withMedium('http://podgk.pl/wp-content/uploads/2011/06/dni_fantastyki_podgk.jpg')
-      .withLarge('http://melanzowniatv.znadplanszy.pl/wp-content/uploads/sites/52/2015/04/pyrkon-1030x579.png')
-      .build();
+    var images = [
+      new ImageBuilder()
+        .withUrl('http://podgk.pl/wp-content/uploads/2011/06/dni_fantastyki_podgk.jpg')
+        .withContent(null)
+        .withOrder(0)
+        .build()
+    ];
 
     var locations = [location];
     var newFestival = new FestivalBuilder()
@@ -58,7 +60,7 @@ describe('firebase provider test', function () {
       .withName(name)
       .withDescription(description)
       .withTags(tags)
-      .withMainImage(mainImage)
+      .withImages(images)
       .withCreatedAt(createdAt)
       .withUpdatedAt(createdAt)
       .withDuration(duration)
@@ -73,7 +75,7 @@ describe('firebase provider test', function () {
       festival.name.should.be.equal(name);
       festival.description.should.be.equal(description);
       festival.tags.should.be.equal(tags);
-      festival.mainImage.should.be.equal(mainImage);
+      festival.images.should.be.equal(images);
       festival.createdAt.should.be.equal(createdAt);
       festival.updatedAt.should.be.equal(createdAt);
       festival.duration.should.be.equal(duration);
@@ -93,7 +95,7 @@ describe('firebase provider test', function () {
       should.exist(festival.name);
       should.exist(festival.description);
       should.exist(festival.tags);
-      should.exist(festival.mainImage);
+      should.exist(festival.images);
       festival.createdAt.should.be.equal(createdAt);
       festival.updatedAt.should.be.equal(createdAt);
       should.exist(festival.duration);
@@ -133,7 +135,6 @@ describe('firebase provider test', function () {
     var duration = new DurationBuilder()
       .withStartAt(createdAt)
       .withFinishAt(finishAt)
-      .withPeriodMs(28000)
       .build();
 
     var openingTimes = [
@@ -171,21 +172,22 @@ describe('firebase provider test', function () {
     var duration = new DurationBuilder()
       .withStartAt(createdAt)
       .withFinishAt(finishAt)
-      .withPeriodMs(12000)
       .build();
 
-    var mainImage = new ImageBuilder()
-      .withSmall('http://szuflada.net/wp-content/uploads/2013/05/dni_fantastyki_szuflada.net_.jpg')
-      .withMedium('http://szuflada.net/wp-content/uploads/2013/05/dni_fantastyki_szuflada.net_.jpg')
-      .withLarge('http://szuflada.net/wp-content/uploads/2013/05/dni_fantastyki_szuflada.net_.jpg')
-      .build();
+    var images = [
+      //new ImageBuilder()
+      //.withSmall('http://szuflada.net/wp-content/uploads/2013/05/dni_fantastyki_szuflada.net_.jpg')
+      //.withMedium('http://szuflada.net/wp-content/uploads/2013/05/dni_fantastyki_szuflada.net_.jpg')
+      //.withLarge('http://szuflada.net/wp-content/uploads/2013/05/dni_fantastyki_szuflada.net_.jpg')
+      //.build()
+    ];
 
     var newEvent = new EventBuilder()
       .withId(eventId)
       .withName(name)
       .withDescription(description)
       .withTags(tags)
-      .withMainImage(mainImage)
+      //.withImages(images)
       .withDuration(duration)
       .withPlace(placeId)
       .withCategory(category)
@@ -201,7 +203,7 @@ describe('firebase provider test', function () {
       event.name.should.be.equal(name);
       event.description.should.be.equal(description);
       event.tags.should.be.equal(tags);
-      event.mainImage.should.be.equal(mainImage);
+      //event.images.should.be.equal(images);
       event.duration.should.be.equal(duration);
       event.place.should.be.equal(placeId);
       event.category.should.be.equal(category);
@@ -222,7 +224,7 @@ describe('firebase provider test', function () {
       should.exist(event.name);
       should.exist(event.description);
       should.exist(event.tags);
-      should.exist(event.mainImage);
+      //should.exist(event.images);
       should.exist(event.duration);
       should.exist(event.place);
       should.exist(event.category);
