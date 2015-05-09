@@ -9,6 +9,8 @@ describe('place domain test', function () {
   var name = 'name';
   var openingTimes = [{from: 'openingTimes'}];
   var festival = 'festival';
+  var createdAt = 'createdAt';
+  var updatedAt = 'updatedAt';
 
   it('should create domain', function (done) {
 
@@ -17,7 +19,9 @@ describe('place domain test', function () {
       parent,
       name,
       openingTimes,
-      festival
+      festival,
+      createdAt,
+      updatedAt
     );
 
     should.exist(placeDomain);
@@ -26,6 +30,8 @@ describe('place domain test', function () {
     placeDomain.name.should.be.equal(name);
     placeDomain.openingTimes.should.be.equal(openingTimes);
     placeDomain.festival.should.be.equal(festival);
+    placeDomain.createdAt.should.be.equal(createdAt);
+    placeDomain.updatedAt.should.be.equal(updatedAt);
 
     done();
   });
@@ -38,6 +44,8 @@ describe('place domain test', function () {
       .withName(name)
       .withOpeningTimes(openingTimes)
       .withFestival(festival)
+      .withCreatedAt(createdAt)
+      .withUpdatedAt(updatedAt)
       .build();
 
     should.exist(placeDomain);
@@ -46,6 +54,8 @@ describe('place domain test', function () {
     placeDomain.name.should.be.equal(name);
     placeDomain.openingTimes.should.be.equal(openingTimes);
     placeDomain.festival.should.be.equal(festival);
+    placeDomain.createdAt.should.be.equal(createdAt);
+    placeDomain.updatedAt.should.be.equal(updatedAt);
 
     done();
   });
