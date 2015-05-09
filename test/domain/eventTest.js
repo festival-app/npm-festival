@@ -8,7 +8,7 @@ describe('event domain test', function () {
   var name = 'name';
   var description = 'description';
   var tags = ['tags'];
-  var mainImage = {small: 'mainImage'};
+  var images = [{small: 'images'}];
   var duration = {'duration': 111};
   var place = 'place';
   var category = 'category';
@@ -23,7 +23,7 @@ describe('event domain test', function () {
       name,
       description,
       tags,
-      mainImage,
+      images,
       duration,
       place,
       category,
@@ -37,7 +37,7 @@ describe('event domain test', function () {
     eventModel.name.should.be.equal(name);
     eventModel.description.should.be.equal(description);
     eventModel.tags.should.be.equal(tags);
-    eventModel.mainImage.should.be.equal(mainImage);
+    eventModel.images.should.be.equal(images);
     eventModel.duration.should.be.equal(duration);
     eventModel.place.should.be.equal(place);
     eventModel.category.should.be.equal(category);
@@ -55,7 +55,7 @@ describe('event domain test', function () {
       .withName(name)
       .withDescription(description)
       .withTags(tags)
-      .withMainImage(mainImage)
+      .withImages(images)
       .withDuration(duration)
       .withPlace(place)
       .withCategory(category)
@@ -69,7 +69,7 @@ describe('event domain test', function () {
     eventModel.name.should.be.equal(name);
     eventModel.description.should.be.equal(description);
     eventModel.tags.should.be.equal(tags);
-    eventModel.mainImage.should.be.equal(mainImage);
+    eventModel.images.should.be.equal(images);
     eventModel.duration.should.be.equal(duration);
     eventModel.place.should.be.equal(place);
     eventModel.category.should.be.equal(category);
