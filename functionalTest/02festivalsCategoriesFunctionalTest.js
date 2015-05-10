@@ -1,56 +1,31 @@
-require('./initFunctionalTests');
+var funcTest = require('./initFunctionalTests');
 var config = require('config');
 var hippie = require('hippie');
 var moment = require('moment');
 var uuid = require('node-uuid');
 
-const FESTIVAL_ID = config.get('test.festival.valid');
-const EVENT_ID = config.get('test.event.valid');
+describe('festivals categories functional test', function () {
 
-describe('festivals events functional test', function () {
-
-  it('should create festival event', function (done) {
-
-    var now = moment();
+  it('should create festival category (parent)', function (done) {
 
     var json = {
-      name: 'event-name',
-      description: 'event-description',
-      tags: ['event-tag1', 'event-tag2'],
-      duration: {
-        startAt: now.toISOString(),
-        finishAt: moment(now).add(2, 'hours').toISOString()
-      },
-      images: [
-        {
-          url: 'http://podgk.pl/wp-content/uploads/2011/06/dni_fantastyki_podgk.jpg',
-          order: 0
-        }
-      ],
-      place: 'place',
-      category: 'category'
+      name: 'category-name'
     };
 
     hippie()
       .header('User-Agent', config.test.ua)
       .json()
       .header('Accept', config.test.accept)
-      .post(config.test.host + '/api/festivals/' + FESTIVAL_ID + '/events')
+      .post(config.test.host + '/api/festivals/' + funcTest.festivalId + '/categories')
       .send(json)
       .expectStatus(201)
       .expectValue('name', json.name)
-      .expectValue('description', json.description)
-      .expectValue('tags', json.tags)
-      .expectValue('mainImage.small', json.images[0].url)
-      .expectValue('mainImage.medium', json.images[0].url)
-      .expectValue('mainImage.large', json.images[0].url)
-      .expectValue('duration.periodMs', 7200000)
       .expectBody(/id/g)
       .expectBody(/createdAt/g)
       .expectBody(/updatedAt/g)
-      .expectBody(/place/g)
-      .expectBody(/category/g)
-      .end(function (err/*, res, body*/) {
+      .end(function (err, res, body) {
+
+        funcTest.festivalCategoryIdParent = body.id;
 
         if (err) {
           throw err;
@@ -61,48 +36,57 @@ describe('festivals events functional test', function () {
       });
   });
 
-  it('should update festival event for id', function (done) {
-
-    var now = moment();
-    var id = uuid.v4();
+  it('should create festival category with parent', function (done) {
 
     var json = {
-      name: 'event-name' + id,
-      description: 'event-description' + id,
-      tags: ['event-tag1' + id, 'event-tag2' + id],
-      duration: {
-        startAt: now.toISOString(),
-        finishAt: moment(now).add(2, 'hours').toISOString()
-      },
-      images: [
-        {
-          url: 'http://podgk.pl/wp-content/uploads/2011/06/dni_fantastyki_podgk.jpg?' + id,
-          order: 0
-        }
-      ],
-      place: 'place' + id,
-      category: 'category' + id
+      name: 'category-name',
+      parent: funcTest.festivalCategoryIdParent
     };
 
     hippie()
       .header('User-Agent', config.test.ua)
       .json()
       .header('Accept', config.test.accept)
-      .put(config.test.host + '/api/festivals/' + FESTIVAL_ID + '/events/' + EVENT_ID)
+      .post(config.test.host + '/api/festivals/' + funcTest.festivalId + '/categories')
+      .send(json)
+      .expectStatus(201)
+      .expectValue('name', json.name)
+      .expectBody(/id/g)
+      .expectBody(/createdAt/g)
+      .expectBody(/updatedAt/g)
+      .end(function (err, res, body) {
+
+        funcTest.festivalCategoryId = body.id;
+
+        if (err) {
+          throw err;
+        }
+
+        done();
+
+      });
+  });
+
+  it('should update festival category for id', function (done) {
+
+    var id = uuid.v4();
+
+    var json = {
+      name: 'category-name',
+      parent: funcTest.festivalCategoryIdParent
+    };
+
+    hippie()
+      .header('User-Agent', config.test.ua)
+      .json()
+      .header('Accept', config.test.accept)
+      .put(config.test.host + '/api/festivals/' + funcTest.festivalId + '/categories/' + funcTest.festivalCategoryId)
       .send(json)
       .expectStatus(200)
-      .expectValue('id', EVENT_ID)
+      .expectValue('id', funcTest.festivalCategoryId)
       .expectValue('name', json.name)
-      .expectValue('description', json.description)
-      .expectValue('tags', json.tags)
-      .expectValue('mainImage.small', json.images[0].url)
-      .expectValue('mainImage.medium', json.images[0].url)
-      .expectValue('mainImage.large', json.images[0].url)
-      .expectValue('duration.periodMs', 7200000)
       .expectBody(/createdAt/g)
       .expectBody(/updatedAt/g)
-      .expectBody(/place/g)
-      .expectBody(/category/g)
       .end(function (err/*, res, body*/) {
 
         if (err) {
@@ -114,19 +98,17 @@ describe('festivals events functional test', function () {
       });
   });
 
-  it('should return festival event for id', function (done) {
+  it('should get festival category for id', function (done) {
 
     hippie()
       .header('User-Agent', config.test.ua)
       .json()
       .header('Accept', config.test.accept)
-      .get(config.test.host + '/api/festivals/' + FESTIVAL_ID + '/events/' + EVENT_ID)
+      .get(config.test.host + '/api/festivals/' + funcTest.festivalId + '/categories/' + funcTest.festivalCategoryId)
       .expectStatus(200)
-      .expectValue('id', EVENT_ID)
+      .expectValue('id', funcTest.festivalCategoryId)
       .expectBody(/createdAt/g)
       .expectBody(/updatedAt/g)
-      .expectBody(/place/g)
-      .expectBody(/category/g)
       .end(function (err/*, res, body*/) {
 
         if (err) {
@@ -138,16 +120,16 @@ describe('festivals events functional test', function () {
       });
   });
 
-  it('should return festival events collection', function (done) {
+  it('should return festival categories collection', function (done) {
 
     hippie()
       .header('User-Agent', config.test.ua)
       .json()
       .header('Accept', config.test.accept)
-      .get(config.test.host + '/api/festivals/' + FESTIVAL_ID + '/events')
+      .get(config.test.host + '/api/festivals/' + funcTest.festivalId + '/categories')
       .expectStatus(200)
       .expectBody(/total/g)
-      .expectBody(/events/g)
+      .expectBody(/categories/g)
       .end(function (err/*, res, body*/) {
 
         if (err) {

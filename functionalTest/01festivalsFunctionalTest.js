@@ -1,10 +1,8 @@
-require('./initFunctionalTests');
+var funcTest = require('./initFunctionalTests');
 var config = require('config');
 var hippie = require('hippie');
 var moment = require('moment');
 var uuid = require('node-uuid');
-
-const FESTIVAL_ID = config.get('test.festival.valid');
 
 describe('festivals functional test', function () {
 
@@ -65,7 +63,9 @@ describe('festivals functional test', function () {
       .expectBody(/id/g)
       .expectBody(/createdAt/g)
       .expectBody(/updatedAt/g)
-      .end(function (err/*, res, body*/) {
+      .end(function (err, res, body) {
+
+        funcTest.festivalId = body.id;
 
         if (err) {
           throw err;
@@ -116,10 +116,10 @@ describe('festivals functional test', function () {
       .header('User-Agent', config.test.ua)
       .json()
       .header('Accept', config.test.accept)
-      .put(config.test.host + '/api/festivals/' + FESTIVAL_ID)
+      .put(config.test.host + '/api/festivals/' + funcTest.festivalId)
       .send(json)
       .expectStatus(200)
-      .expectValue('id', FESTIVAL_ID)
+      .expectValue('id', funcTest.festivalId)
       .expectValue('name', json.name)
       .expectValue('description', json.description)
       .expectValue('tags', json.tags)
@@ -145,7 +145,7 @@ describe('festivals functional test', function () {
       });
   });
 
-  it('should return festivals', function (done) {
+  it('should get festivals collection', function (done) {
 
     hippie()
       .header('User-Agent', config.test.ua)
@@ -166,15 +166,15 @@ describe('festivals functional test', function () {
       });
   });
 
-  it('should return valid festival for id', function (done) {
+  it('should get valid festival for id', function (done) {
 
     hippie()
       .header('User-Agent', config.test.ua)
       .json()
       .header('Accept', config.test.accept)
-      .get(config.test.host + '/api/festivals/' + FESTIVAL_ID)
+      .get(config.test.host + '/api/festivals/' + funcTest.festivalId)
       .expectStatus(200)
-      .expectValue('id', FESTIVAL_ID)
+      .expectValue('id', funcTest.festivalId)
       .end(function (err/*, res, body*/) {
 
         if (err) {

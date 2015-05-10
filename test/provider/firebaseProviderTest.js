@@ -1,9 +1,13 @@
+var config = require('config');
 var uuid = require('node-uuid');
 var moment = require('moment');
 var chai = require('chai');
 var should = chai.should();
 var expect = chai.expect;
-var firebaseProvider = require('../../lib/provider/fireabase');
+
+var Firebase = require('firebase');
+var client = new Firebase(config.provider.firebase.url);
+var firebaseProvider = require('../../lib/provider/fireabaseProvider').provider(client);
 
 var FestivalBuilder = require('../../lib/domain/festival').FestivalBuilder;
 var DurationBuilder = require('../../lib/domain/duration').DurationBuilder;

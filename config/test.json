@@ -1,7 +1,34 @@
 {
+  "test": {
+    "host1": "http://146.185.159.209",
+    "host2": "http://127.0.0.1:2997",
+    "host": "http://127.0.0.1:3000",
+    "host4": "https://festivals-app.herokuapp.com",
+    "accept": "application/vnd.festivals.v1+json",
+    "ua": "functional-test"
+  },
   "provider": {
+    "selected": "fireabase",
+    "selected2": "elasticsearch",
     "firebase": {
       "url": "https://festivals-travis.firebaseio.com"
+    },
+    "elasticsearch": {
+      "hosts": [
+        {
+          "protocol": "https",
+          "host": "festivals-3030631702.eu-west-1.bonsai.io",
+          "auth": "cw3kkac6zk:cjmvxi76p4",
+          "port": 443,
+          "weight": 1
+        }
+      ],
+      "sniffOnStart": false,
+      "sniffInterval": 0,
+      "requestTimeout": 5000,
+      "minSockets": 1,
+      "maxSockets": 11,
+      "keepAlive": true
     }
   }
 }

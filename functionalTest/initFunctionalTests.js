@@ -1,4 +1,13 @@
-process.env.NODE_ENV = 'func-test';
+process.env.NODE_ENV = 'test';
+
+module.exports = {
+  festivalId: null,
+  festivalPlaceId: null,
+  festivalPlaceIdParent: null,
+  festivalCategoryId: null,
+  festivalCategoryIdParent: null,
+  festivalEventId: null
+};
 
 before(function (done) {
   console.log('Starting server for functional tests ..');

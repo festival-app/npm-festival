@@ -1,22 +1,17 @@
-require('./initFunctionalTests');
+var funcTest = require('./initFunctionalTests');
 var config = require('config');
 var hippie = require('hippie');
 var moment = require('moment');
 var uuid = require('node-uuid');
 
-const FESTIVAL_ID = config.get('test.festival.valid');
-const PLACE_ID = config.get('test.place.valid');
-const PARENT_PLACE_ID = config.get('test.place.parent');
-
 describe('festivals places functional test', function () {
 
-  it('should create festival place', function (done) {
+  it('should create festival place (parent)', function (done) {
 
     var now = moment();
 
     var json = {
       name: 'place-name',
-      parent: PARENT_PLACE_ID,
       openingTimes: [
         {
           startAt: now.toISOString(),
@@ -29,14 +24,55 @@ describe('festivals places functional test', function () {
       .header('User-Agent', config.test.ua)
       .json()
       .header('Accept', config.test.accept)
-      .post(config.test.host + '/api/festivals/' + FESTIVAL_ID + '/places')
+      .post(config.test.host + '/api/festivals/' + funcTest.festivalId + '/places')
       .send(json)
       .expectStatus(201)
       .expectValue('name', json.name)
       .expectBody(/id/g)
       .expectBody(/createdAt/g)
       .expectBody(/updatedAt/g)
-      .end(function (err/*, res, body*/) {
+      .end(function (err, res, body) {
+
+        funcTest.festivalPlaceIdParent = body.id;
+
+        if (err) {
+          throw err;
+        }
+
+        done();
+
+      });
+  });
+
+  it('should create festival place with parent', function (done) {
+
+    var now = moment();
+
+    var json = {
+      name: 'place-name',
+      parent: funcTest.festivalPlaceIdParent,
+      openingTimes: [
+        {
+          startAt: now.toISOString(),
+          finishAt: moment(now).add(8, 'hours').toISOString()
+        }
+      ]
+    };
+
+    hippie()
+      .header('User-Agent', config.test.ua)
+      .json()
+      .header('Accept', config.test.accept)
+      .post(config.test.host + '/api/festivals/' + funcTest.festivalId + '/places')
+      .send(json)
+      .expectStatus(201)
+      .expectValue('name', json.name)
+      .expectBody(/id/g)
+      .expectBody(/createdAt/g)
+      .expectBody(/updatedAt/g)
+      .end(function (err, res, body) {
+
+        funcTest.festivalPlaceId = body.id;
 
         if (err) {
           throw err;
@@ -54,7 +90,7 @@ describe('festivals places functional test', function () {
 
     var json = {
       name: 'place-name',
-      parent: PARENT_PLACE_ID,
+      parent: funcTest.festivalPlaceIdParent,
       openingTimes: [
         {
           startAt: now.toISOString(),
@@ -67,10 +103,10 @@ describe('festivals places functional test', function () {
       .header('User-Agent', config.test.ua)
       .json()
       .header('Accept', config.test.accept)
-      .put(config.test.host + '/api/festivals/' + FESTIVAL_ID + '/places/' + PLACE_ID)
+      .put(config.test.host + '/api/festivals/' + funcTest.festivalId + '/places/' + funcTest.festivalPlaceId)
       .send(json)
       .expectStatus(200)
-      .expectValue('id', PLACE_ID)
+      .expectValue('id', funcTest.festivalPlaceId)
       .expectValue('name', json.name)
       .expectBody(/createdAt/g)
       .expectBody(/updatedAt/g)
@@ -85,15 +121,15 @@ describe('festivals places functional test', function () {
       });
   });
 
-  it('should return festival place for id', function (done) {
+  it('should get festival place for id', function (done) {
 
     hippie()
       .header('User-Agent', config.test.ua)
       .json()
       .header('Accept', config.test.accept)
-      .get(config.test.host + '/api/festivals/' + FESTIVAL_ID + '/places/' + PLACE_ID)
+      .get(config.test.host + '/api/festivals/' + funcTest.festivalId + '/places/' + funcTest.festivalPlaceId)
       .expectStatus(200)
-      .expectValue('id', PLACE_ID)
+      .expectValue('id', funcTest.festivalPlaceId)
       .expectBody(/createdAt/g)
       .expectBody(/updatedAt/g)
       .end(function (err/*, res, body*/) {
@@ -107,13 +143,13 @@ describe('festivals places functional test', function () {
       });
   });
 
-  it('should return festival places collection', function (done) {
+  it('should get festival places collection', function (done) {
 
     hippie()
       .header('User-Agent', config.test.ua)
       .json()
       .header('Accept', config.test.accept)
-      .get(config.test.host + '/api/festivals/' + FESTIVAL_ID + '/places')
+      .get(config.test.host + '/api/festivals/' + funcTest.festivalId + '/places')
       .expectStatus(200)
       .expectBody(/total/g)
       .expectBody(/places/g)
