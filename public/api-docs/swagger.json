@@ -1,0 +1,888 @@
+{
+  "swagger": "2.0",
+  "host": "festivals-app.herokuapp.com",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "festivals",
+      "description": "Operation about festivals"
+    },
+    {
+      "name": "events",
+      "description": "Operation about festival events"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/festivals": {
+      "get": {
+        "tags": [
+          "festivals"
+        ],
+        "summary": "Find festivals",
+        "description": "Get festivals collection",
+        "operationId": "getFestivals",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "authorizations": {},
+        "parameters": [
+          {
+            "name": "name",
+            "description": "name",
+            "required": false,
+            "type": "string",
+            "in": "query",
+            "allowMultiple": false
+          },
+          {
+            "name": "limit",
+            "description": "limit",
+            "required": false,
+            "type": "integer",
+            "in": "query",
+            "allowMultiple": false
+          },
+          {
+            "name": "offset",
+            "description": "offset",
+            "required": false,
+            "type": "integer",
+            "in": "query",
+            "allowMultiple": false
+          },
+          {
+            "name": "country",
+            "description": "country",
+            "required": false,
+            "type": "string",
+            "defaultValue": "PL",
+            "in": "query",
+            "allowMultiple": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FestivalsCollectionResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": [],
+            "bearerToken": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "festivals"
+        ],
+        "summary": "Create festival",
+        "description": "Create festival",
+        "operationId": "postFestival",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Festival object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FestivalRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FestivalResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "The request you made is not acceptable"
+          },
+          "422": {
+            "description": "Invalid parameter value"
+          }
+        },
+        "security": [
+          {
+            "auth": [
+            ],
+            "bearerToken": [
+            ]
+          }
+        ]
+      }
+    },
+    "/festivals/{id}/events": {
+      "get": {
+        "tags": [
+          "events"
+        ],
+        "summary": "Get festival events",
+        "description": "Get festival events collection",
+        "operationId": "getFestivalEvents",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "authorizations": {},
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Festival id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "description": "name",
+            "required": false,
+            "type": "string",
+            "in": "query",
+            "allowMultiple": false
+          },
+          {
+            "name": "place",
+            "description": "place",
+            "required": false,
+            "type": "string",
+            "in": "query",
+            "allowMultiple": false
+          },
+          {
+            "name": "startAt",
+            "description": "startAt",
+            "required": false,
+            "type": "string",
+            "in": "query",
+            "allowMultiple": false
+          },
+          {
+            "name": "finishAt",
+            "description": "finishAt",
+            "required": false,
+            "type": "string",
+            "in": "query",
+            "allowMultiple": false
+          },
+          {
+            "name": "updatedAt",
+            "description": "updatedAt",
+            "required": false,
+            "type": "string",
+            "in": "query",
+            "allowMultiple": false
+          },
+          {
+            "name": "category",
+            "description": "category",
+            "required": false,
+            "type": "string",
+            "in": "query",
+            "allowMultiple": false
+          },
+          {
+            "name": "limit",
+            "description": "limit",
+            "required": false,
+            "type": "integer",
+            "in": "query",
+            "allowMultiple": false
+          },
+          {
+            "name": "offset",
+            "description": "offset",
+            "required": false,
+            "type": "integer",
+            "in": "query",
+            "allowMultiple": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FestivalEventsCollectionResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "auth": [],
+            "bearerToken": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "events"
+        ],
+        "summary": "Create festival events",
+        "description": "Create festival events",
+        "operationId": "postFestivalEvent",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Festival id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Festival event object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FestivalEventRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FestivalResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "The request you made is not acceptable"
+          },
+          "422": {
+            "description": "Invalid parameter value"
+          }
+        },
+        "security": [
+          {
+            "auth": [
+            ],
+            "bearerToken": [
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://vehicle-history.io/oauth/token",
+      "flow": "password",
+      "scopes": {}
+    },
+    "bearerToken": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Duration": {
+      "id": "Duration",
+      "properties": {
+        "startAt": {
+          "type": "string",
+          "description": "start at",
+          "required": true
+        },
+        "finishAt": {
+          "type": "string",
+          "description": "finish at",
+          "required": true
+        },
+        "periodMs": {
+          "type": "integer",
+          "description": "periodMs",
+          "required": true
+        }
+      },
+      "description": "Festival response",
+      "required": [
+        "startAt",
+        "finishAt",
+        "periodMs"
+      ]
+    },
+    "LocationResponse": {
+      "id": "LocationResponse",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Location name",
+          "required": true
+        },
+        "state": {
+          "type": "string",
+          "description": "Location state",
+          "required": true
+        },
+        "country": {
+          "type": "integer",
+          "description": "Location country",
+          "required": true
+        },
+        "street": {
+          "type": "string",
+          "description": "Location street",
+          "required": true
+        },
+        "zip": {
+          "type": "string",
+          "description": "Location zip",
+          "required": true
+        },
+        "openingTimes": {
+          "type": "array",
+          "required": true,
+          "description": "Location opening times",
+          "items": {
+            "$ref": "#/definitions/Duration"
+          }
+        }
+      },
+      "description": "Festival response",
+      "required": [
+        "name",
+        "state",
+        "country",
+        "street",
+        "openingTimes"
+      ]
+    },
+    "MainImage": {
+      "id": "MainImage",
+      "properties": {
+        "small": {
+          "type": "string",
+          "description": "Image small url",
+          "required": false
+        },
+        "medium": {
+          "type": "string",
+          "description": "Image medium url",
+          "required": false
+        },
+        "large": {
+          "type": "string",
+          "description": "Image large url",
+          "required": false
+        }
+      },
+      "description": "Festival response",
+      "required": [
+      ]
+    },
+    "ImageRequest": {
+      "id": "ImageRequest",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Image url",
+          "required": false
+        },
+        "content": {
+          "type": "string",
+          "description": "Image content",
+          "required": false
+        },
+        "order": {
+          "type": "integer",
+          "description": "Image order",
+          "required": true
+        }
+      },
+      "description": "Festival response",
+      "required": [
+        "order"
+      ]
+    },
+    "FestivalResponse": {
+      "id": "FestivalResponse",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Festival id",
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Festival name",
+          "required": true
+        },
+        "description": {
+          "type": "string",
+          "description": "Festival description",
+          "required": true
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Festival tags",
+          "required": false
+        },
+        "mainImage": {
+          "$ref": "#/definitions/MainImage",
+          "description": "Festival main image",
+          "required": false
+        },
+        "duration": {
+          "$ref": "#/definitions/Duration",
+          "description": "Festival duration",
+          "required": true
+        },
+        "locations": {
+          "type": "array",
+          "required": true,
+          "description": "Festival locations",
+          "items": {
+            "$ref": "#/definitions/LocationResponse"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Festival createdAt",
+          "required": true
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Festival updatedAt",
+          "required": true
+        }
+      },
+      "description": "Festival response",
+      "required": [
+        "id",
+        "name",
+        "description",
+        "duration",
+        "locations",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "PlaceResponse": {
+      "id": "PlaceResponse",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Festival event id",
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Festival event name",
+          "required": true
+        },
+        "breadcrumbs": {
+          "type": "array",
+          "required": true,
+          "description": "Festival event breadcrumbs",
+          "items": {
+            "$ref": "#/definitions/Duration"
+          }
+        },
+        "openingTimes": {
+          "type": "array",
+          "required": true,
+          "description": "Festival event location opening times",
+          "items": {
+            "$ref": "#/definitions/Duration"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Festival event createdAt",
+          "required": true
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Festival event updatedAt",
+          "required": true
+        }
+      },
+      "description": "Festival response",
+      "required": [
+        "id",
+        "name",
+        "breadcrumbs",
+        "openingTimes",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "PlaceRequest": {
+      "id": "PlaceRequest",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Festival event id",
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Festival event name",
+          "required": true
+        },
+        "breadcrumbs": {
+          "type": "array",
+          "required": true,
+          "description": "Festival event breadcrumbs",
+          "items": {
+            "$ref": "#/definitions/Duration"
+          }
+        },
+        "openingTimes": {
+          "type": "array",
+          "required": true,
+          "description": "Festival event location opening times",
+          "items": {
+            "$ref": "#/definitions/Duration"
+          }
+        }
+      },
+      "description": "Festival response",
+      "required": [
+        "id",
+        "name",
+        "breadcrumbs",
+        "openingTimes"
+      ]
+    },
+    "CategoryRequest": {
+      "id": "CategoryRequest",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Festival event id",
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Festival event name",
+          "required": true
+        },
+        "breadcrumbs": {
+          "type": "array",
+          "required": true,
+          "description": "Festival event breadcrumbs",
+          "items": {
+            "$ref": "#/definitions/Duration"
+          }
+        }
+      },
+      "description": "Festival category request",
+      "required": [
+        "id",
+        "name",
+        "breadcrumbs",
+        "openingTimes"
+      ]
+    },
+    "CategoryResponse": {
+      "id": "CategoryResponse",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Festival event id",
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Festival event name",
+          "required": true
+        },
+        "breadcrumbs": {
+          "type": "array",
+          "required": true,
+          "description": "Festival event breadcrumbs",
+          "items": {
+            "$ref": "#/definitions/Duration"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Festival event createdAt",
+          "required": true
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Festival event updatedAt",
+          "required": true
+        }
+      },
+      "description": "Festival category response",
+      "required": [
+        "id",
+        "name",
+        "breadcrumbs",
+        "openingTimes",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "FestivalEventRequest": {
+      "id": "FestivalEventRequest",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Festival name",
+          "required": true
+        },
+        "description": {
+          "type": "false",
+          "description": "Festival description",
+          "required": true
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Festival tags",
+          "required": false
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ImageRequest"
+          },
+          "description": "Festival images",
+          "required": false
+        },
+        "duration": {
+          "$ref": "#/definitions/Duration",
+          "description": "Festival duration",
+          "required": true
+        },
+        "place": {
+          "$ref": "#/definitions/PlaceRequest",
+          "required": false,
+          "description": "Festival place"
+        },
+        "category": {
+          "$ref": "#/definitions/CategoryRequest",
+          "required": false,
+          "description": "Festival category"
+        }
+      },
+      "description": "Festival event request",
+      "required": [
+        "name",
+        "description",
+        "duration",
+        "place",
+        "category"
+      ]
+    },
+    "FestivalEventResponse": {
+      "id": "FestivalEventResponse",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Festival event id",
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Festival event name",
+          "required": true
+        },
+        "description": {
+          "type": "string",
+          "description": "Festival event description",
+          "required": true
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Festival event tags",
+          "required": false
+        },
+        "mainImage": {
+          "$ref": "#/definitions/MainImage",
+          "description": "Festival event main image",
+          "required": false
+        },
+        "duration": {
+          "$ref": "#/definitions/Duration",
+          "description": "Festival event duration",
+          "required": true
+        },
+        "place": {
+          "$ref": "#/definitions/PlaceResponse",
+          "required": true,
+          "description": "Festival event place"
+        },
+        "category": {
+          "$ref": "#/definitions/CategoryResponse",
+          "required": true,
+          "description": "Festival event category"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Festival event createdAt",
+          "required": true
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Festival event updatedAt",
+          "required": true
+        }
+      },
+      "description": "Festival event response",
+      "required": [
+        "id",
+        "name",
+        "description",
+        "duration",
+        "place",
+        "category",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "FestivalRequest": {
+      "id": "FestivalRequest",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Festival name",
+          "required": true
+        },
+        "description": {
+          "type": "string",
+          "description": "Festival description",
+          "required": true
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Festival tags",
+          "required": false
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ImageRequest"
+          },
+          "description": "Festival images",
+          "required": false
+        },
+        "duration": {
+          "$ref": "#/definitions/Duration",
+          "description": "Festival duration",
+          "required": true
+        },
+        "locations": {
+          "type": "array",
+          "required": true,
+          "description": "Festival locations",
+          "items": {
+            "$ref": "#/definitions/LocationResponse"
+          }
+        }
+      },
+      "description": "Festival request",
+      "required": [
+        "id",
+        "name",
+        "description",
+        "duration",
+        "locations"
+      ]
+    },
+    "FestivalsCollectionResponse": {
+      "id": "FestivalsCollectionResponse",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Total festivals",
+          "required": true
+        },
+        "festivals": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "$ref": "#/definitions/FestivalResponse"
+          }
+        }
+      },
+      "description": "Festivals collection",
+      "required": [
+        "total",
+        "festivals"
+      ]
+    },
+    "FestivalEventsCollectionResponse": {
+      "id": "FestivalEventsCollectionResponse",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Total festival events",
+          "required": true
+        },
+        "events": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "$ref": "#/definitions/FestivalEventResponse"
+          }
+        }
+      },
+      "description": "Festival events collection",
+      "required": [
+        "total",
+        "festivals"
+      ]
+    }
+  }
+}
