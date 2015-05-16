@@ -1,0 +1,532 @@
+swagger: "2.0"
+host: festivals-app.herokuapp.com
+basePath: /api
+info:
+  version: 1.0.0
+  title: festivals
+tags:
+  - name: festivals
+    description: Operation about festivals
+  - name: events
+    description: Operation about festival events
+schemes:
+  - https
+paths:
+  /festivals:
+    get:
+      tags:
+        - festivals
+      summary: Find festivals
+      description: Get festivals collection
+      operationId: getFestivals
+      consumes:
+        - application/json
+      produces:
+        - application/vnd.festivals.v1+json
+      parameters:
+        - name: name
+          description: name
+          required: false
+          type: string
+          in: query
+        - name: limit
+          description: limit
+          required: false
+          type: integer
+          in: query
+        - name: offset
+          description: offset
+          required: false
+          type: integer
+          in: query
+        - name: country
+          description: country
+          required: false
+          type: string
+          in: query
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: "#/definitions/FestivalsCollectionResponse"
+    post:
+      tags:
+        - festivals
+      summary: Create festival
+      description: Create festival
+      operationId: postFestival
+      consumes:
+        - application/json
+      produces:
+        - application/vnd.festivals.v1+json
+      parameters:
+        - in: body
+          name: body
+          description: Festival object
+          required: true
+          schema:
+            $ref: "#/definitions/FestivalRequest"
+      responses:
+        "201":
+          description: successful operation
+          schema:
+            $ref: "#/definitions/FestivalResponse"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "406":
+          description: The request you made is not acceptable
+        "422":
+          description: Invalid parameter value
+  "/festivals/{id}/events":
+    get:
+      tags:
+        - events
+      summary: Get festival events
+      description: Get festival events collection
+      operationId: getFestivalEvents
+      consumes:
+        - application/json
+      produces:
+        - application/vnd.festivals.v1+json
+      parameters:
+        - name: id
+          in: path
+          description: Festival id
+          required: true
+          type: string
+        - name: name
+          description: name
+          required: false
+          type: string
+          in: query
+        - name: place
+          description: place
+          required: false
+          type: string
+          in: query
+        - name: startAt
+          description: startAt
+          required: false
+          type: string
+          in: query
+        - name: finishAt
+          description: finishAt
+          required: false
+          type: string
+          in: query
+        - name: updatedAt
+          description: updatedAt
+          required: false
+          type: string
+          in: query
+        - name: category
+          description: category
+          required: false
+          type: string
+          in: query
+        - name: limit
+          description: limit
+          required: false
+          type: integer
+          in: query
+        - name: offset
+          description: offset
+          required: false
+          type: integer
+          in: query
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: "#/definitions/FestivalEventsCollectionResponse"
+    post:
+      tags:
+        - events
+      summary: Create festival events
+      description: Create festival events
+      operationId: postFestivalEvent
+      consumes:
+        - application/json
+      produces:
+        - application/vnd.festivals.v1+json
+      parameters:
+        - name: id
+          in: path
+          description: Festival id
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Festival event object
+          required: true
+          schema:
+            $ref: "#/definitions/FestivalEventRequest"
+      responses:
+        "201":
+          description: successful operation
+          schema:
+            $ref: "#/definitions/FestivalResponse"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "406":
+          description: The request you made is not acceptable
+        "422":
+          description: Invalid parameter value
+definitions:
+  Duration:
+    properties:
+      startAt:
+        type: string
+        description: start at
+      finishAt:
+        type: string
+        description: finish at
+      periodMs:
+        type: integer
+        description: periodMs
+    description: Festival response
+    required:
+      - startAt
+      - finishAt
+      - periodMs
+  LocationResponse:
+    properties:
+      name:
+        type: string
+        description: Location name
+      state:
+        type: string
+        description: Location state
+      country:
+        type: integer
+        description: Location country
+      street:
+        type: string
+        description: Location street
+      zip:
+        type: string
+        description: Location zip
+      openingTimes:
+        type: array
+        description: Location opening times
+        items:
+          $ref: "#/definitions/Duration"
+    description: Festival response
+    required:
+      - name
+      - state
+      - country
+      - street
+      - openingTimes
+  MainImage:
+    properties:
+      small:
+        type: string
+        description: Image small url
+      medium:
+        type: string
+        description: Image medium url
+      large:
+        type: string
+        description: Image large url
+    description: Festival response
+  ImageRequest:
+    properties:
+      url:
+        type: string
+        description: Image url
+      content:
+        type: string
+        description: Image content
+      order:
+        type: integer
+        description: Image order
+    description: Festival response
+    required:
+      - order
+  FestivalResponse:
+    properties:
+      id:
+        type: string
+        description: Festival id
+      name:
+        type: string
+        description: Festival name
+      description:
+        type: string
+        description: Festival description
+      tags:
+        type: array
+        items:
+          type: string
+        description: Festival tags
+      mainImage:
+        $ref: "#/definitions/MainImage"
+        description: Festival main image
+      duration:
+        $ref: "#/definitions/Duration"
+        description: Festival duration
+      locations:
+        type: array
+        description: Festival locations
+        items:
+          $ref: "#/definitions/LocationResponse"
+      createdAt:
+        type: string
+        description: Festival createdAt
+      updatedAt:
+        type: string
+        description: Festival updatedAt
+    description: Festival response
+    required:
+      - id
+      - name
+      - description
+      - duration
+      - locations
+      - createdAt
+      - updatedAt
+  PlaceResponse:
+    properties:
+      id:
+        type: string
+        description: Festival event id
+      name:
+        type: string
+        description: Festival event name
+      breadcrumbs:
+        type: array
+        description: Festival event breadcrumbs
+        items:
+          $ref: "#/definitions/Duration"
+      openingTimes:
+        type: array
+        description: Festival event location opening times
+        items:
+          $ref: "#/definitions/Duration"
+      createdAt:
+        type: string
+        description: Festival event createdAt
+      updatedAt:
+        type: string
+        description: Festival event updatedAt
+    description: Festival response
+    required:
+      - id
+      - name
+      - breadcrumbs
+      - openingTimes
+      - createdAt
+      - updatedAt
+  PlaceRequest:
+    properties:
+      id:
+        type: string
+        description: Festival event id
+      name:
+        type: string
+        description: Festival event name
+      breadcrumbs:
+        type: array
+        description: Festival event breadcrumbs
+        items:
+          $ref: "#/definitions/Duration"
+      openingTimes:
+        type: array
+        description: Festival event location opening times
+        items:
+          $ref: "#/definitions/Duration"
+    description: Festival response
+    required:
+      - id
+      - name
+      - breadcrumbs
+      - openingTimes
+  CategoryRequest:
+    properties:
+      id:
+        type: string
+        description: Festival event id
+      name:
+        type: string
+        description: Festival event name
+      breadcrumbs:
+        type: array
+        description: Festival event breadcrumbs
+        items:
+          $ref: "#/definitions/Duration"
+    description: Festival category request
+    required:
+      - id
+      - name
+      - breadcrumbs
+  CategoryResponse:
+    properties:
+      id:
+        type: string
+        description: Festival event id
+      name:
+        type: string
+        description: Festival event name
+      breadcrumbs:
+        type: array
+        description: Festival event breadcrumbs
+        items:
+          $ref: "#/definitions/Duration"
+      createdAt:
+        type: string
+        description: Festival event createdAt
+      updatedAt:
+        type: string
+        description: Festival event updatedAt
+    description: Festival category response
+    required:
+      - id
+      - name
+      - breadcrumbs
+      - createdAt
+      - updatedAt
+  FestivalEventRequest:
+    properties:
+      name:
+        type: string
+        description: Festival name
+      description:
+        type: string
+        description: Festival description
+      tags:
+        type: array
+        items:
+          type: string
+        description: Festival tags
+      images:
+        type: array
+        items:
+          $ref: "#/definitions/ImageRequest"
+        description: Festival images
+      duration:
+        $ref: "#/definitions/Duration"
+        description: Festival duration
+      place:
+        $ref: "#/definitions/PlaceRequest"
+        description: Festival place
+      category:
+        $ref: "#/definitions/CategoryRequest"
+        description: Festival category
+    description: Festival event request
+    required:
+      - name
+      - description
+      - duration
+      - place
+      - category
+  FestivalEventResponse:
+    properties:
+      id:
+        type: string
+        description: Festival event id
+      name:
+        type: string
+        description: Festival event name
+      description:
+        type: string
+        description: Festival event description
+      tags:
+        type: array
+        items:
+          type: string
+        description: Festival event tags
+      mainImage:
+        $ref: "#/definitions/MainImage"
+        description: Festival event main image
+      duration:
+        $ref: "#/definitions/Duration"
+        description: Festival event duration
+      place:
+        $ref: "#/definitions/PlaceResponse"
+        description: Festival event place
+      category:
+        $ref: "#/definitions/CategoryResponse"
+        description: Festival event category
+      createdAt:
+        type: string
+        description: Festival event createdAt
+      updatedAt:
+        type: string
+        description: Festival event updatedAt
+    description: Festival event response
+    required:
+      - id
+      - name
+      - description
+      - duration
+      - place
+      - category
+      - createdAt
+      - updatedAt
+  FestivalRequest:
+    properties:
+      name:
+        type: string
+        description: Festival name
+      description:
+        type: string
+        description: Festival description
+      tags:
+        type: array
+        items:
+          type: string
+        description: Festival tags
+      images:
+        type: array
+        items:
+          $ref: "#/definitions/ImageRequest"
+        description: Festival images
+      duration:
+        $ref: "#/definitions/Duration"
+        description: Festival duration
+      locations:
+        type: array
+        description: Festival locations
+        items:
+          $ref: "#/definitions/LocationResponse"
+    description: Festival request
+    required:
+      - name
+      - description
+      - duration
+      - locations
+  FestivalsCollectionResponse:
+    properties:
+      total:
+        type: integer
+        description: Total festivals
+      festivals:
+        type: array
+        items:
+          $ref: "#/definitions/FestivalResponse"
+    description: Festivals collection
+    required:
+      - total
+      - festivals
+  FestivalEventsCollectionResponse:
+    properties:
+      total:
+        type: integer
+        description: Total festival events
+      events:
+        type: array
+        items:
+          $ref: "#/definitions/FestivalEventResponse"
+    description: Festival events collection
+    required:
+      - total
+      - events
