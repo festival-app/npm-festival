@@ -8,6 +8,7 @@ describe('event domain test', function () {
   var name = 'name';
   var description = 'description';
   var tags = ['tags'];
+  var authors = ['authors'];
   var images = [{small: 'images'}];
   var duration = {'duration': 111};
   var place = 'place';
@@ -23,6 +24,7 @@ describe('event domain test', function () {
       name,
       description,
       tags,
+      authors,
       images,
       duration,
       place,
@@ -37,6 +39,7 @@ describe('event domain test', function () {
     eventModel.name.should.be.equal(name);
     eventModel.description.should.be.equal(description);
     eventModel.tags.should.be.equal(tags);
+    eventModel.authors.should.be.equal(authors);
     eventModel.images.should.be.equal(images);
     eventModel.duration.should.be.equal(duration);
     eventModel.place.should.be.equal(place);
@@ -55,6 +58,7 @@ describe('event domain test', function () {
       .withName(name)
       .withDescription(description)
       .withTags(tags)
+      .withAuthors(authors)
       .withImages(images)
       .withDuration(duration)
       .withPlace(place)
@@ -69,6 +73,7 @@ describe('event domain test', function () {
     eventModel.name.should.be.equal(name);
     eventModel.description.should.be.equal(description);
     eventModel.tags.should.be.equal(tags);
+    eventModel.authors.should.be.equal(authors);
     eventModel.images.should.be.equal(images);
     eventModel.duration.should.be.equal(duration);
     eventModel.place.should.be.equal(place);
