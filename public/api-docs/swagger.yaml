@@ -54,7 +54,7 @@ paths:
         - festivals
       summary: Create festival
       description: Create festival
-      operationId: postFestival
+      operationId: createFestival
       consumes:
         - application/json
       produces:
@@ -148,7 +148,7 @@ paths:
         - events
       summary: Create festival events
       description: Create festival events
-      operationId: postFestivalEvent
+      operationId: createFestivalEvent
       consumes:
         - application/json
       produces:
