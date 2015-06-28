@@ -21,7 +21,7 @@ describe('festivals functional test', function () {
       locations: [
         {
           name: 'Międzynarodowe targi Poznańskie',
-          state: 'wielkopolska',
+          state: 'wielkopolskie',
           country: 'PL',
           street: 'street',
           zip: 'zip',

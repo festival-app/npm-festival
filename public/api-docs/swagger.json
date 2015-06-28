@@ -14,10 +14,28 @@
     {
       "name": "events",
       "description": "Operation about festival events"
+    },
+    {
+      "name": "categories",
+      "description": "Operation about festival categories"
+    },
+    {
+      "name": "places",
+      "description": "Operation about festival places"
     }
   ],
   "schemes": [
     "https"
+  ],
+  "produces": [
+    "application/vnd.festivals.v1+json"
+  ],
+  "security": [
+    {
+      "oauth2token": [
+        "user"
+      ]
+    }
   ],
   "paths": {
     "/festivals": {
@@ -33,6 +51,13 @@
         ],
         "produces": [
           "application/vnd.festivals.v1+json"
+        ],
+        "security": [
+          {
+            "oauth2token": [
+              "user"
+            ]
+          }
         ],
         "parameters": [
           {
@@ -81,7 +106,7 @@
         "description": "Create festival",
         "operationId": "createFestival",
         "consumes": [
-          "application/json"
+          "application/vnd.festivals.v1+json"
         ],
         "produces": [
           "application/vnd.festivals.v1+json"
@@ -120,6 +145,54 @@
             "description": "Invalid parameter value"
           }
         }
+      },
+      "put": {
+        "tags": [
+          "festivals"
+        ],
+        "summary": "Update festival",
+        "description": "Update festival",
+        "operationId": "updateFestival",
+        "consumes": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Festival object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FestivalRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FestivalResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "The request you made is not acceptable"
+          },
+          "422": {
+            "description": "Invalid parameter value"
+          }
+        }
       }
     },
     "/festivals/{id}/events": {
@@ -136,7 +209,6 @@
         "produces": [
           "application/vnd.festivals.v1+json"
         ],
-        
         "parameters": [
           {
             "name": "id",
@@ -219,7 +291,7 @@
         "description": "Create festival events",
         "operationId": "createFestivalEvent",
         "consumes": [
-          "application/json"
+          "application/vnd.festivals.v1+json"
         ],
         "produces": [
           "application/vnd.festivals.v1+json"
@@ -265,6 +337,407 @@
             "description": "Invalid parameter value"
           }
         }
+      },
+      "put": {
+        "tags": [
+          "events"
+        ],
+        "summary": "Update festival events",
+        "description": "Update festival events",
+        "operationId": "updateFestivalEvent",
+        "consumes": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Festival id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Festival event object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FestivalEventRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FestivalResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "The request you made is not acceptable"
+          },
+          "422": {
+            "description": "Invalid parameter value"
+          }
+        }
+      }
+    },
+    "/festivals/{id}/categories": {
+      "get": {
+        "tags": [
+          "categories"
+        ],
+        "summary": "Get festival categories",
+        "description": "Get festival categories collection",
+        "operationId": "getFestivalCategories",
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Festival id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "updatedAt",
+            "description": "updatedAt",
+            "required": false,
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "parent.id",
+            "description": "category parent id",
+            "required": false,
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "limit",
+            "description": "limit",
+            "required": false,
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "offset",
+            "description": "offset",
+            "required": false,
+            "type": "integer",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FestivalCategoriesCollectionResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "categories"
+        ],
+        "summary": "Create festival category",
+        "description": "Create festival category",
+        "operationId": "createFestivalCategory",
+        "consumes": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Festival id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Festival category object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FestivalCategoryRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FestivalCategoryResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "The request you made is not acceptable"
+          },
+          "422": {
+            "description": "Invalid parameter value"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "categories"
+        ],
+        "summary": "Update festival category",
+        "description": "Update festival category",
+        "operationId": "updateFestivalCategory",
+        "consumes": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Festival id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Festival category object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FestivalCategoryRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FestivalCategoryResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "The request you made is not acceptable"
+          },
+          "422": {
+            "description": "Invalid parameter value"
+          }
+        }
+      }
+    },
+    "/festivals/{id}/places": {
+      "get": {
+        "tags": [
+          "places"
+        ],
+        "summary": "Get festival places",
+        "description": "Get festival places collection",
+        "operationId": "getFestivalPlaces",
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Festival id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "updatedAt",
+            "description": "updatedAt",
+            "required": false,
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "parent.id",
+            "description": "plave parent id",
+            "required": false,
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "limit",
+            "description": "limit",
+            "required": false,
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "offset",
+            "description": "offset",
+            "required": false,
+            "type": "integer",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FestivalPlacesCollectionResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "categories"
+        ],
+        "summary": "Create festival place",
+        "description": "Create festival place",
+        "operationId": "createFestivalPlace",
+        "consumes": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Festival id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Festival place object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FestivalPlaceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FestivalPlaceResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "The request you made is not acceptable"
+          },
+          "422": {
+            "description": "Invalid parameter value"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "categories"
+        ],
+        "summary": "Update festival place",
+        "description": "Update festival place",
+        "operationId": "updateFestivalPlace",
+        "consumes": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Festival id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Festival place object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FestivalPlaceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FestivalPlaceResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "The request you made is not acceptable"
+          },
+          "422": {
+            "description": "Invalid parameter value"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "oauth2token": {
+      "type": "oauth2",
+      "flow": "implicit",
+      "authorizationUrl": "https://vehicle-history.io/oauth/authorization",
+      "scopes": {
+        "user": "user auth scope"
       }
     }
   },
@@ -466,26 +939,59 @@
         "updatedAt"
       ]
     },
-    "PlaceRequest": {
+    "FestivalPlaceResponse": {
       "properties": {
         "id": {
           "type": "string",
-          "description": "Festival event id"
+          "description": "Festival place id"
         },
         "name": {
           "type": "string",
-          "description": "Festival event name"
+          "description": "Festival place name"
         },
-        "breadcrumbs": {
+        "parent": {
+          "type": "string",
+          "description": "Festival place parent"
+        },
+        "openingTimes": {
           "type": "array",
-          "description": "Festival event breadcrumbs",
+          "description": "Festival place opening times",
           "items": {
             "$ref": "#/definitions/Duration"
           }
         },
+        "createdAt": {
+          "type": "string",
+          "description": "Festival place createdAt"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Festival place updatedAt"
+        }
+      },
+      "description": "Festival response",
+      "required": [
+        "id",
+        "name",
+        "parent",
+        "openingTimes",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "FestivalPlaceRequest": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Festival place name"
+        },
+        "parent": {
+          "type": "string",
+          "description": "Festival place parent"
+        },
         "openingTimes": {
           "type": "array",
-          "description": "Festival event location opening times",
+          "description": "Festival place opening times",
           "items": {
             "$ref": "#/definitions/Duration"
           }
@@ -493,13 +999,29 @@
       },
       "description": "Festival response",
       "required": [
-        "id",
         "name",
-        "breadcrumbs",
+        "parent",
         "openingTimes"
       ]
     },
-    "CategoryRequest": {
+    "FestivalCategoryRequest": {
+      "properties": {
+        "parent": {
+          "type": "string",
+          "description": "Festival category parent id"
+        },
+        "name": {
+          "type": "string",
+          "description": "Festival category name"
+        }
+      },
+      "description": "Festival category request",
+      "required": [
+        "parent",
+        "name"
+      ]
+    },
+    "FestivalCategoryResponse": {
       "properties": {
         "id": {
           "type": "string",
@@ -515,16 +1037,26 @@
           "items": {
             "$ref": "#/definitions/Duration"
           }
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Festival event createdAt"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Festival event updatedAt"
         }
       },
-      "description": "Festival category request",
+      "description": "Festival category response",
       "required": [
         "id",
         "name",
-        "breadcrumbs"
+        "breadcrumbs",
+        "createdAt",
+        "updatedAt"
       ]
     },
-    "CategoryResponse": {
+    "EventCategoryResponse": {
       "properties": {
         "id": {
           "type": "string",
@@ -576,6 +1108,13 @@
           },
           "description": "Festival tags"
         },
+        "metadata": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Festival metadata"
+        },
         "images": {
           "type": "array",
           "items": {
@@ -588,11 +1127,11 @@
           "description": "Festival duration"
         },
         "place": {
-          "$ref": "#/definitions/PlaceRequest",
+          "type": "string",
           "description": "Festival place"
         },
         "category": {
-          "$ref": "#/definitions/CategoryRequest",
+          "type": "string",
           "description": "Festival category"
         }
       },
@@ -639,7 +1178,7 @@
           "description": "Festival event place"
         },
         "category": {
-          "$ref": "#/definitions/CategoryResponse",
+          "$ref": "#/definitions/EventCategoryResponse",
           "description": "Festival event category"
         },
         "createdAt": {
@@ -743,6 +1282,44 @@
       "required": [
         "total",
         "events"
+      ]
+    },
+    "FestivalCategoriesCollectionResponse": {
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Total festival categories"
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FestivalCategoryResponse"
+          }
+        }
+      },
+      "description": "Festival categories collection",
+      "required": [
+        "total",
+        "categories"
+      ]
+    },
+    "FestivalPlacesCollectionResponse": {
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Total festival categories"
+        },
+        "places": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FestivalPlaceResponse"
+          }
+        }
+      },
+      "description": "Festival places collection",
+      "required": [
+        "total",
+        "places"
       ]
     }
   }
