@@ -7,19 +7,245 @@
     "index": "index-festivals",
     "festivals": {
       "index": "index-festivals",
-      "type": "festivals"
+      "type": "festivals",
+      "mappings": {
+        "festivals": {
+          "properties": {
+            "createdAt": {
+              "type": "date",
+              "format": "dateOptionalTime"
+            },
+            "description": {
+              "type": "string"
+            },
+            "duration": {
+              "properties": {
+                "finishAt": {
+                  "type": "date",
+                  "format": "dateOptionalTime"
+                },
+                "startAt": {
+                  "type": "date",
+                  "format": "dateOptionalTime"
+                }
+              }
+            },
+            "id": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "images": {
+              "properties": {
+                "order": {
+                  "type": "long"
+                },
+                "url": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                }
+              }
+            },
+            "locations": {
+              "properties": {
+                "country": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                },
+                "festival": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                },
+                "name": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                },
+                "openingTimes": {
+                  "properties": {
+                    "finishAt": {
+                      "type": "date",
+                      "format": "dateOptionalTime"
+                    },
+                    "startAt": {
+                      "type": "date",
+                      "format": "dateOptionalTime"
+                    }
+                  }
+                },
+                "state": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                },
+                "street": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                },
+                "zip": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                }
+              }
+            },
+            "name": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "tags": {
+              "type": "string"
+            },
+            "updatedAt": {
+              "type": "date",
+              "format": "dateOptionalTime"
+            }
+          }
+        }
+      }
     },
     "events": {
       "index": "index-festivals",
-      "type": "events"
+      "type": "events",
+      "mappings": {
+        "events": {
+          "properties": {
+            "category": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "createdAt": {
+              "type": "date",
+              "format": "dateOptionalTime"
+            },
+            "description": {
+              "type": "string"
+            },
+            "duration": {
+              "properties": {
+                "finishAt": {
+                  "type": "date",
+                  "format": "dateOptionalTime"
+                },
+                "startAt": {
+                  "type": "date",
+                  "format": "dateOptionalTime"
+                }
+              }
+            },
+            "festival": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "id": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "images": {
+              "properties": {
+                "order": {
+                  "type": "long"
+                },
+                "url": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                }
+              }
+            },
+            "name": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "place": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "tags": {
+              "type": "string"
+            },
+            "updatedAt": {
+              "type": "date",
+              "format": "dateOptionalTime"
+            }
+          }
+        }
+      }
     },
     "places": {
       "index": "index-festivals",
-      "type": "places"
+      "type": "places",
+      "mappings": {
+        "places": {
+          "properties": {
+            "createdAt": {
+              "type": "date",
+              "format": "dateOptionalTime"
+            },
+            "festival": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "id": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "name": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "openingTimes": {
+              "properties": {
+                "finishAt": {
+                  "type": "date",
+                  "format": "dateOptionalTime"
+                },
+                "startAt": {
+                  "type": "date",
+                  "format": "dateOptionalTime"
+                }
+              }
+            },
+            "parent": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "updatedAt": {
+              "type": "date",
+              "format": "dateOptionalTime"
+            }
+          }
+        }
+      }
     },
     "categories": {
       "index": "index-festivals",
-      "type": "categories"
+      "type": "categories",
+      "mappings": {
+        "categories": {
+          "properties": {
+            "createdAt": {
+              "type": "date",
+              "format": "dateOptionalTime"
+            },
+            "festival": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "id": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "name": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "parent": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "updatedAt": {
+              "type": "date",
+              "format": "dateOptionalTime"
+            }
+          }
+        }
+      }
     }
   },
   "provider": {

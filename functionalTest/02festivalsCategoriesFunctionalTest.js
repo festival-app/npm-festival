@@ -6,10 +6,16 @@ var uuid = require('node-uuid');
 
 describe('festivals categories functional test', function () {
 
+  var categoryName = 'category-name-' + uuid.v4();
+
+  if (!funcTest.festivalId) {
+    funcTest.festivalId = '5bba1a77-d1c6-4f66-9884-04e2bf6c01dc';
+  }
+
   it('should create festival category (parent)', function (done) {
 
     var json = {
-      name: 'category-name'
+      name: categoryName
     };
 
     hippie()
@@ -141,50 +147,26 @@ describe('festivals categories functional test', function () {
       });
   });
 
-  //it('should return not found for invalid user id', function (done) {
-  //
-  //  hippie()
-  //    .header('User-Agent', config.test.ua)
-  //    .header('x-auth-user-id', ANONYMOUS_USER_ID)
-  //    .json()
-  //    .header('Accept', config.test.accept)
-  //    .get(config.test.host + '/api/festivals/' + INVALID_USER_ID)
-  //    .expectStatus(404)
-  //    .expectValue('code', 'NotFoundError')
-  //    .expectValue('message', 'User not found')
-  //    .expectValue('userMessage', 'Nie znaleziono')
-  //    .end(function (err/*, res, body*/) {
-  //
-  //      if (err) {
-  //        throw err;
-  //      }
-  //
-  //      done();
-  //
-  //    });
-  //});
-  //
-  //it('should return error on create user without parameters', function (done) {
-  //
-  //  hippie()
-  //    .header('User-Agent', config.test.ua)
-  //    .header('x-auth-user-id', ANONYMOUS_USER_ID)
-  //    .json()
-  //    .header('Accept', config.test.accept)
-  //    .post(config.test.host + '/api/festivals')
-  //    .expectStatus(400)
-  //    .expectValue('code', 'BadRequestError')
-  //    .expectValue('message', 'name (string) is required')
-  //    .expectValue('userMessage', 'Przekazane dane są niepoprawne lub niepełne')
-  //    .end(function (err/*, res, body*/) {
-  //
-  //      if (err) {
-  //        throw err;
-  //      }
-  //
-  //      done();
-  //
-  //    });
-  //});
+  it('should return festival categories collection filter by category name', function (done) {
+
+    hippie()
+      .header('User-Agent', config.test.ua)
+      .json()
+      .header('Accept', config.test.accept)
+      .get(config.test.host + '/api/festivals/' + funcTest.festivalId + '/categories?name=' + categoryName)
+      .expectStatus(200)
+      .expectBody(/total/g)
+      .expectBody(/categories/g)
+      .end(function (err/*, res, body*/) {
+
+        if (err) {
+          throw err;
+        }
+
+        done();
+
+      });
+  });
+
 
 });
