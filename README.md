@@ -1,6 +1,6 @@
 # festivals
 [![npm version](https://badge.fury.io/js/festivals.svg)](http://badge.fury.io/js/festivals)
-[![Coverage Status](https://coveralls.io/repos/festivals-platform/npm-festivals/badge.png?branch=master)](https://coveralls.io/r/festivals-platform/npm-festivals?branch=master)
+[![Coverage Status](https://coveralls.io/repos/festivals-platform/npm-festivals/badge.svg?branch=master)](https://coveralls.io/r/festivals-platform/npm-festivals?branch=master)
 [![Build Status](https://travis-ci.org/festivals-platform/npm-festivals.svg?branch=master)](https://travis-ci.org/festivals-platform/npm-festivals)
 [![Codeship Build Status](https://codeship.com/projects/7b768330-d89f-0132-ebb8-769405cfda59/status)](https://codeship.com/projects/78889)
 [![Dependency Status](https://david-dm.org/festivals-platform/npm-festivals.svg)](https://david-dm.org/festivals-platform/npm-festivals)
