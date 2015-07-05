@@ -16,6 +16,7 @@ describe('event domain test', function () {
   var createdAt = 'createdAt';
   var updatedAt = 'updatedAt';
   var festival = 'festival';
+  var metadata = ['metadata'];
 
   it('should create domain', function (done) {
 
@@ -31,7 +32,8 @@ describe('event domain test', function () {
       category,
       createdAt,
       updatedAt,
-      festival
+      festival,
+      metadata
     );
 
     should.exist(eventModel);
@@ -47,6 +49,7 @@ describe('event domain test', function () {
     eventModel.createdAt.should.be.equal(createdAt);
     eventModel.updatedAt.should.be.equal(updatedAt);
     eventModel.festival.should.be.equal(festival);
+    eventModel.metadata.should.be.equal(metadata);
 
     done();
   });
@@ -66,6 +69,7 @@ describe('event domain test', function () {
       .withCreatedAt(createdAt)
       .withUpdatedAt(updatedAt)
       .withFestival(festival)
+      .withMetadata(metadata)
       .build();
 
     should.exist(eventModel);
@@ -81,6 +85,7 @@ describe('event domain test', function () {
     eventModel.createdAt.should.be.equal(createdAt);
     eventModel.updatedAt.should.be.equal(updatedAt);
     eventModel.festival.should.be.equal(festival);
+    eventModel.metadata.should.be.equal(metadata);
 
     done();
   });
