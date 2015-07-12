@@ -12,7 +12,7 @@
     "firebase": "^2.2.7",
     "keen-js": "^3.2.4",
     "moment": "^2.10.3",
-    "my-restify-api": "Zenedith/npm-my-restify-api#f2e3cb16190cc32ea7caf52628aac6e6e78e33f4",
+    "my-restify-api": "0.5.8",
     "newrelic": "^1.20.2",
     "node-uuid": "^1.4.3",
     "tough-cookie": "^2.0.0",

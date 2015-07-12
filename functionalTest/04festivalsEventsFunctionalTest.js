@@ -24,8 +24,8 @@ describe('festivals events functional test', function () {
           order: 0
         }
       ],
-      place: 'place',
-      category: 'category'
+      place: funcTest.festivalPlaceId,
+      category: funcTest.festivalCategoryId
     };
 
     hippie()
@@ -79,8 +79,8 @@ describe('festivals events functional test', function () {
           order: 0
         }
       ],
-      place: 'place' + id,
-      category: 'category' + id
+      place: funcTest.festivalPlaceId,
+      category: funcTest.festivalCategoryId
     };
 
     hippie()
