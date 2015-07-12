@@ -7,7 +7,7 @@ var expect = chai.expect;
 
 var client = require('../../lib/elasticsearch/client').connect();
 var es = require('../../lib/elasticsearch/es').es(client);
-var elasticsearchProvider = require('../../lib/provider/elasticsearchProvider').provider(es);
+var elasticsearchProvider = require('../../lib/provider/elasticsearchProvider').provider(es, config);
 
 var festivalsModel = require('festivals-model');
 
