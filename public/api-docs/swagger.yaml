@@ -106,6 +106,7 @@ paths:
           description: The request you made is not acceptable
         "422":
           description: Invalid parameter value
+  "/festivals/{id}":
     put:
       tags:
         - festivals
@@ -120,6 +121,11 @@ paths:
         - oauth2token:
           - festivals:update
       parameters:
+        - name: id
+          in: path
+          description: Festival id
+          required: true
+          type: string
         - in: body
           name: body
           description: Festival object
@@ -246,6 +252,7 @@ paths:
           description: The request you made is not acceptable
         "422":
           description: Invalid parameter value
+  "/festivals/{id}/events/{event.id}":
     put:
       tags:
         - events
@@ -263,6 +270,11 @@ paths:
         - name: id
           in: path
           description: Festival id
+          required: true
+          type: string
+        - name: event.id
+          in: path
+          description: Event id
           required: true
           type: string
         - in: body
@@ -374,6 +386,7 @@ paths:
           description: The request you made is not acceptable
         "422":
           description: Invalid parameter value
+  "/festivals/{id}/categories/{category.id}":
     put:
       tags:
         - categories
@@ -391,6 +404,11 @@ paths:
         - name: id
           in: path
           description: Festival id
+          required: true
+          type: string
+        - name: category.id
+          in: path
+          description: Category id
           required: true
           type: string
         - in: body
@@ -502,6 +520,7 @@ paths:
           description: The request you made is not acceptable
         "422":
           description: Invalid parameter value
+  "/festivals/{id}/places/{place.id}":
     put:
       tags:
         - places
@@ -519,6 +538,11 @@ paths:
         - name: id
           in: path
           description: Festival id
+          required: true
+          type: string
+        - name: place.id
+          in: path
+          description: Place id
           required: true
           type: string
         - in: body
@@ -550,7 +574,7 @@ securityDefinitions:
     scopes:
       user: user auth scope
 definitions:
-  Duration:
+  DurationResponse:
     properties:
       startAt:
         type: string
@@ -566,6 +590,18 @@ definitions:
       - startAt
       - finishAt
       - periodMs
+  DurationRequest:
+    properties:
+      startAt:
+        type: string
+        description: start at
+      finishAt:
+        type: string
+        description: finish at
+    description: Festival response
+    required:
+      - startAt
+      - finishAt
   LocationResponse:
     properties:
       name:
@@ -587,7 +623,7 @@ definitions:
         type: array
         description: Location opening times
         items:
-          $ref: "#/definitions/Duration"
+          $ref: "#/definitions/DurationResponse"
     description: Festival response
     required:
       - name
@@ -595,7 +631,7 @@ definitions:
       - country
       - street
       - openingTimes
-  MainImage:
+  MainImageResponse:
     properties:
       small:
         type: string
@@ -638,10 +674,10 @@ definitions:
           type: string
         description: Festival tags
       mainImage:
-        $ref: "#/definitions/MainImage"
+        $ref: "#/definitions/MainImageResponse"
         description: Festival main image
       duration:
-        $ref: "#/definitions/Duration"
+        $ref: "#/definitions/DurationResponse"
         description: Festival duration
       locations:
         type: array
@@ -675,12 +711,12 @@ definitions:
         type: array
         description: Festival event breadcrumbs
         items:
-          $ref: "#/definitions/Duration"
+          $ref: "#/definitions/PlaceResponse"
       openingTimes:
         type: array
         description: Festival event location opening times
         items:
-          $ref: "#/definitions/Duration"
+          $ref: "#/definitions/DurationResponse"
       createdAt:
         type: string
         description: Festival event createdAt
@@ -710,7 +746,7 @@ definitions:
         type: array
         description: Festival place opening times
         items:
-          $ref: "#/definitions/Duration"
+          $ref: "#/definitions/DurationResponse"
       createdAt:
         type: string
         description: Festival place createdAt
@@ -767,7 +803,7 @@ definitions:
         type: array
         description: Festival event breadcrumbs
         items:
-          $ref: "#/definitions/Duration"
+          $ref: "#/definitions/DurationResponse"
       createdAt:
         type: string
         description: Festival event createdAt
@@ -793,7 +829,7 @@ definitions:
         type: array
         description: Festival event breadcrumbs
         items:
-          $ref: "#/definitions/Duration"
+          $ref: "#/definitions/DurationResponse"
       createdAt:
         type: string
         description: Festival event createdAt
@@ -831,7 +867,7 @@ definitions:
           $ref: "#/definitions/ImageRequest"
         description: Festival images
       duration:
-        $ref: "#/definitions/Duration"
+        $ref: "#/definitions/DurationRequest"
         description: Festival duration
       place:
         type: string
@@ -863,10 +899,10 @@ definitions:
           type: string
         description: Festival event tags
       mainImage:
-        $ref: "#/definitions/MainImage"
+        $ref: "#/definitions/MainImageResponse"
         description: Festival event main image
       duration:
-        $ref: "#/definitions/Duration"
+        $ref: "#/definitions/DurationResponse"
         description: Festival event duration
       place:
         $ref: "#/definitions/PlaceResponse"
@@ -909,7 +945,7 @@ definitions:
           $ref: "#/definitions/ImageRequest"
         description: Festival images
       duration:
-        $ref: "#/definitions/Duration"
+        $ref: "#/definitions/DurationRequest"
         description: Festival duration
       locations:
         type: array
