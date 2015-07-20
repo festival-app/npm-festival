@@ -56,6 +56,7 @@ paths:
           required: false
           type: integer
           in: query
+          default: 100
         - name: offset
           description: offset
           required: false
@@ -86,7 +87,7 @@ paths:
           - festivals:create
       parameters:
         - in: body
-          name: body
+          name: festivalRequest
           description: Festival object
           required: true
           schema:
@@ -127,7 +128,7 @@ paths:
           required: true
           type: string
         - in: body
-          name: body
+          name: festivalRequest
           description: Festival object
           required: true
           schema:
@@ -202,6 +203,7 @@ paths:
           required: false
           type: integer
           in: query
+          default: 100
         - name: offset
           description: offset
           required: false
@@ -211,7 +213,7 @@ paths:
         "200":
           description: successful operation
           schema:
-            $ref: "#/definitions/FestivalEventsCollectionResponse"
+            $ref: "#/definitions/EventsCollectionResponse"
     post:
       tags:
         - events
@@ -232,16 +234,16 @@ paths:
           required: true
           type: string
         - in: body
-          name: body
+          name: festivalEventRequest
           description: Festival event object
           required: true
           schema:
-            $ref: "#/definitions/FestivalEventRequest"
+            $ref: "#/definitions/EventRequest"
       responses:
         "201":
           description: successful operation
           schema:
-            $ref: "#/definitions/FestivalResponse"
+            $ref: "#/definitions/EventResponse"
         "400":
           description: Bad request
         "401":
@@ -278,16 +280,16 @@ paths:
           required: true
           type: string
         - in: body
-          name: body
+          name: festivalEventRequest
           description: Festival event object
           required: true
           schema:
-            $ref: "#/definitions/FestivalEventRequest"
+            $ref: "#/definitions/EventRequest"
       responses:
         "200":
           description: successful operation
           schema:
-            $ref: "#/definitions/FestivalResponse"
+            $ref: "#/definitions/EventResponse"
         "400":
           description: Bad request
         "401":
@@ -336,6 +338,7 @@ paths:
           required: false
           type: integer
           in: query
+          default: 100
         - name: offset
           description: offset
           required: false
@@ -345,7 +348,7 @@ paths:
         "200":
           description: successful operation
           schema:
-            $ref: "#/definitions/FestivalCategoriesCollectionResponse"
+            $ref: "#/definitions/CategoriesCollectionResponse"
     post:
       tags:
         - categories
@@ -366,16 +369,16 @@ paths:
           required: true
           type: string
         - in: body
-          name: body
+          name: festivalCategoryRequest
           description: Festival category object
           required: true
           schema:
-            $ref: "#/definitions/FestivalCategoryRequest"
+            $ref: "#/definitions/CategoryRequest"
       responses:
         "201":
           description: successful operation
           schema:
-            $ref: "#/definitions/FestivalCategoryResponse"
+            $ref: "#/definitions/CategoryResponse"
         "400":
           description: Bad request
         "401":
@@ -412,16 +415,16 @@ paths:
           required: true
           type: string
         - in: body
-          name: body
+          name: festivalCategoryRequest
           description: Festival category object
           required: true
           schema:
-            $ref: "#/definitions/FestivalCategoryRequest"
+            $ref: "#/definitions/CategoryRequest"
       responses:
         "200":
           description: successful operation
           schema:
-            $ref: "#/definitions/FestivalCategoryResponse"
+            $ref: "#/definitions/CategoryResponse"
         "400":
           description: Bad request
         "401":
@@ -470,6 +473,7 @@ paths:
           required: false
           type: integer
           in: query
+          default: 100
         - name: offset
           description: offset
           required: false
@@ -479,7 +483,7 @@ paths:
         "200":
           description: successful operation
           schema:
-            $ref: "#/definitions/FestivalPlacesCollectionResponse"
+            $ref: "#/definitions/PlacesCollectionResponse"
     post:
       tags:
         - places
@@ -500,16 +504,16 @@ paths:
           required: true
           type: string
         - in: body
-          name: body
+          name: festivalPlaceRequest
           description: Festival place object
           required: true
           schema:
-            $ref: "#/definitions/FestivalPlaceRequest"
+            $ref: "#/definitions/PlaceRequest"
       responses:
         "201":
           description: successful operation
           schema:
-            $ref: "#/definitions/FestivalPlaceResponse"
+            $ref: "#/definitions/PlaceResponse"
         "400":
           description: Bad request
         "401":
@@ -546,16 +550,16 @@ paths:
           required: true
           type: string
         - in: body
-          name: body
+          name: festivalPlaceRequest
           description: Festival place object
           required: true
           schema:
-            $ref: "#/definitions/FestivalPlaceRequest"
+            $ref: "#/definitions/PlaceRequest"
       responses:
         "200":
           description: successful operation
           schema:
-            $ref: "#/definitions/FestivalPlaceResponse"
+            $ref: "#/definitions/PlaceResponse"
         "400":
           description: Bad request
         "401":
@@ -574,6 +578,58 @@ securityDefinitions:
     scopes:
       user: user auth scope
 definitions:
+  CoordinatesRequest:
+    properties:
+      lat:
+        type: number
+        format: double
+        description: lat
+      lon:
+        type: number
+        format: double
+        description: lon
+    description: Geo coordinates
+    required:
+      - lat
+      - lon
+  CoordinatesResponse:
+    properties:
+      lat:
+        type: number
+        format: double
+        description: lat
+      lon:
+        type: number
+        format: double
+        description: lon
+    description: Geo coordinates
+    required:
+      - lat
+      - lon
+  AuthorResponse:
+    properties:
+      name:
+        type: string
+        description: name
+      organization:
+        type: string
+        description: organization
+    description: Author
+    required:
+      - name
+      - organization
+  AuthorRequest:
+    properties:
+      name:
+        type: string
+        description: name
+      organization:
+        type: string
+        description: organization
+    description: Author
+    required:
+      - name
+      - organization
   DurationResponse:
     properties:
       startAt:
@@ -585,7 +641,7 @@ definitions:
       periodMs:
         type: integer
         description: periodMs
-    description: Festival response
+    description: Duration response
     required:
       - startAt
       - finishAt
@@ -598,7 +654,7 @@ definitions:
       finishAt:
         type: string
         description: finish at
-    description: Festival response
+    description: Duration request
     required:
       - startAt
       - finishAt
@@ -624,6 +680,41 @@ definitions:
         description: Location opening times
         items:
           $ref: "#/definitions/DurationResponse"
+      coordinates:
+        $ref: "#/definitions/CoordinatesResponse"
+        description: Coordinates
+    description: Festival response
+    required:
+      - name
+      - state
+      - country
+      - street
+      - openingTimes
+  LocationRequest:
+    properties:
+      name:
+        type: string
+        description: Location name
+      state:
+        type: string
+        description: Location state
+      country:
+        type: integer
+        description: Location country
+      street:
+        type: string
+        description: Location street
+      zip:
+        type: string
+        description: Location zip
+      openingTimes:
+        type: array
+        description: Location opening times
+        items:
+          $ref: "#/definitions/DurationRequest"
+      coordinates:
+        $ref: "#/definitions/CoordinatesRequest"
+        description: Coordinates
     description: Festival response
     required:
       - name
@@ -657,6 +748,234 @@ definitions:
     description: Festival response
     required:
       - order
+  PlaceResponse:
+    properties:
+      id:
+        type: string
+        description: Festival place id
+      name:
+        type: string
+        description: Festival place name
+      parent:
+        type: string
+        description: Festival place parent
+      openingTimes:
+        type: array
+        description: Festival place opening times
+        items:
+          $ref: "#/definitions/DurationResponse"
+      coordinates:
+        $ref: "#/definitions/CoordinatesResponse"
+        description: Coordinates
+      createdAt:
+        type: string
+        description: Festival place createdAt
+      updatedAt:
+        type: string
+        description: Festival place updatedAt
+    description: Festival response
+    required:
+      - id
+      - name
+      - parent
+      - openingTimes
+      - createdAt
+      - updatedAt
+  PlaceRequest:
+    properties:
+      name:
+        type: string
+        description: Festival place name
+      parent:
+        type: string
+        description: Festival place parent
+      openingTimes:
+        type: array
+        description: Festival place opening times
+        items:
+          $ref: "#/definitions/Duration"
+      coordinates:
+        $ref: "#/definitions/CoordinatesRequest"
+        description: Coordinates
+    description: Festival response
+    required:
+      - name
+      - parent
+      - openingTimes
+  EventPlaceResponse:
+    properties:
+      id:
+        type: string
+        description: Place id
+      name:
+        type: string
+        description: Place name
+      breadcrumbs:
+        type: array
+        description: Place breadcrumbs
+        items:
+          $ref: "#/definitions/PlaceResponse"
+      openingTimes:
+        type: array
+        description: Place opening times
+        items:
+          $ref: "#/definitions/DurationResponse"
+      coordinates:
+        $ref: "#/definitions/CoordinatesResponse"
+        description: Coordinates
+    description: Festival response
+    required:
+      - id
+      - name
+      - breadcrumbs
+      - openingTimes
+  CategoryRequest:
+    properties:
+      parent:
+        type: string
+        description: Festival category parent id
+      name:
+        type: string
+        description: Festival category name
+    description: Festival category request
+    required:
+      - parent
+      - name
+  CategoryResponse:
+    properties:
+      id:
+        type: string
+        description: Category id
+      name:
+        type: string
+        description: Category name
+      parent:
+        type: string
+        description: Category parent
+      createdAt:
+        type: string
+        description: Category createdAt
+      updatedAt:
+        type: string
+        description: Category updatedAt
+    description: Festival category response
+    required:
+      - id
+      - name
+      - parent
+      - createdAt
+      - updatedAt
+  EventCategoryResponse:
+    properties:
+      id:
+        type: string
+        description: Event category id
+      name:
+        type: string
+        description: Event category name
+      breadcrumbs:
+        type: array
+        description: Event category breadcrumbs
+        items:
+          $ref: "#/definitions/CategoryResponse"
+    description: Festival category response
+    required:
+      - id
+      - name
+      - breadcrumbs
+  EventRequest:
+    properties:
+      name:
+        type: string
+        description: Event name
+      description:
+        type: string
+        description: Event description
+      tags:
+        type: array
+        items:
+          type: string
+        description: Event tags
+      metadata:
+        type: array
+        items:
+          type: string
+        description: Event metadata
+      images:
+        type: array
+        items:
+          $ref: "#/definitions/ImageRequest"
+        description: Event images
+      duration:
+        $ref: "#/definitions/DurationRequest"
+        description: Event duration
+      place:
+        type: string
+        description: Event place
+      category:
+        type: string
+        description: Event category
+      authors:
+        type: array
+        items:
+          $ref: "#/definitions/AuthorResponse"
+        description: Event authors
+    description: Event request
+    required:
+      - name
+      - description
+      - duration
+      - place
+      - category
+  EventResponse:
+    properties:
+      id:
+        type: string
+        description: Event id
+      name:
+        type: string
+        description: Event name
+      description:
+        type: string
+        description: Event description
+      tags:
+        type: array
+        items:
+          type: string
+        description: Event tags
+      mainImage:
+        $ref: "#/definitions/MainImageResponse"
+        description: Event main image
+      duration:
+        $ref: "#/definitions/DurationResponse"
+        description: Event duration
+      place:
+        $ref: "#/definitions/EventPlaceResponse"
+        description: Event place
+      category:
+        $ref: "#/definitions/EventCategoryResponse"
+        description: Event category
+      authors:
+        type: array
+        items:
+          $ref: "#/definitions/AuthorResponse"
+        description: Event authors
+      createdAt:
+        type: string
+        description: Event createdAt
+      updatedAt:
+        type: string
+        description: Event updatedAt
+    description: Event response
+    required:
+      - id
+      - name
+      - description
+      - duration
+      - place
+      - category
+      - createdAt
+      - updatedAt
   FestivalResponse:
     properties:
       id:
@@ -699,233 +1018,6 @@ definitions:
       - locations
       - createdAt
       - updatedAt
-  PlaceResponse:
-    properties:
-      id:
-        type: string
-        description: Festival event id
-      name:
-        type: string
-        description: Festival event name
-      breadcrumbs:
-        type: array
-        description: Festival event breadcrumbs
-        items:
-          $ref: "#/definitions/PlaceResponse"
-      openingTimes:
-        type: array
-        description: Festival event location opening times
-        items:
-          $ref: "#/definitions/DurationResponse"
-      createdAt:
-        type: string
-        description: Festival event createdAt
-      updatedAt:
-        type: string
-        description: Festival event updatedAt
-    description: Festival response
-    required:
-      - id
-      - name
-      - breadcrumbs
-      - openingTimes
-      - createdAt
-      - updatedAt
-  FestivalPlaceResponse:
-    properties:
-      id:
-        type: string
-        description: Festival place id
-      name:
-        type: string
-        description: Festival place name
-      parent:
-        type: string
-        description: Festival place parent
-      openingTimes:
-        type: array
-        description: Festival place opening times
-        items:
-          $ref: "#/definitions/DurationResponse"
-      createdAt:
-        type: string
-        description: Festival place createdAt
-      updatedAt:
-        type: string
-        description: Festival place updatedAt
-    description: Festival response
-    required:
-      - id
-      - name
-      - parent
-      - openingTimes
-      - createdAt
-      - updatedAt
-  FestivalPlaceRequest:
-    properties:
-      name:
-        type: string
-        description: Festival place name
-      parent:
-        type: string
-        description: Festival place parent
-      openingTimes:
-        type: array
-        description: Festival place opening times
-        items:
-          $ref: "#/definitions/Duration"
-    description: Festival response
-    required:
-      - name
-      - parent
-      - openingTimes
-  FestivalCategoryRequest:
-    properties:
-      parent:
-        type: string
-        description: Festival category parent id
-      name:
-        type: string
-        description: Festival category name
-    description: Festival category request
-    required:
-      - parent
-      - name
-  FestivalCategoryResponse:
-    properties:
-      id:
-        type: string
-        description: Festival event id
-      name:
-        type: string
-        description: Festival event name
-      breadcrumbs:
-        type: array
-        description: Festival event breadcrumbs
-        items:
-          $ref: "#/definitions/DurationResponse"
-      createdAt:
-        type: string
-        description: Festival event createdAt
-      updatedAt:
-        type: string
-        description: Festival event updatedAt
-    description: Festival category response
-    required:
-      - id
-      - name
-      - breadcrumbs
-      - createdAt
-      - updatedAt
-  EventCategoryResponse:
-    properties:
-      id:
-        type: string
-        description: Festival event id
-      name:
-        type: string
-        description: Festival event name
-      breadcrumbs:
-        type: array
-        description: Festival event breadcrumbs
-        items:
-          $ref: "#/definitions/DurationResponse"
-      createdAt:
-        type: string
-        description: Festival event createdAt
-      updatedAt:
-        type: string
-        description: Festival event updatedAt
-    description: Festival category response
-    required:
-      - id
-      - name
-      - breadcrumbs
-      - createdAt
-      - updatedAt
-  FestivalEventRequest:
-    properties:
-      name:
-        type: string
-        description: Festival name
-      description:
-        type: string
-        description: Festival description
-      tags:
-        type: array
-        items:
-          type: string
-        description: Festival tags
-      metadata:
-        type: array
-        items:
-          type: string
-        description: Festival metadata
-      images:
-        type: array
-        items:
-          $ref: "#/definitions/ImageRequest"
-        description: Festival images
-      duration:
-        $ref: "#/definitions/DurationRequest"
-        description: Festival duration
-      place:
-        type: string
-        description: Festival place
-      category:
-        type: string
-        description: Festival category
-    description: Festival event request
-    required:
-      - name
-      - description
-      - duration
-      - place
-      - category
-  FestivalEventResponse:
-    properties:
-      id:
-        type: string
-        description: Festival event id
-      name:
-        type: string
-        description: Festival event name
-      description:
-        type: string
-        description: Festival event description
-      tags:
-        type: array
-        items:
-          type: string
-        description: Festival event tags
-      mainImage:
-        $ref: "#/definitions/MainImageResponse"
-        description: Festival event main image
-      duration:
-        $ref: "#/definitions/DurationResponse"
-        description: Festival event duration
-      place:
-        $ref: "#/definitions/PlaceResponse"
-        description: Festival event place
-      category:
-        $ref: "#/definitions/EventCategoryResponse"
-        description: Festival event category
-      createdAt:
-        type: string
-        description: Festival event createdAt
-      updatedAt:
-        type: string
-        description: Festival event updatedAt
-    description: Festival event response
-    required:
-      - id
-      - name
-      - description
-      - duration
-      - place
-      - category
-      - createdAt
-      - updatedAt
   FestivalRequest:
     properties:
       name:
@@ -951,7 +1043,7 @@ definitions:
         type: array
         description: Festival locations
         items:
-          $ref: "#/definitions/LocationResponse"
+          $ref: "#/definitions/LocationRequest"
     description: Festival request
     required:
       - name
@@ -971,7 +1063,7 @@ definitions:
     required:
       - total
       - festivals
-  FestivalEventsCollectionResponse:
+  EventsCollectionResponse:
     properties:
       total:
         type: integer
@@ -979,12 +1071,12 @@ definitions:
       events:
         type: array
         items:
-          $ref: "#/definitions/FestivalEventResponse"
-    description: Festival events collection
+          $ref: "#/definitions/EventResponse"
+    description: Events collection
     required:
       - total
       - events
-  FestivalCategoriesCollectionResponse:
+  CategoriesCollectionResponse:
     properties:
       total:
         type: integer
@@ -992,12 +1084,12 @@ definitions:
       categories:
         type: array
         items:
-          $ref: "#/definitions/FestivalCategoryResponse"
+          $ref: "#/definitions/CategoryResponse"
     description: Festival categories collection
     required:
       - total
       - categories
-  FestivalPlacesCollectionResponse:
+  PlacesCollectionResponse:
     properties:
       total:
         type: integer
@@ -1005,7 +1097,7 @@ definitions:
       places:
         type: array
         items:
-          $ref: "#/definitions/FestivalPlaceResponse"
+          $ref: "#/definitions/PlaceResponse"
     description: Festival places collection
     required:
       - total
