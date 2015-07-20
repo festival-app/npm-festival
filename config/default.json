@@ -251,7 +251,7 @@
   "provider": {
     "selected": "fireabase",
     "firebase": {
-      "url": "http://"
+      "url": "https://festivals-travis.firebaseio.com"
     },
     "elasticsearch": {
       "hosts": [

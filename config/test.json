@@ -4,6 +4,7 @@
     "host2": "http://127.0.0.1:2997",
     "host": "http://127.0.0.1:3000",
     "host4": "https://festivals-app.herokuapp.com",
+    "host5": "https://festivals-platform.herokuapp.com",
     "accept": "application/vnd.festivals.v1+json",
     "ua": "functional-test"
   },
