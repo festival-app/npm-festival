@@ -10,6 +10,7 @@ describe('location domain test', function () {
   var street = 'street';
   var zip = 'zip';
   var openingTimes = [{from: 'openingTimes'}];
+  var coordinates = 'coordinates';
   var festival = 'festival';
 
   it('should create domain', function (done) {
@@ -21,6 +22,7 @@ describe('location domain test', function () {
       street,
       zip,
       openingTimes,
+      coordinates,
       festival
     );
 
@@ -31,6 +33,7 @@ describe('location domain test', function () {
     locationDomain.street.should.be.equal(street);
     locationDomain.zip.should.be.equal(zip);
     locationDomain.openingTimes.should.be.equal(openingTimes);
+    locationDomain.coordinates.should.be.equal(coordinates);
     locationDomain.festival.should.be.equal(festival);
 
     done();
@@ -45,6 +48,7 @@ describe('location domain test', function () {
       .withStreet(street)
       .withZip(zip)
       .withOpeningTimes(openingTimes)
+      .withCoordinates(coordinates)
       .withFestival(festival)
       .build();
 
@@ -55,6 +59,7 @@ describe('location domain test', function () {
     locationDomain.street.should.be.equal(street);
     locationDomain.zip.should.be.equal(zip);
     locationDomain.openingTimes.should.be.equal(openingTimes);
+    locationDomain.coordinates.should.be.equal(coordinates);
     locationDomain.festival.should.be.equal(festival);
 
     done();

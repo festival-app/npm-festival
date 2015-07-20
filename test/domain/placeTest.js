@@ -8,6 +8,7 @@ describe('place domain test', function () {
   var parent = 'parent';
   var name = 'name';
   var openingTimes = [{from: 'openingTimes'}];
+  var coordinates = 'coordinates';
   var festival = 'festival';
   var createdAt = 'createdAt';
   var updatedAt = 'updatedAt';
@@ -19,6 +20,7 @@ describe('place domain test', function () {
       parent,
       name,
       openingTimes,
+      coordinates,
       festival,
       createdAt,
       updatedAt
@@ -29,6 +31,7 @@ describe('place domain test', function () {
     placeDomain.parent.should.be.equal(parent);
     placeDomain.name.should.be.equal(name);
     placeDomain.openingTimes.should.be.equal(openingTimes);
+    placeDomain.coordinates.should.be.equal(coordinates);
     placeDomain.festival.should.be.equal(festival);
     placeDomain.createdAt.should.be.equal(createdAt);
     placeDomain.updatedAt.should.be.equal(updatedAt);
@@ -43,6 +46,7 @@ describe('place domain test', function () {
       .withParent(parent)
       .withName(name)
       .withOpeningTimes(openingTimes)
+      .withCoordinates(coordinates)
       .withFestival(festival)
       .withCreatedAt(createdAt)
       .withUpdatedAt(updatedAt)
@@ -53,6 +57,7 @@ describe('place domain test', function () {
     placeDomain.parent.should.be.equal(parent);
     placeDomain.name.should.be.equal(name);
     placeDomain.openingTimes.should.be.equal(openingTimes);
+    placeDomain.coordinates.should.be.equal(coordinates);
     placeDomain.festival.should.be.equal(festival);
     placeDomain.createdAt.should.be.equal(createdAt);
     placeDomain.updatedAt.should.be.equal(updatedAt);
