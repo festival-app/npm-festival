@@ -52,6 +52,7 @@ describe('festivals events functional test', function () {
         funcTest.festivalEventId = body.id;
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 
@@ -102,9 +103,10 @@ describe('festivals events functional test', function () {
       .expectBody(/updatedAt/g)
       .expectBody(/place/g)
       .expectBody(/category/g)
-      .end(function (err/*, res, body*/) {
+      .end(function (err, res, body) {
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 
@@ -126,9 +128,10 @@ describe('festivals events functional test', function () {
       .expectBody(/updatedAt/g)
       .expectBody(/place/g)
       .expectBody(/category/g)
-      .end(function (err/*, res, body*/) {
+      .end(function (err, res, body) {
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 
@@ -147,9 +150,10 @@ describe('festivals events functional test', function () {
       .expectStatus(200)
       .expectBody(/total/g)
       .expectBody(/events/g)
-      .end(function (err/*, res, body*/) {
+      .end(function (err, res, body) {
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 
@@ -170,10 +174,10 @@ describe('festivals events functional test', function () {
   //    .expectValue('code', 'NotFoundError')
   //    .expectValue('message', 'User not found')
   //    .expectValue('userMessage', 'Nie znaleziono')
-  //    .end(function (err/*, res, body*/) {
+  //    .end(function (err, res, body) {
   //
   //      if (err) {
-  //        throw err;
+  //        console.warn(err, body);  //        throw err;
   //      }
   //
   //      done();
@@ -193,10 +197,10 @@ describe('festivals events functional test', function () {
   //    .expectValue('code', 'BadRequestError')
   //    .expectValue('message', 'name (string) is required')
   //    .expectValue('userMessage', 'Przekazane dane są niepoprawne lub niepełne')
-  //    .end(function (err/*, res, body*/) {
+  //    .end(function (err, res, body) {
   //
   //      if (err) {
-  //        throw err;
+  //        console.warn(err, body);  //        throw err;
   //      }
   //
   //      done();

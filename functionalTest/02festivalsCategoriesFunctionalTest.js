@@ -34,6 +34,7 @@ describe('festivals categories functional test', function () {
         funcTest.festivalCategoryIdParent = body.id;
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 
@@ -65,6 +66,7 @@ describe('festivals categories functional test', function () {
         funcTest.festivalCategoryId = body.id;
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 
@@ -93,9 +95,10 @@ describe('festivals categories functional test', function () {
       .expectValue('name', json.name)
       .expectBody(/createdAt/g)
       .expectBody(/updatedAt/g)
-      .end(function (err/*, res, body*/) {
+      .end(function (err, res, body) {
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 
@@ -115,9 +118,10 @@ describe('festivals categories functional test', function () {
       .expectValue('id', funcTest.festivalCategoryId)
       .expectBody(/createdAt/g)
       .expectBody(/updatedAt/g)
-      .end(function (err/*, res, body*/) {
+      .end(function (err, res, body) {
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 
@@ -136,9 +140,10 @@ describe('festivals categories functional test', function () {
       .expectStatus(200)
       .expectBody(/total/g)
       .expectBody(/categories/g)
-      .end(function (err/*, res, body*/) {
+      .end(function (err, res, body) {
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 
@@ -157,9 +162,10 @@ describe('festivals categories functional test', function () {
       .expectStatus(200)
       .expectBody(/total/g)
       .expectBody(/categories/g)
-      .end(function (err/*, res, body*/) {
+      .end(function (err, res, body) {
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 

@@ -36,6 +36,7 @@ describe('festivals places functional test', function () {
         funcTest.festivalPlaceIdParent = body.id;
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 
@@ -75,6 +76,7 @@ describe('festivals places functional test', function () {
         funcTest.festivalPlaceId = body.id;
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 
@@ -113,6 +115,7 @@ describe('festivals places functional test', function () {
       .end(function (err/*, res, body*/) {
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 
@@ -135,6 +138,7 @@ describe('festivals places functional test', function () {
       .end(function (err/*, res, body*/) {
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 
@@ -156,6 +160,7 @@ describe('festivals places functional test', function () {
       .end(function (err/*, res, body*/) {
 
         if (err) {
+          console.warn(err, body);
           throw err;
         }
 
@@ -179,7 +184,7 @@ describe('festivals places functional test', function () {
   //    .end(function (err/*, res, body*/) {
   //
   //      if (err) {
-  //        throw err;
+  //        console.warn(err, body);  //        throw err;
   //      }
   //
   //      done();
@@ -202,7 +207,7 @@ describe('festivals places functional test', function () {
   //    .end(function (err/*, res, body*/) {
   //
   //      if (err) {
-  //        throw err;
+  //        console.warn(err, body);  //        throw err;
   //      }
   //
   //      done();
