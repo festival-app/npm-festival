@@ -174,5 +174,23 @@ describe('festivals categories functional test', function () {
       });
   });
 
+  it('should delete festival category for id', function (done) {
+
+    hippie()
+      .header('User-Agent', config.test.ua)
+      .json()
+      .header('Accept', config.test.accept)
+      .del(config.test.host + '/api/festivals/' + funcTest.festivalId + '/categories/' + funcTest.festivalCategoryIdParent)
+      .expectStatus(204)
+      .end(function (err, res, body) {
+
+        if (err) {
+          console.warn(err, body);
+          throw err;
+        }
+
+        done();
+      });
+  });
 
 });

@@ -169,6 +169,26 @@ describe('festivals places functional test', function () {
       });
   });
 
+  it('should delete festival places for id', function (done) {
+
+    hippie()
+      .header('User-Agent', config.test.ua)
+      .json()
+      .header('Accept', config.test.accept)
+      .del(config.test.host + '/api/festivals/' + funcTest.festivalId + '/places/' + funcTest.festivalPlaceIdParent)
+      .expectStatus(204)
+      .end(function (err, res, body) {
+
+        if (err) {
+          console.warn(err, body);
+          throw err;
+        }
+
+        done();
+      });
+  });
+
+
   //it('should return not found for invalid user id', function (done) {
   //
   //  hippie()
