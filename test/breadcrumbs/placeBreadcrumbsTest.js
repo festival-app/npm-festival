@@ -11,27 +11,27 @@ describe('place breadcrumbs test', function () {
         festivals: [
           {
             id: '7e0363d2-6787-4e46-b77b-1794f0c54891',
-            name: 'Polcon 2014'
+            name: 'Place 1'
           },
           {
             id: '999227ac-03aa-4419-adbd-444f1c96f3eb',
-            name: 'Pyrkon 2015'
+            name: 'Place 2'
           },
           {
             id: 'b07c491f-6f91-4a22-9d5c-0365afb8c424',
-            name: 'Kapitularz 2014'
+            name: 'Place 3'
           }
         ]
       });
     },
-    getFestivalCategories: function getFestivalCategories(id, searchRequest, options, callback) {
+    getFestivalPlaces: function getFestivalPlaces(id, searchRequest, options, callback) {
       var result = {};
 
       switch (id) {
         case '999227ac-03aa-4419-adbd-444f1c96f3eb':
           result = {
             total: 19,
-            categories: [
+            places: [
               {
                 id: '0f2d4feb-7a21-4814-b574-94fbdfa6ec64',
                 parent: null,
@@ -48,11 +48,11 @@ describe('place breadcrumbs test', function () {
         case '7e0363d2-6787-4e46-b77b-1794f0c54891':
           result = {
             total: 1,
-            categories: [
+            places: [
               {
                 id: '6c7e2516-48a9-4ce6-9835-383516f580f2',
                 parent: null,
-                name: 'Polcon 2014'
+                name: 'Place 1'
               }
             ]
           };
@@ -60,7 +60,7 @@ describe('place breadcrumbs test', function () {
         case 'b07c491f-6f91-4a22-9d5c-0365afb8c424':
           result = {
             total: 10,
-            categories: [
+            places: [
               {
                 id: '3a50a754-31ff-439b-9a68-2de3defc64ba',
                 parent: null,
