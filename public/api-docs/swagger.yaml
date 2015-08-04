@@ -1230,9 +1230,9 @@ definitions:
       type:
         type: string
         description: Festival type
-        default: fantasy
+        default: FANTASY
         enum:
-          - fantasy
+          - FANTASY
       tags:
         type: array
         items:
@@ -1275,9 +1275,9 @@ definitions:
       type:
         type: string
         description: Festival type
-        default: fantasy
+        default: FANTASY
         enum:
-          - fantasy
+          - FANTASY
       tags:
         type: array
         items:

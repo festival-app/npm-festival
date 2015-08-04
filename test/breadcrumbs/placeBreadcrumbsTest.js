@@ -1,8 +1,8 @@
 var chai = require('chai');
 var should = chai.should();
-var CategoryBreadcrumbs = require('../../lib/breadcrumbs/categoryBreadcrumbs').CategoryBreadcrumbs;
+var PlaceBreadcrumbs = require('../../lib/breadcrumbs/placeBreadcrumbs').PlaceBreadcrumbs;
 
-describe('category breadcrumbs test', function () {
+describe('place breadcrumbs test', function () {
 
   var festivals = {
     getFestivals: function getFestivals(searchRequest, options, callback) {
@@ -90,19 +90,19 @@ describe('category breadcrumbs test', function () {
     }
   };
 
-  var categoryBreadcrumbs = new CategoryBreadcrumbs(festivals);
+  var placeBreadcrumbs = new PlaceBreadcrumbs(festivals);
 
   it('should build map', function (done) {
 
-    categoryBreadcrumbs.rebuild(function (err, result) {
+    placeBreadcrumbs.rebuild(function (err, result) {
 
       should.exist(result);
 
-        var category = categoryBreadcrumbs.get('b07c491f-6f91-4a22-9d5c-0365afb8c424', '3b61c99c-b12a-4729-b249-0365afb8c424');
-      console.dir(category, {depth: null});
+        var place = placeBreadcrumbs.get('b07c491f-6f91-4a22-9d5c-0365afb8c424', '3b61c99c-b12a-4729-b249-0365afb8c424');
+      console.dir(place, {depth: null});
 
-      var category2 = categoryBreadcrumbs.get('b07c491f-6f91-4a22-9d5c-0365afb8c424', '3b61c99c-b12a-4729-b249-5ea8d7570ee9');
-      console.dir(category2, {depth: null});
+      var place2 = placeBreadcrumbs.get('b07c491f-6f91-4a22-9d5c-0365afb8c424', '3b61c99c-b12a-4729-b249-5ea8d7570ee9');
+      console.dir(place2, {depth: null});
 
       done();
     });

@@ -1819,9 +1819,9 @@
         "type": {
           "type": "string",
           "description": "Festival type",
-          "default": "fantasy",
+          "default": "FANTASY",
           "enum": [
-            "fantasy"
+            "FANTASY"
           ]
         },
         "tags": {
@@ -1879,9 +1879,9 @@
         "type": {
           "type": "string",
           "description": "Festival type",
-          "default": "fantasy",
+          "default": "FANTASY",
           "enum": [
-            "fantasy"
+            "FANTASY"
           ]
         },
         "tags": {
