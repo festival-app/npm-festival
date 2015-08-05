@@ -13,6 +13,7 @@ describe('festivals functional test', function () {
     var json = {
       name: 'festival-name',
       description: 'festival-description',
+      type: 'FANTASY',
       tags: ['festival-tag1', 'festival-tag2'],
       duration: {
         startAt: now.toISOString(),
@@ -85,6 +86,7 @@ describe('festivals functional test', function () {
     var json = {
       name: 'festival-name' + id,
       description: 'festival-description' + id,
+      type: 'FANTASY',
       tags: ['festival-tag1' + id, 'festival-tag2' + id],
       duration: {
         startAt: now.toISOString(),
