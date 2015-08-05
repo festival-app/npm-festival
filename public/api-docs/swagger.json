@@ -8,20 +8,28 @@
   },
   "tags": [
     {
+      "name": "news",
+      "description": "Operation about news"
+    },
+    {
       "name": "festivals",
       "description": "Operation about festivals"
     },
     {
-      "name": "events",
+      "name": "festivals-events",
       "description": "Operation about festival events"
     },
     {
-      "name": "categories",
+      "name": "festivals-categories",
       "description": "Operation about festival categories"
     },
     {
-      "name": "places",
+      "name": "festivals-places",
       "description": "Operation about festival places"
+    },
+    {
+      "name": "festivals-news",
+      "description": "Operation about festival news"
     }
   ],
   "schemes": [
@@ -39,6 +47,270 @@
     }
   ],
   "paths": {
+    "/news": {
+      "get": {
+        "tags": [
+          "news"
+        ],
+        "summary": "Find news",
+        "description": "Get news collection",
+        "operationId": "getNewsCollection",
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "security": [
+          {
+            "oauth2token": [
+              "news:get"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "updatedAt",
+            "description": "updatedAt",
+            "required": false,
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "limit",
+            "description": "limit",
+            "required": false,
+            "type": "integer",
+            "in": "query",
+            "default": 100
+          },
+          {
+            "name": "offset",
+            "description": "offset",
+            "required": false,
+            "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "country",
+            "description": "country",
+            "required": false,
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "type",
+            "description": "type",
+            "required": false,
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/NewsCollectionResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "news"
+        ],
+        "summary": "Create news",
+        "description": "Create news",
+        "operationId": "createNews",
+        "consumes": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "security": [
+          {
+            "oauth2token": [
+              "news:create"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "newsRequest",
+            "description": "News object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/NewsResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "The request you made is not acceptable"
+          },
+          "422": {
+            "description": "Invalid parameter value"
+          }
+        }
+      }
+    },
+    "/news/{id}": {
+      "get": {
+        "tags": [
+          "news"
+        ],
+        "summary": "Get news",
+        "description": "Get news",
+        "operationId": "getNews",
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "security": [
+          {
+            "oauth2token": [
+              "news:get"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "News id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/NewsResponse"
+            }
+          },
+          "404": {
+            "description": "News not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "news"
+        ],
+        "summary": "Delete news",
+        "description": "Delete news",
+        "operationId": "deleteNews",
+        "security": [
+          {
+            "oauth2token": [
+              "news:delete"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "News id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "News not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "news"
+        ],
+        "summary": "Update news",
+        "description": "Update news",
+        "operationId": "updateNews",
+        "consumes": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "security": [
+          {
+            "oauth2token": [
+              "news:update"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "News id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "newsRequest",
+            "description": "News object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/NewsResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "News not found"
+          },
+          "406": {
+            "description": "The request you made is not acceptable"
+          },
+          "422": {
+            "description": "Invalid parameter value"
+          }
+        }
+      }
+    },
     "/festivals": {
       "get": {
         "tags": [
@@ -320,7 +592,7 @@
     "/festivals/{id}/events": {
       "get": {
         "tags": [
-          "events"
+          "festivals-events"
         ],
         "summary": "Get festival events",
         "description": "Get festival events collection",
@@ -415,7 +687,7 @@
       },
       "post": {
         "tags": [
-          "events"
+          "festivals-events"
         ],
         "summary": "Create festival events",
         "description": "Create festival events",
@@ -482,7 +754,7 @@
     "/festivals/{id}/events/{event.id}": {
       "get": {
         "tags": [
-          "events"
+          "festivals-events"
         ],
         "summary": "Get festival event",
         "description": "Get festival event collection",
@@ -524,7 +796,7 @@
       },
       "delete": {
         "tags": [
-          "events"
+          "festivals-events"
         ],
         "summary": "Delete festival event",
         "description": "Delete festival events",
@@ -569,7 +841,7 @@
       },
       "put": {
         "tags": [
-          "events"
+          "festivals-events"
         ],
         "summary": "Update festival events",
         "description": "Update festival events",
@@ -640,7 +912,7 @@
     "/festivals/{id}/categories": {
       "get": {
         "tags": [
-          "categories"
+          "festivals-categories"
         ],
         "summary": "Get festival categories",
         "description": "Get festival categories collection",
@@ -714,7 +986,7 @@
       },
       "post": {
         "tags": [
-          "categories"
+          "festivals-categories"
         ],
         "summary": "Create festival category",
         "description": "Create festival category",
@@ -781,7 +1053,7 @@
     "/festivals/{id}/categories/{category.id}": {
       "get": {
         "tags": [
-          "categories"
+          "festivals-categories"
         ],
         "summary": "Get festival category",
         "description": "Get festival category",
@@ -826,7 +1098,7 @@
       },
       "delete": {
         "tags": [
-          "categories"
+          "festivals-categories"
         ],
         "summary": "Delete festival category",
         "description": "Delete festival category",
@@ -871,7 +1143,7 @@
       },
       "put": {
         "tags": [
-          "categories"
+          "festivals-categories"
         ],
         "summary": "Update festival category",
         "description": "Update festival category",
@@ -945,7 +1217,7 @@
     "/festivals/{id}/places": {
       "get": {
         "tags": [
-          "places"
+          "festivals-places"
         ],
         "summary": "Get festival places",
         "description": "Get festival places collection",
@@ -1019,7 +1291,7 @@
       },
       "post": {
         "tags": [
-          "places"
+          "festivals-places"
         ],
         "summary": "Create festival place",
         "description": "Create festival place",
@@ -1086,7 +1358,7 @@
     "/festivals/{id}/places/{place.id}": {
       "get": {
         "tags": [
-          "places"
+          "festivals-places"
         ],
         "summary": "Get festival place",
         "description": "Get festival place",
@@ -1131,7 +1403,7 @@
       },
       "delete": {
         "tags": [
-          "places"
+          "festivals-places"
         ],
         "summary": "Delete festival place",
         "description": "Delete festival place",
@@ -1176,7 +1448,7 @@
       },
       "put": {
         "tags": [
-          "places"
+          "festivals-places"
         ],
         "summary": "Update festival place",
         "description": "Update festival place",
@@ -1246,6 +1518,291 @@
           }
         }
       }
+    },
+    "/festivals/{id}/news": {
+      "get": {
+        "tags": [
+          "news"
+        ],
+        "summary": "Find festival news",
+        "description": "Get festival news collection",
+        "operationId": "getFestivalNewsCollection",
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "security": [
+          {
+            "oauth2token": [
+              "news:get"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Festival id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "updatedAt",
+            "description": "updatedAt",
+            "required": false,
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "limit",
+            "description": "limit",
+            "required": false,
+            "type": "integer",
+            "in": "query",
+            "default": 100
+          },
+          {
+            "name": "offset",
+            "description": "offset",
+            "required": false,
+            "type": "integer",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/NewsCollectionResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "news"
+        ],
+        "summary": "Create news",
+        "description": "Create news",
+        "operationId": "createNews",
+        "consumes": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "security": [
+          {
+            "oauth2token": [
+              "news:create"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Festival id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "newsRequest",
+            "description": "News object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/NewsResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "406": {
+            "description": "The request you made is not acceptable"
+          },
+          "422": {
+            "description": "Invalid parameter value"
+          }
+        }
+      }
+    },
+    "/festivals/{id}/news/{news.id}": {
+      "get": {
+        "tags": [
+          "news"
+        ],
+        "summary": "Get news",
+        "description": "Get news",
+        "operationId": "getNews",
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "security": [
+          {
+            "oauth2token": [
+              "news:get"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Festival id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "news.id",
+            "in": "path",
+            "description": "News id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/NewsResponse"
+            }
+          },
+          "404": {
+            "description": "News not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "news"
+        ],
+        "summary": "Delete news",
+        "description": "Delete news",
+        "operationId": "deleteNews",
+        "security": [
+          {
+            "oauth2token": [
+              "news:delete"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Festival id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "news.id",
+            "in": "path",
+            "description": "News id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "News not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "news"
+        ],
+        "summary": "Update news",
+        "description": "Update news",
+        "operationId": "updateNews",
+        "consumes": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "produces": [
+          "application/vnd.festivals.v1+json"
+        ],
+        "security": [
+          {
+            "oauth2token": [
+              "news:update"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Festival id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "news.id",
+            "in": "path",
+            "description": "News id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "newsRequest",
+            "description": "News object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/NewsResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "News not found"
+          },
+          "406": {
+            "description": "The request you made is not acceptable"
+          },
+          "422": {
+            "description": "Invalid parameter value"
+          }
+        }
+      }
     }
   },
   "securityDefinitions": {
@@ -1254,7 +1811,27 @@
       "flow": "implicit",
       "authorizationUrl": "https://vehicle-history.io/oauth/authorization",
       "scopes": {
-        "user": "user auth scope"
+        "public": "public API scope",
+        "news:update": "permission to update news",
+        "news:delete": "permission to delete news",
+        "news:get": "permission to get news",
+        "news:create": "permission to create news",
+        "places:update": "permission to update places",
+        "places:delete": "permission to delete places",
+        "places:get": "permission to get places",
+        "places:create": "permission to create places",
+        "categories:update": "permission to update categories",
+        "categories:delete": "permission to delete categories",
+        "categories:get": "permission to get categories",
+        "categories:create": "permission to create categories",
+        "events:update": "permission to update events",
+        "events:delete": "permission to delete events",
+        "events:get": "permission to get events",
+        "events:create": "permission to create events",
+        "festivals:update": "permission to update festivals",
+        "festivals:delete": "permission to delete festivals",
+        "festivals:get": "permission to get festivals",
+        "festivals:create": "permission to create festivals"
       }
     }
   },
@@ -1551,7 +2128,7 @@
           "type": "array",
           "description": "Festival place opening times",
           "items": {
-            "$ref": "#/definitions/Duration"
+            "$ref": "#/definitions/DurationRequest"
           }
         },
         "coordinates": {
@@ -1723,7 +2300,7 @@
         "authors": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/AuthorResponse"
+            "$ref": "#/definitions/AuthorRequest"
           },
           "description": "Event authors"
         }
@@ -1992,6 +2569,64 @@
       "required": [
         "total",
         "places"
+      ]
+    },
+    "NewsResponse": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "News id"
+        },
+        "name": {
+          "type": "string",
+          "description": "News name"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "News createdAt"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "News updatedAt"
+        }
+      },
+      "description": "Festival response",
+      "required": [
+        "id",
+        "name",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "NewsRequest": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "News name"
+        }
+      },
+      "description": "News request",
+      "required": [
+        "name"
+      ]
+    },
+    "NewsCollectionResponse": {
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Total festival categories"
+        },
+        "news": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NewsResponse"
+          }
+        }
+      },
+      "description": "News collection",
+      "required": [
+        "total",
+        "news"
       ]
     }
   }
