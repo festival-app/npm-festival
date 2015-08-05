@@ -92,6 +92,9 @@
             "tags": {
               "type": "string"
             },
+            "type": {
+              "type": "string"
+            },
             "updatedAt": {
               "type": "date",
               "format": "dateOptionalTime"
