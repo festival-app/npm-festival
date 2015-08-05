@@ -7,6 +7,7 @@ describe('festival domain test', function () {
   var id = 'id';
   var name = 'name';
   var description = 'description';
+  var type = 'type';
   var tags = ['tags'];
   var images = [
     {
@@ -30,6 +31,7 @@ describe('festival domain test', function () {
       id,
       name,
       description,
+      type,
       tags,
       images,
       duration,
@@ -42,6 +44,7 @@ describe('festival domain test', function () {
     festivalDomain.id.should.be.equal(id);
     festivalDomain.name.should.be.equal(name);
     festivalDomain.description.should.be.equal(description);
+    festivalDomain.type.should.be.equal(type);
     festivalDomain.tags.should.be.equal(tags);
     festivalDomain.images.should.be.equal(images);
     festivalDomain.createdAt.should.be.equal(createdAt);
@@ -58,6 +61,7 @@ describe('festival domain test', function () {
       .withId(id)
       .withName(name)
       .withDescription(description)
+      .withType(type)
       .withTags(tags)
       .withImages(images)
       .withCreatedAt(createdAt)
@@ -70,6 +74,7 @@ describe('festival domain test', function () {
     festivalDomain.id.should.be.equal(id);
     festivalDomain.name.should.be.equal(name);
     festivalDomain.description.should.be.equal(description);
+    festivalDomain.type.should.be.equal(type);
     festivalDomain.tags.should.be.equal(tags);
     festivalDomain.images.should.be.equal(images);
     festivalDomain.createdAt.should.be.equal(createdAt);

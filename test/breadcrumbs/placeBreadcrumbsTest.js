@@ -1,5 +1,6 @@
 var chai = require('chai');
 var should = chai.should();
+var expect = chai.expect;
 var PlaceBreadcrumbs = require('../../lib/breadcrumbs/placeBreadcrumbs').PlaceBreadcrumbs;
 
 describe('place breadcrumbs test', function () {
@@ -10,16 +11,16 @@ describe('place breadcrumbs test', function () {
         total: 89,
         festivals: [
           {
-            id: '7e0363d2-6787-4e46-b77b-1794f0c54891',
-            name: 'Place 1'
+            id: 'PolconID',
+            name: 'Polcon 2014'
           },
           {
-            id: '999227ac-03aa-4419-adbd-444f1c96f3eb',
-            name: 'Place 2'
+            id: 'PyrkonID',
+            name: 'Pyrkon 2015'
           },
           {
-            id: 'b07c491f-6f91-4a22-9d5c-0365afb8c424',
-            name: 'Place 3'
+            id: 'KapitularzID',
+            name: 'Kapitularz 2014'
           }
         ]
       });
@@ -28,57 +29,57 @@ describe('place breadcrumbs test', function () {
       var result = {};
 
       switch (id) {
-        case '999227ac-03aa-4419-adbd-444f1c96f3eb':
+        case 'PyrkonID':
           result = {
             total: 19,
             places: [
               {
-                id: '0f2d4feb-7a21-4814-b574-94fbdfa6ec64',
+                id: 'PyrkonB',
                 parent: null,
                 name: 'B'
               },
               {
-                id: 'ed935bcf-4157-490f-9bad-da074b61f873',
-                parent: '0f2d4feb-7a21-4814-b574-94fbdfa6ec64',
+                id: 'PyrkonB1',
+                parent: 'PyrkonB',
                 name: 'B1'
               }
             ]
           };
           break;
-        case '7e0363d2-6787-4e46-b77b-1794f0c54891':
+        case 'PolconID':
           result = {
             total: 1,
             places: [
               {
-                id: '6c7e2516-48a9-4ce6-9835-383516f580f2',
+                id: 'PolconC',
                 parent: null,
-                name: 'Place 1'
+                name: 'C'
               }
             ]
           };
           break;
-        case 'b07c491f-6f91-4a22-9d5c-0365afb8c424':
+        case 'KapitularzID':
           result = {
             total: 10,
             places: [
               {
-                id: '3a50a754-31ff-439b-9a68-2de3defc64ba',
+                id: 'KapitularzA',
                 parent: null,
                 name: 'A'
               },
               {
-                id: '3b61c99c-b12a-4729-b249-5ea8d7570ee9',
-                parent: '3a50a754-31ff-439b-9a68-2de3defc64ba',
+                id: 'KapitularzA1',
+                parent: 'KapitularzA',
                 name: 'A1'
               },
               {
-                id: '3a50a754-b12a-4729-b249-5ea8d7570ee9',
-                parent: '3a50a754-31ff-439b-9a68-2de3defc64ba',
+                id: 'KapitularzA2',
+                parent: 'KapitularzA',
                 name: 'A2'
               },
               {
-                id: '3b61c99c-b12a-4729-b249-0365afb8c424',
-                parent: '3b61c99c-b12a-4729-b249-5ea8d7570ee9',
+                id: 'KapitularzA12',
+                parent: 'KapitularzA1',
                 name: 'A12'
               }
             ]
@@ -92,18 +93,59 @@ describe('place breadcrumbs test', function () {
 
   var placeBreadcrumbs = new PlaceBreadcrumbs(festivals);
 
-  it('should build map', function (done) {
+  it('should have parents and children', function (done) {
+
+    placeBreadcrumbs.rebuild(function (err, result) {
+
+      should.exist(result);
+      var place = placeBreadcrumbs.get('KapitularzID', 'KapitularzA1');
+
+      place.id.should.be.equal('KapitularzA1');
+      place.parent.should.be.equal('KapitularzA');
+      place.name.should.be.equal('A1');
+      expect(place).to.have.deep.property('parents[0].id', 'KapitularzA');
+      expect(place).to.have.deep.property('parents[0].name', 'A');
+      expect(place).to.have.deep.property('children[0].id', 'KapitularzA12');
+      expect(place).to.have.deep.property('children[0].name', 'A12');
+      done();
+    });
+  });
+
+  it('should have only children', function (done) {
+
+    placeBreadcrumbs.rebuild(function (err, result) {
+
+      should.exist(result);
+      var place = placeBreadcrumbs.get('KapitularzID', 'KapitularzA');
+
+      place.id.should.be.equal('KapitularzA');
+      expect(place.parent).to.be.null;
+      expect(place.parents).to.be.empty;
+      place.name.should.be.equal('A');
+      expect(place).to.have.deep.property('children[0].id', 'KapitularzA1');
+      expect(place).to.have.deep.property('children[0].name', 'A1');
+      expect(place).to.have.deep.property('children[1].id', 'KapitularzA2');
+      expect(place).to.have.deep.property('children[1].name', 'A2');
+      done();
+    });
+  });
+
+  it('should have only parents', function (done) {
 
     placeBreadcrumbs.rebuild(function (err, result) {
 
       should.exist(result);
 
-        var place = placeBreadcrumbs.get('b07c491f-6f91-4a22-9d5c-0365afb8c424', '3b61c99c-b12a-4729-b249-0365afb8c424');
-      console.dir(place, {depth: null});
+      var place = placeBreadcrumbs.get('KapitularzID', 'KapitularzA12');
 
-      var place2 = placeBreadcrumbs.get('b07c491f-6f91-4a22-9d5c-0365afb8c424', '3b61c99c-b12a-4729-b249-5ea8d7570ee9');
-      console.dir(place2, {depth: null});
-
+      place.id.should.be.equal('KapitularzA12');
+      place.name.should.be.equal('A12');
+      place.parent.should.be.equal('KapitularzA1');
+      expect(place.children).to.be.empty;
+      expect(place).to.have.deep.property('parents[0].id', 'KapitularzA1');
+      expect(place).to.have.deep.property('parents[0].name', 'A1');
+      expect(place).to.have.deep.property('parents[1].id', 'KapitularzA');
+      expect(place).to.have.deep.property('parents[1].name', 'A');
       done();
     });
   });
