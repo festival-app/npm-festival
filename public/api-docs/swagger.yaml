@@ -1724,7 +1724,7 @@ definitions:
     properties:
       total:
         type: integer
-        description: Total festival categories
+        description: Total festival places
       places:
         type: array
         items:
@@ -1741,16 +1741,47 @@ definitions:
       name:
         type: string
         description: News name
+      description:
+        type: string
+        description: News description
+      type:
+        type: string
+        description: News type
+        default: DEFAULT
+        enum:
+          - DEFAULT
+          - PLACE
+          - CATEGORY
+          - EVENT
+          - FESTIVAL
+      significance:
+        type: string
+        description: News significance
+        default: DEFAULT
+        enum:
+          - DEFAULT
+          - LOW
+          - HIGH
+          - CRITICAL
+      tags:
+        type: array
+        items:
+          type: string
+        description: News tags
       createdAt:
         type: string
         description: News createdAt
       updatedAt:
         type: string
         description: News updatedAt
-    description: Festival response
+    description: News response
     required:
       - id
       - name
+      - description
+      - type
+      - significance
+      - tags
       - createdAt
       - updatedAt
   NewsRequest:
@@ -1758,14 +1789,45 @@ definitions:
       name:
         type: string
         description: News name
+      description:
+        type: string
+        description: News description
+      type:
+        type: string
+        description: News type
+        default: DEFAULT
+        enum:
+          - DEFAULT
+          - PLACE
+          - CATEGORY
+          - EVENT
+          - FESTIVAL
+      significance:
+        type: string
+        description: News significance
+        default: DEFAULT
+        enum:
+          - DEFAULT
+          - LOW
+          - HIGH
+          - CRITICAL
+      tags:
+        type: array
+        items:
+          type: string
+        description: News tags
     description: News request
     required:
       - name
+      - description
+      - type
+      - significance
+      - tags
   NewsCollectionResponse:
     properties:
       total:
         type: integer
-        description: Total festival categories
+        description: Total news collection
       news:
         type: array
         items:

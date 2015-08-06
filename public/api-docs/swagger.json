@@ -1522,7 +1522,7 @@
     "/festivals/{id}/news": {
       "get": {
         "tags": [
-          "news"
+          "festivals-news"
         ],
         "summary": "Find festival news",
         "description": "Get festival news collection",
@@ -1579,7 +1579,7 @@
       },
       "post": {
         "tags": [
-          "news"
+          "festivals-news"
         ],
         "summary": "Create news",
         "description": "Create news",
@@ -1643,7 +1643,7 @@
     "/festivals/{id}/news/{news.id}": {
       "get": {
         "tags": [
-          "news"
+          "festivals-news"
         ],
         "summary": "Get news",
         "description": "Get news",
@@ -1688,7 +1688,7 @@
       },
       "delete": {
         "tags": [
-          "news"
+          "festivals-news"
         ],
         "summary": "Delete news",
         "description": "Delete news",
@@ -1733,7 +1733,7 @@
       },
       "put": {
         "tags": [
-          "news"
+          "festivals-news"
         ],
         "summary": "Update news",
         "description": "Update news",
@@ -2556,7 +2556,7 @@
       "properties": {
         "total": {
           "type": "integer",
-          "description": "Total festival categories"
+          "description": "Total festival places"
         },
         "places": {
           "type": "array",
@@ -2581,6 +2581,40 @@
           "type": "string",
           "description": "News name"
         },
+        "description": {
+          "type": "string",
+          "description": "News description"
+        },
+        "type": {
+          "type": "string",
+          "description": "News type",
+          "default": "DEFAULT",
+          "enum": [
+            "DEFAULT",
+            "PLACE",
+            "CATEGORY",
+            "EVENT",
+            "FESTIVAL"
+          ]
+        },
+        "significance": {
+          "type": "string",
+          "description": "News significance",
+          "default": "DEFAULT",
+          "enum": [
+            "DEFAULT",
+            "LOW",
+            "HIGH",
+            "CRITICAL"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "News tags"
+        },
         "createdAt": {
           "type": "string",
           "description": "News createdAt"
@@ -2590,10 +2624,14 @@
           "description": "News updatedAt"
         }
       },
-      "description": "Festival response",
+      "description": "News response",
       "required": [
         "id",
         "name",
+        "description",
+        "type",
+        "significance",
+        "tags",
         "createdAt",
         "updatedAt"
       ]
@@ -2603,18 +2641,56 @@
         "name": {
           "type": "string",
           "description": "News name"
+        },
+        "description": {
+          "type": "string",
+          "description": "News description"
+        },
+        "type": {
+          "type": "string",
+          "description": "News type",
+          "default": "DEFAULT",
+          "enum": [
+            "DEFAULT",
+            "PLACE",
+            "CATEGORY",
+            "EVENT",
+            "FESTIVAL"
+          ]
+        },
+        "significance": {
+          "type": "string",
+          "description": "News significance",
+          "default": "DEFAULT",
+          "enum": [
+            "DEFAULT",
+            "LOW",
+            "HIGH",
+            "CRITICAL"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "News tags"
         }
       },
       "description": "News request",
       "required": [
-        "name"
+        "name",
+        "description",
+        "type",
+        "significance",
+        "tags"
       ]
     },
     "NewsCollectionResponse": {
       "properties": {
         "total": {
           "type": "integer",
-          "description": "Total festival categories"
+          "description": "Total news collection"
         },
         "news": {
           "type": "array",
