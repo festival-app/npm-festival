@@ -94,13 +94,6 @@
             "required": false,
             "type": "string",
             "in": "query"
-          },
-          {
-            "name": "type",
-            "description": "type",
-            "required": false,
-            "type": "string",
-            "in": "query"
           }
         ],
         "responses": {
@@ -338,13 +331,6 @@
             "in": "query"
           },
           {
-            "name": "startAt",
-            "description": "startAt",
-            "required": false,
-            "type": "string",
-            "in": "query"
-          },
-          {
             "name": "updatedAt",
             "description": "updatedAt",
             "required": false,
@@ -367,15 +353,54 @@
             "in": "query"
           },
           {
-            "name": "country",
-            "description": "country",
+            "name": "type",
+            "description": "type",
+            "required": false,
+            "type": "string",
+            "default": "FANTASY",
+            "enum": [
+              "FANTASY"
+            ],
+            "in": "query"
+          },
+          {
+            "name": "tag",
+            "description": "tag",
             "required": false,
             "type": "string",
             "in": "query"
           },
           {
-            "name": "type",
-            "description": "type",
+            "name": "duration.startAt",
+            "description": "duration startAt",
+            "required": false,
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "location.country",
+            "description": "location country",
+            "required": false,
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "location.name",
+            "description": "location name",
+            "required": false,
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "location.city",
+            "description": "location city",
+            "required": false,
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "location.state",
+            "description": "location state",
             "required": false,
             "type": "string",
             "in": "query"
@@ -2095,6 +2120,10 @@
           "$ref": "#/definitions/CoordinatesResponse",
           "description": "Coordinates"
         },
+        "mainImage": {
+          "$ref": "#/definitions/MainImageResponse",
+          "description": "Event main image"
+        },
         "createdAt": {
           "type": "string",
           "description": "Festival place createdAt"
@@ -2134,13 +2163,21 @@
         "coordinates": {
           "$ref": "#/definitions/CoordinatesRequest",
           "description": "Coordinates"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ImageRequest"
+          },
+          "description": "Images"
         }
       },
       "description": "Festival response",
       "required": [
         "name",
         "parent",
-        "openingTimes"
+        "openingTimes",
+        "images"
       ]
     },
     "EventPlaceResponse": {
@@ -2585,28 +2622,9 @@
           "type": "string",
           "description": "News description"
         },
-        "type": {
-          "type": "string",
-          "description": "News type",
-          "default": "DEFAULT",
-          "enum": [
-            "DEFAULT",
-            "PLACE",
-            "CATEGORY",
-            "EVENT",
-            "FESTIVAL"
-          ]
-        },
-        "significance": {
-          "type": "string",
-          "description": "News significance",
-          "default": "DEFAULT",
-          "enum": [
-            "DEFAULT",
-            "LOW",
-            "HIGH",
-            "CRITICAL"
-          ]
+        "mainImage": {
+          "$ref": "#/definitions/MainImageResponse",
+          "description": "Main image"
         },
         "tags": {
           "type": "array",
@@ -2629,8 +2647,7 @@
         "id",
         "name",
         "description",
-        "type",
-        "significance",
+        "mainImage",
         "tags",
         "createdAt",
         "updatedAt"
@@ -2646,28 +2663,12 @@
           "type": "string",
           "description": "News description"
         },
-        "type": {
-          "type": "string",
-          "description": "News type",
-          "default": "DEFAULT",
-          "enum": [
-            "DEFAULT",
-            "PLACE",
-            "CATEGORY",
-            "EVENT",
-            "FESTIVAL"
-          ]
-        },
-        "significance": {
-          "type": "string",
-          "description": "News significance",
-          "default": "DEFAULT",
-          "enum": [
-            "DEFAULT",
-            "LOW",
-            "HIGH",
-            "CRITICAL"
-          ]
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ImageRequest"
+          },
+          "description": "Images"
         },
         "tags": {
           "type": "array",
@@ -2681,8 +2682,7 @@
       "required": [
         "name",
         "description",
-        "type",
-        "significance",
+        "images",
         "tags"
       ]
     },
