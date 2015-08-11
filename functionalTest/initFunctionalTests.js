@@ -7,7 +7,8 @@ module.exports = {
   festivalCategoryId: null,
   festivalCategoryIdParent: null,
   festivalEventId: null,
-  newsId: null
+  newsId: null,
+  festivalNewsId: null
 };
 
 before(function (done) {
