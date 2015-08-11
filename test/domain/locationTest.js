@@ -8,6 +8,7 @@ describe('location domain test', function () {
   var state = 'state';
   var country = 'country';
   var street = 'street';
+  var city = 'city';
   var zip = 'zip';
   var openingTimes = [{from: 'openingTimes'}];
   var coordinates = 'coordinates';
@@ -20,6 +21,7 @@ describe('location domain test', function () {
       state,
       country,
       street,
+      city,
       zip,
       openingTimes,
       coordinates,
@@ -31,6 +33,7 @@ describe('location domain test', function () {
     locationDomain.state.should.be.equal(state);
     locationDomain.country.should.be.equal(country);
     locationDomain.street.should.be.equal(street);
+    locationDomain.city.should.be.equal(city);
     locationDomain.zip.should.be.equal(zip);
     locationDomain.openingTimes.should.be.equal(openingTimes);
     locationDomain.coordinates.should.be.equal(coordinates);
@@ -46,6 +49,7 @@ describe('location domain test', function () {
       .withState(state)
       .withCountry(country)
       .withStreet(street)
+      .withCity(city)
       .withZip(zip)
       .withOpeningTimes(openingTimes)
       .withCoordinates(coordinates)
@@ -57,6 +61,7 @@ describe('location domain test', function () {
     locationDomain.state.should.be.equal(state);
     locationDomain.country.should.be.equal(country);
     locationDomain.street.should.be.equal(street);
+    locationDomain.city.should.be.equal(city);
     locationDomain.zip.should.be.equal(zip);
     locationDomain.openingTimes.should.be.equal(openingTimes);
     locationDomain.coordinates.should.be.equal(coordinates);
