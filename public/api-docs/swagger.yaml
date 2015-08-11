@@ -100,7 +100,7 @@ paths:
           description: The request you made is not acceptable
         "422":
           description: Invalid parameter value
-  "/news/{id}":
+  "/news/{news.id}":
     get:
       tags:
         - news
@@ -209,21 +209,10 @@ paths:
           required: false
           type: string
           in: query
-        - name: updatedAt
-          description: updatedAt
+        - name: description
+          description: description
           required: false
           type: string
-          in: query
-        - name: limit
-          description: limit
-          required: false
-          type: integer
-          in: query
-          default: 100
-        - name: offset
-          description: offset
-          required: false
-          type: integer
           in: query
         - name: type
           description: type
@@ -238,8 +227,13 @@ paths:
           required: false
           type: string
           in: query
-        - name: duration.startAt
-          description: duration startAt
+        - name: dateFrom
+          description: dateFrom
+          required: false
+          type: string
+          in: query
+        - name: dateTo
+          description: dateTo
           required: false
           type: string
           in: query
@@ -262,6 +256,22 @@ paths:
           description: location state
           required: false
           type: string
+          in: query
+        - name: updatedAt
+          description: updatedAt
+          required: false
+          type: string
+          in: query
+        - name: limit
+          description: limit
+          required: false
+          type: integer
+          in: query
+          default: 100
+        - name: offset
+          description: offset
+          required: false
+          type: integer
           in: query
       responses:
         "200":
@@ -417,28 +427,43 @@ paths:
           required: false
           type: string
           in: query
-        - name: place
-          description: place
+        - name: description
+          description: description
           required: false
           type: string
           in: query
-        - name: startAt
-          description: startAt
+        - name: place.name
+          description: place name
           required: false
           type: string
           in: query
-        - name: finishAt
-          description: finishAt
+        - name: category.name
+          description: category name
+          required: false
+          type: string
+          in: query
+        - name: dateFrom
+          description: dateFrom
+          required: false
+          type: string
+          in: query
+        - name: dateTo
+          description: dateTo
+          required: false
+          type: string
+          in: query
+        - name: author.name
+          description: author name
+          required: false
+          type: string
+          in: query
+        - name: author.organization
+          description: author organization
           required: false
           type: string
           in: query
         - name: updatedAt
           description: updatedAt
-          required: false
-          type: string
-          in: query
-        - name: category
-          description: category
           required: false
           type: string
           in: query
@@ -1309,6 +1334,9 @@ definitions:
       street:
         type: string
         description: Location street
+      city:
+        type: string
+        description: Location city
       zip:
         type: string
         description: Location zip
@@ -1341,6 +1369,9 @@ definitions:
       street:
         type: string
         description: Location street
+      city:
+        type: string
+        description: Location city
       zip:
         type: string
         description: Location zip
@@ -1774,6 +1805,11 @@ definitions:
       mainImage:
         $ref: "#/definitions/MainImageResponse"
         description: Main image
+      authors:
+        type: array
+        items:
+          $ref: "#/definitions/AuthorResponse"
+        description: Event authors
       tags:
         type: array
         items:
@@ -1807,6 +1843,11 @@ definitions:
         items:
           $ref: "#/definitions/ImageRequest"
         description: Images
+      authors:
+        type: array
+        items:
+          $ref: "#/definitions/AuthorRequest"
+        description: Event authors
       tags:
         type: array
         items:
