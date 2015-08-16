@@ -101,6 +101,13 @@
             "required": false,
             "type": "string",
             "in": "query"
+          },
+          {
+            "name": "sort",
+            "description": "sort",
+            "required": false,
+            "type": "string",
+            "in": "query"
           }
         ],
         "responses": {
@@ -425,6 +432,13 @@
             "required": false,
             "type": "integer",
             "in": "query"
+          },
+          {
+            "name": "sort",
+            "description": "sort",
+            "required": false,
+            "type": "string",
+            "in": "query"
           }
         ],
         "responses": {
@@ -738,6 +752,13 @@
             "required": false,
             "type": "integer",
             "in": "query"
+          },
+          {
+            "name": "sort",
+            "description": "sort",
+            "required": false,
+            "type": "string",
+            "in": "query"
           }
         ],
         "responses": {
@@ -1036,6 +1057,13 @@
             "description": "offset",
             "required": false,
             "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "sort",
+            "description": "sort",
+            "required": false,
+            "type": "string",
             "in": "query"
           }
         ],
@@ -1342,6 +1370,13 @@
             "required": false,
             "type": "integer",
             "in": "query"
+          },
+          {
+            "name": "sort",
+            "description": "sort",
+            "required": false,
+            "type": "string",
+            "in": "query"
           }
         ],
         "responses": {
@@ -1639,6 +1674,13 @@
             "description": "offset",
             "required": false,
             "type": "integer",
+            "in": "query"
+          },
+          {
+            "name": "sort",
+            "description": "sort",
+            "required": false,
+            "type": "string",
             "in": "query"
           }
         ],

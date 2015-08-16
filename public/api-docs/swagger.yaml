@@ -65,6 +65,11 @@ paths:
           required: false
           type: string
           in: query
+        - name: sort
+          description: sort
+          required: false
+          type: string
+          in: query
       responses:
         "200":
           description: successful operation
@@ -278,6 +283,11 @@ paths:
           required: false
           type: integer
           in: query
+        - name: sort
+          description: sort
+          required: false
+          type: string
+          in: query
       responses:
         "200":
           description: successful operation
@@ -483,6 +493,11 @@ paths:
           required: false
           type: integer
           in: query
+        - name: sort
+          description: sort
+          required: false
+          type: string
+          in: query
       responses:
         "200":
           description: successful operation
@@ -677,6 +692,11 @@ paths:
           description: offset
           required: false
           type: integer
+          in: query
+        - name: sort
+          description: sort
+          required: false
+          type: string
           in: query
       responses:
         "200":
@@ -877,6 +897,11 @@ paths:
           required: false
           type: integer
           in: query
+        - name: sort
+          description: sort
+          required: false
+          type: string
+          in: query
       responses:
         "200":
           description: successful operation
@@ -1070,6 +1095,11 @@ paths:
           description: offset
           required: false
           type: integer
+          in: query
+        - name: sort
+          description: sort
+          required: false
+          type: string
           in: query
       responses:
         "200":
