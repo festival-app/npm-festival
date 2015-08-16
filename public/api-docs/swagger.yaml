@@ -1,5 +1,5 @@
 swagger: "2.0"
-host: festivals-app.herokuapp.com
+host: festivals.tech
 basePath: /api
 info:
   version: 1.0.0
@@ -39,6 +39,11 @@ paths:
         - oauth2token:
           - news:get
       parameters:
+        - name: name
+          description: name
+          required: false
+          type: string
+          in: query
         - name: updatedAt
           description: updatedAt
           required: false
@@ -1045,6 +1050,11 @@ paths:
           description: Festival id
           required: true
           type: string
+        - name: name
+          description: name
+          required: false
+          type: string
+          in: query
         - name: updatedAt
           description: updatedAt
           required: false
