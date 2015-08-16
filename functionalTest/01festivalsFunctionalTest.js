@@ -25,6 +25,7 @@ describe('festivals functional test', function () {
           state: 'wielkopolskie',
           country: 'PL',
           street: 'street',
+          city: 'city',
           zip: 'zip',
           openingTimes: [
             {
@@ -99,6 +100,7 @@ describe('festivals functional test', function () {
           state: 'wielkopolska' + id,
           country: 'PL',
           street: 'street' + id,
+          city: 'city',
           zip: 'zip' + id,
           openingTimes: [
             {
