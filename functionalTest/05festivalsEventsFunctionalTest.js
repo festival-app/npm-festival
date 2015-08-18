@@ -13,6 +13,7 @@ describe('festivals events functional test', function () {
     var json = {
       name: 'event-name',
       description: 'event-description',
+      status: 'INITIATED',
       tags: ['event-tag1', 'event-tag2'],
       duration: {
         startAt: now.toISOString(),
@@ -37,6 +38,7 @@ describe('festivals events functional test', function () {
       .expectStatus(201)
       .expectValue('name', json.name)
       .expectValue('description', json.description)
+      .expectValue('status', json.status)
       .expectValue('tags', json.tags)
       .expectValue('mainImage.small', json.images[0].url)
       .expectValue('mainImage.medium', json.images[0].url)
@@ -71,6 +73,7 @@ describe('festivals events functional test', function () {
     var json = {
       name: 'event-name' + id,
       description: 'event-description' + id,
+      status: 'INITIATED',
       tags: ['event-tag1' + id, 'event-tag2' + id],
       duration: {
         startAt: now.toISOString(),
@@ -96,6 +99,7 @@ describe('festivals events functional test', function () {
       .expectValue('id', funcTest.festivalEventId)
       .expectValue('name', json.name)
       .expectValue('description', json.description)
+      .expectValue('status', json.status)
       .expectValue('tags', json.tags)
       .expectValue('mainImage.small', json.images[0].url)
       .expectValue('mainImage.medium', json.images[0].url)

@@ -1613,6 +1613,14 @@ definitions:
         items:
           type: string
         description: Event tags
+      status:
+        type: string
+        description: Status of event
+        default: INITIATED
+        enum:
+          - INITIATED
+          - CANCELED
+          - MOVED
       metadata:
         type: array
         items:
@@ -1660,6 +1668,14 @@ definitions:
         items:
           type: string
         description: Event tags
+      status:
+        type: string
+        description: Status of event
+        default: INITIATED
+        enum:
+          - INITIATED
+          - CANCELED
+          - MOVED
       mainImage:
         $ref: "#/definitions/MainImageResponse"
         description: Event main image

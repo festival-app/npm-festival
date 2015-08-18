@@ -4,7 +4,6 @@
     "logging": "info"
   },
   "elasticsearch": {
-    "index": "index-festivals",
     "festivals": {
       "index": "index-festivals",
       "type": "festivals",

@@ -8,7 +8,7 @@
     "async": "^1.4.2",
     "config": "^1.15.0",
     "elasticsearch": "^6.0.0",
-    "festivals-model": "festivals-platform/npm-festivals-model#66d3b664a10d9177f133f4364d9b0b15b0abba8f",
+    "festivals-model": "festivals-platform/npm-festivals-model#2d56a65e7094938b87b8956383faa054aee5940a",
     "firebase": "^2.2.9",
     "keen-js": "^3.2.4",
     "moment": "^2.10.6",
