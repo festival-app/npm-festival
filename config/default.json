@@ -46,6 +46,10 @@
             },
             "locations": {
               "properties": {
+                "city": {
+                  "index": "not_analyzed",
+                  "type": "string"
+                },
                 "country": {
                   "index": "not_analyzed",
                   "type": "string"
@@ -89,11 +93,12 @@
               "type": "string"
             },
             "tags": {
+              "index": "not_analyzed",
               "type": "string"
             },
             "type": {
-              "type": "string",
-              "index": "not_analyzed"
+              "index": "not_analyzed",
+              "type": "string"
             },
             "updatedAt": {
               "format": "dateOptionalTime",
@@ -112,11 +117,9 @@
             "authors": {
               "properties": {
                 "name": {
-                  "type": "string",
                   "type": "string"
                 },
                 "organization": {
-                  "type": "string",
                   "type": "string"
                 }
               }
@@ -164,8 +167,8 @@
               }
             },
             "metadata": {
-              "type": "string",
-              "index": "not_analyzed"
+              "index": "not_analyzed",
+              "type": "string"
             },
             "name": {
               "index": "not_analyzed",
@@ -175,7 +178,12 @@
               "index": "not_analyzed",
               "type": "string"
             },
+            "status": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
             "tags": {
+              "index": "not_analyzed",
               "type": "string"
             },
             "updatedAt": {
@@ -239,12 +247,12 @@
             "authors": {
               "properties": {
                 "name": {
-                  "type": "string",
-                  "index": "not_analyzed"
+                  "index": "not_analyzed",
+                  "type": "string"
                 },
                 "organization": {
-                  "type": "string",
-                  "index": "not_analyzed"
+                  "index": "not_analyzed",
+                  "type": "string"
                 }
               }
             },
@@ -256,12 +264,12 @@
               "type": "string"
             },
             "festival": {
-              "type": "string",
-              "index": "not_analyzed"
+              "index": "not_analyzed",
+              "type": "string"
             },
             "id": {
-              "type": "string",
-              "index": "not_analyzed"
+              "index": "not_analyzed",
+              "type": "string"
             },
             "images": {
               "properties": {
@@ -269,16 +277,17 @@
                   "type": "long"
                 },
                 "url": {
-                  "type": "string",
-                  "index": "not_analyzed"
+                  "index": "not_analyzed",
+                  "type": "string"
                 }
               }
             },
             "name": {
-              "type": "string",
-              "index": "not_analyzed"
+              "index": "not_analyzed",
+              "type": "string"
             },
             "tags": {
+              "index": "not_analyzed",
               "type": "string"
             },
             "updatedAt": {
