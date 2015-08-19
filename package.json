@@ -1,6 +1,6 @@
 {
   "name": "festivals",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "All festivals in one place.",
   "main": "./lib/festivals.js",
   "dependencies": {
@@ -12,7 +12,7 @@
     "firebase": "^2.2.9",
     "keen-js": "^3.2.4",
     "moment": "^2.10.6",
-    "my-restify-api": "0.5.10",
+    "my-restify-api": "Zenedith/npm-my-restify-api#928b8f6014941e2b8fe335107eb056e4dbe6dfcf",
     "newrelic": "^1.21.2",
     "node-uuid": "^1.4.3",
     "tough-cookie": "^2.0.0",
@@ -57,8 +57,8 @@
     "node": ">=0.10.0"
   },
   "readmeFilename": "README.md",
-  "_id": "festivals@0.1.0",
-  "_from": "festivals@^0.1.0",
+  "_id": "festivals@0.1.1",
+  "_from": "festivals@^0.1.1",
   "directories": {
     "test": "test"
   }
