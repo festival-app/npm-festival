@@ -1109,9 +1109,9 @@ paths:
     post:
       tags:
         - festivals-news
-      summary: Create news
-      description: Create news
-      operationId: createNews
+      summary: Create festival news
+      description: Create festival news
+      operationId: createFestivalNews
       consumes:
         - application/vnd.festivals.v1+json
       produces:
@@ -1150,9 +1150,9 @@ paths:
     get:
       tags:
         - festivals-news
-      summary: Get news
-      description: Get news
-      operationId: getNews
+      summary: Get festival news
+      description: Get festival news
+      operationId: getFestivalNews
       produces:
         - application/vnd.festivals.v1+json
       security:
@@ -1179,9 +1179,9 @@ paths:
     delete:
       tags:
         - festivals-news
-      summary: Delete news
-      description: Delete news
-      operationId: deleteNews
+      summary: Delete festival news
+      description: Delete festival news
+      operationId: deleteFestivalNews
       security:
         - oauth2token:
           - news:delete
@@ -1208,9 +1208,9 @@ paths:
     put:
       tags:
         - festivals-news
-      summary: Update news
-      description: Update news
-      operationId: updateNews
+      summary: Update festival news
+      description: Update festival news
+      operationId: updateFestivalNews
       consumes:
         - application/vnd.festivals.v1+json
       produces:
@@ -1693,6 +1693,9 @@ definitions:
         items:
           $ref: "#/definitions/AuthorResponse"
         description: Event authors
+      publishedAt:
+        type: string
+        description: Event publishedAt
       createdAt:
         type: string
         description: Event createdAt
@@ -1707,6 +1710,7 @@ definitions:
       - duration
       - place
       - category
+      - publishedAt
       - createdAt
       - updatedAt
   FestivalResponse:
@@ -1742,6 +1746,9 @@ definitions:
         description: Festival locations
         items:
           $ref: "#/definitions/LocationResponse"
+      publishedAt:
+        type: string
+        description: Festival publishedAt
       createdAt:
         type: string
         description: Festival createdAt
@@ -1753,8 +1760,9 @@ definitions:
       - id
       - name
       - description
-      - duration
       - locations
+      - duration
+      - publishedAt
       - createdAt
       - updatedAt
   FestivalRequest:
@@ -1871,6 +1879,9 @@ definitions:
         items:
           type: string
         description: News tags
+      publishedAt:
+        type: string
+        description: News publishedAt
       createdAt:
         type: string
         description: News createdAt
