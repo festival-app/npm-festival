@@ -358,7 +358,9 @@
             "type": "string",
             "default": "FANTASY",
             "enum": [
-              "FANTASY"
+              "FANTASY",
+              "WOODSTOCK",
+              "MUSIC"
             ],
             "in": "query"
           },
@@ -2410,9 +2412,10 @@
         "status": {
           "type": "string",
           "description": "Status of event",
-          "default": "INITIATED",
+          "default": "CREATED",
           "enum": [
-            "INITIATED",
+            "CREATED",
+            "PUBLISHED",
             "CANCELED",
             "MOVED"
           ]
@@ -2484,9 +2487,10 @@
         "status": {
           "type": "string",
           "description": "Status of event",
-          "default": "INITIATED",
+          "default": "CREATED",
           "enum": [
-            "INITIATED",
+            "CREATED",
+            "PUBLISHED",
             "CANCELED",
             "MOVED"
           ]
@@ -2557,9 +2561,19 @@
         "type": {
           "type": "string",
           "description": "Festival type",
-          "default": "FANTASY",
           "enum": [
-            "FANTASY"
+            "FANTASY",
+            "WOODSTOCK",
+            "MUSIC"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of festival",
+          "enum": [
+            "CREATED",
+            "PUBLISHED",
+            "CANCELED"
           ]
         },
         "tags": {
@@ -2602,6 +2616,8 @@
         "id",
         "name",
         "description",
+        "type",
+        "status",
         "locations",
         "duration",
         "publishedAt",
@@ -2624,7 +2640,19 @@
           "description": "Festival type",
           "default": "FANTASY",
           "enum": [
-            "FANTASY"
+            "FANTASY",
+            "WOODSTOCK",
+            "MUSIC"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of festival",
+          "default": "CREATED",
+          "enum": [
+            "CREATED",
+            "PUBLISHED",
+            "CANCELED"
           ]
         },
         "tags": {
@@ -2657,6 +2685,7 @@
       "required": [
         "name",
         "description",
+        "type",
         "duration",
         "locations"
       ]
@@ -2751,6 +2780,16 @@
           "type": "string",
           "description": "News description"
         },
+        "status": {
+          "type": "string",
+          "description": "Status of news",
+          "default": "CREATED",
+          "enum": [
+            "CREATED",
+            "PUBLISHED",
+            "CANCELED"
+          ]
+        },
         "mainImage": {
           "$ref": "#/definitions/MainImageResponse",
           "description": "Main image"
@@ -2787,6 +2826,7 @@
         "id",
         "name",
         "description",
+        "status",
         "mainImage",
         "tags",
         "createdAt",
@@ -2802,6 +2842,16 @@
         "description": {
           "type": "string",
           "description": "News description"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of event",
+          "default": "CREATED",
+          "enum": [
+            "CREATED",
+            "PUBLISHED",
+            "CANCELED"
+          ]
         },
         "images": {
           "type": "array",

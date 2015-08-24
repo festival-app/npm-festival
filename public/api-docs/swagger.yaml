@@ -231,6 +231,8 @@ paths:
           default: FANTASY
           enum:
             - FANTASY
+            - WOODSTOCK
+            - MUSIC
           in: query
         - name: tag
           description: tag
@@ -1616,9 +1618,10 @@ definitions:
       status:
         type: string
         description: Status of event
-        default: INITIATED
+        default: CREATED
         enum:
-          - INITIATED
+          - CREATED
+          - PUBLISHED
           - CANCELED
           - MOVED
       metadata:
@@ -1671,9 +1674,10 @@ definitions:
       status:
         type: string
         description: Status of event
-        default: INITIATED
+        default: CREATED
         enum:
-          - INITIATED
+          - CREATED
+          - PUBLISHED
           - CANCELED
           - MOVED
       mainImage:
@@ -1727,9 +1731,17 @@ definitions:
       type:
         type: string
         description: Festival type
-        default: FANTASY
         enum:
           - FANTASY
+          - WOODSTOCK
+          - MUSIC
+      status:
+        type: string
+        description: Status of festival
+        enum:
+          - CREATED
+          - PUBLISHED
+          - CANCELED
       tags:
         type: array
         items:
@@ -1760,6 +1772,8 @@ definitions:
       - id
       - name
       - description
+      - type
+      - status
       - locations
       - duration
       - publishedAt
@@ -1779,6 +1793,16 @@ definitions:
         default: FANTASY
         enum:
           - FANTASY
+          - WOODSTOCK
+          - MUSIC
+      status:
+        type: string
+        description: Status of festival
+        default: CREATED
+        enum:
+          - CREATED
+          - PUBLISHED
+          - CANCELED
       tags:
         type: array
         items:
@@ -1801,6 +1825,7 @@ definitions:
     required:
       - name
       - description
+      - type
       - duration
       - locations
   FestivalsCollectionResponse:
@@ -1866,6 +1891,14 @@ definitions:
       description:
         type: string
         description: News description
+      status:
+        type: string
+        description: Status of news
+        default: CREATED
+        enum:
+          - CREATED
+          - PUBLISHED
+          - CANCELED
       mainImage:
         $ref: "#/definitions/MainImageResponse"
         description: Main image
@@ -1893,6 +1926,7 @@ definitions:
       - id
       - name
       - description
+      - status
       - mainImage
       - tags
       - createdAt
@@ -1905,6 +1939,14 @@ definitions:
       description:
         type: string
         description: News description
+      status:
+        type: string
+        description: Status of event
+        default: CREATED
+        enum:
+          - CREATED
+          - PUBLISHED
+          - CANCELED
       images:
         type: array
         items:
