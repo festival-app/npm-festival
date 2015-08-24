@@ -8,12 +8,14 @@ describe('festival domain test', function () {
   var name = 'name';
   var description = 'description';
   var type = 'type';
+  var status = 'status';
   var tags = ['tags'];
   var images = [
     {
       url: 'http://'
     }
   ];
+  var publishedAt = 'publishedAt';
   var createdAt = 'createdAt';
   var updatedAt = 'updatedAt';
   var duration = {
@@ -32,10 +34,12 @@ describe('festival domain test', function () {
       name,
       description,
       type,
+      status,
       tags,
       images,
       duration,
       locations,
+      publishedAt,
       createdAt,
       updatedAt
     );
@@ -45,6 +49,7 @@ describe('festival domain test', function () {
     festivalDomain.name.should.be.equal(name);
     festivalDomain.description.should.be.equal(description);
     festivalDomain.type.should.be.equal(type);
+    festivalDomain.status.should.be.equal(status);
     festivalDomain.tags.should.be.equal(tags);
     festivalDomain.images.should.be.equal(images);
     festivalDomain.createdAt.should.be.equal(createdAt);
@@ -62,8 +67,10 @@ describe('festival domain test', function () {
       .withName(name)
       .withDescription(description)
       .withType(type)
+      .withStatus(status)
       .withTags(tags)
       .withImages(images)
+      .withPublishedAt(publishedAt)
       .withCreatedAt(createdAt)
       .withUpdatedAt(updatedAt)
       .withDuration(duration)
@@ -75,6 +82,7 @@ describe('festival domain test', function () {
     festivalDomain.name.should.be.equal(name);
     festivalDomain.description.should.be.equal(description);
     festivalDomain.type.should.be.equal(type);
+    festivalDomain.status.should.be.equal(status);
     festivalDomain.tags.should.be.equal(tags);
     festivalDomain.images.should.be.equal(images);
     festivalDomain.createdAt.should.be.equal(createdAt);

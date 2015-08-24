@@ -14,6 +14,7 @@ describe('event domain test', function () {
   var duration = {'duration': 111};
   var place = 'place';
   var category = 'category';
+  var publishedAt = 'publishedAt';
   var createdAt = 'createdAt';
   var updatedAt = 'updatedAt';
   var festival = 'festival';
@@ -32,6 +33,7 @@ describe('event domain test', function () {
       duration,
       place,
       category,
+      publishedAt,
       createdAt,
       updatedAt,
       festival,
@@ -49,6 +51,7 @@ describe('event domain test', function () {
     eventModel.duration.should.be.equal(duration);
     eventModel.place.should.be.equal(place);
     eventModel.category.should.be.equal(category);
+    eventModel.publishedAt.should.be.equal(publishedAt);
     eventModel.createdAt.should.be.equal(createdAt);
     eventModel.updatedAt.should.be.equal(updatedAt);
     eventModel.festival.should.be.equal(festival);
@@ -70,6 +73,7 @@ describe('event domain test', function () {
       .withDuration(duration)
       .withPlace(place)
       .withCategory(category)
+      .withPublishedAt(publishedAt)
       .withCreatedAt(createdAt)
       .withUpdatedAt(updatedAt)
       .withFestival(festival)
@@ -87,6 +91,7 @@ describe('event domain test', function () {
     eventModel.duration.should.be.equal(duration);
     eventModel.place.should.be.equal(place);
     eventModel.category.should.be.equal(category);
+    eventModel.publishedAt.should.be.equal(publishedAt);
     eventModel.createdAt.should.be.equal(createdAt);
     eventModel.updatedAt.should.be.equal(updatedAt);
     eventModel.festival.should.be.equal(festival);
