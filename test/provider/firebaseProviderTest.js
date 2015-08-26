@@ -134,7 +134,6 @@ describe('firebase provider test', function () {
 
     placeId = uuid.v4();
     var name = 'name-' + placeId;
-    var description = 'description-' + placeId;
 
     var duration = new DurationBuilder()
       .withStartAt(createdAt)
@@ -178,20 +177,11 @@ describe('firebase provider test', function () {
       .withFinishAt(finishAt)
       .build();
 
-    var images = [
-      //new ImageBuilder()
-      //.withSmall('http://szuflada.net/wp-content/uploads/2013/05/dni_fantastyki_szuflada.net_.jpg')
-      //.withMedium('http://szuflada.net/wp-content/uploads/2013/05/dni_fantastyki_szuflada.net_.jpg')
-      //.withLarge('http://szuflada.net/wp-content/uploads/2013/05/dni_fantastyki_szuflada.net_.jpg')
-      //.build()
-    ];
-
     var newEvent = new EventBuilder()
       .withId(eventId)
       .withName(name)
       .withDescription(description)
       .withTags(tags)
-      //.withImages(images)
       .withDuration(duration)
       .withPlace(placeId)
       .withCategory(category)
