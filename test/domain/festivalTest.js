@@ -27,6 +27,8 @@ describe('festival domain test', function () {
     }
   ];
 
+  var userId = 'userId';
+
   it('should create domain', function (done) {
 
     var festivalDomain = new festival.Festival(
@@ -41,7 +43,8 @@ describe('festival domain test', function () {
       locations,
       publishedAt,
       createdAt,
-      updatedAt
+      updatedAt,
+      userId
     );
 
     should.exist(festivalDomain);
@@ -56,6 +59,7 @@ describe('festival domain test', function () {
     festivalDomain.updatedAt.should.be.equal(updatedAt);
     festivalDomain.duration.should.be.equal(duration);
     festivalDomain.locations.should.be.equal(locations);
+    festivalDomain.userId.should.be.equal(userId);
 
     done();
   });
@@ -75,6 +79,7 @@ describe('festival domain test', function () {
       .withUpdatedAt(updatedAt)
       .withDuration(duration)
       .withLocations(locations)
+      .withUserId(userId)
       .build();
 
     should.exist(festivalDomain);
@@ -89,6 +94,7 @@ describe('festival domain test', function () {
     festivalDomain.updatedAt.should.be.equal(updatedAt);
     festivalDomain.duration.should.be.equal(duration);
     festivalDomain.locations.should.be.equal(locations);
+    festivalDomain.userId.should.be.equal(userId);
 
     done();
   });
