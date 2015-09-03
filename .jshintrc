@@ -32,6 +32,6 @@
   "trailing":   true,
   "undef":      true,
   "unused":     true,
-  "maxlen":     100,
+  "maxlen":     150,
   "latedef":    true
 }
