@@ -11,6 +11,7 @@ describe('news functional test', function () {
     var json = {
       name: 'news-name',
       description: 'news-description',
+      status: 'CREATED',
       tags: ['news-tag01', 'news-tag02'],
       authors: [{name: 'author-name', organization: 'organization'}],
       images: [
@@ -23,6 +24,7 @@ describe('news functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .post(config.test.host + '/api/news')
@@ -30,6 +32,7 @@ describe('news functional test', function () {
       .expectStatus(201)
       .expectValue('name', json.name)
       .expectValue('description', json.description)
+      .expectValue('status', json.status)
       .expectValue('tags', json.tags)
       .expectValue('authors[0].name', json.authors[0].name)
       .expectValue('authors[0].organization', json.authors[0].organization)
@@ -63,6 +66,7 @@ describe('news functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .put(config.test.host + '/api/news/' + funcTest.newsId)
@@ -88,6 +92,7 @@ describe('news functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .get(config.test.host + '/api/news/' + funcTest.newsId)
@@ -111,6 +116,7 @@ describe('news functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .get(config.test.host + '/api/news')
@@ -126,25 +132,6 @@ describe('news functional test', function () {
 
         done();
 
-      });
-  });
-
-  it('should delete news for id', function (done) {
-
-    hippie()
-      .header('User-Agent', config.test.ua)
-      .json()
-      .header('Accept', config.test.accept)
-      .del(config.test.host + '/api/news/' + funcTest.newsId)
-      .expectStatus(204)
-      .end(function (err, res, body) {
-
-        if (err) {
-          console.warn(err, body);
-          throw err;
-        }
-
-        done();
       });
   });
 

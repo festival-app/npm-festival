@@ -15,7 +15,6 @@ describe('festival domain test', function () {
       url: 'http://'
     }
   ];
-  var publishedAt = 'publishedAt';
   var createdAt = 'createdAt';
   var updatedAt = 'updatedAt';
   var duration = {
@@ -41,7 +40,6 @@ describe('festival domain test', function () {
       images,
       duration,
       locations,
-      publishedAt,
       createdAt,
       updatedAt,
       userId
@@ -74,7 +72,6 @@ describe('festival domain test', function () {
       .withStatus(status)
       .withTags(tags)
       .withImages(images)
-      .withPublishedAt(publishedAt)
       .withCreatedAt(createdAt)
       .withUpdatedAt(updatedAt)
       .withDuration(duration)

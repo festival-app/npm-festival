@@ -22,6 +22,7 @@ describe('festivals places functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .post(config.test.host + '/api/festivals/' + funcTest.festivalId + '/places')
@@ -62,6 +63,7 @@ describe('festivals places functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .post(config.test.host + '/api/festivals/' + funcTest.festivalId + '/places')
@@ -103,6 +105,7 @@ describe('festivals places functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .put(config.test.host + '/api/festivals/' + funcTest.festivalId + '/places/' + funcTest.festivalPlaceId)
@@ -112,7 +115,7 @@ describe('festivals places functional test', function () {
       .expectValue('name', json.name)
       .expectBody(/createdAt/g)
       .expectBody(/updatedAt/g)
-      .end(function (err/*, res, body*/) {
+      .end(function (err, res, body) {
 
         if (err) {
           console.warn(err, body);
@@ -128,6 +131,7 @@ describe('festivals places functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .get(config.test.host + '/api/festivals/' + funcTest.festivalId + '/places/' + funcTest.festivalPlaceId)
@@ -135,7 +139,7 @@ describe('festivals places functional test', function () {
       .expectValue('id', funcTest.festivalPlaceId)
       .expectBody(/createdAt/g)
       .expectBody(/updatedAt/g)
-      .end(function (err/*, res, body*/) {
+      .end(function (err, res, body) {
 
         if (err) {
           console.warn(err, body);
@@ -151,32 +155,13 @@ describe('festivals places functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .get(config.test.host + '/api/festivals/' + funcTest.festivalId + '/places')
       .expectStatus(200)
       .expectBody(/total/g)
       .expectBody(/places/g)
-      .end(function (err/*, res, body*/) {
-
-        if (err) {
-          console.warn(err, body);
-          throw err;
-        }
-
-        done();
-
-      });
-  });
-
-  it('should delete festival places for id', function (done) {
-
-    hippie()
-      .header('User-Agent', config.test.ua)
-      .json()
-      .header('Accept', config.test.accept)
-      .del(config.test.host + '/api/festivals/' + funcTest.festivalId + '/places/' + funcTest.festivalPlaceIdParent)
-      .expectStatus(204)
       .end(function (err, res, body) {
 
         if (err) {
@@ -185,54 +170,9 @@ describe('festivals places functional test', function () {
         }
 
         done();
+
       });
   });
 
-
-  //it('should return not found for invalid user id', function (done) {
-  //
-  //  hippie()
-  //    .header('User-Agent', config.test.ua)
-  //    .header('x-auth-user-id', ANONYMOUS_USER_ID)
-  //    .json()
-  //    .header('Accept', config.test.accept)
-  //    .get(config.test.host + '/api/festivals/' + INVALID_USER_ID)
-  //    .expectStatus(404)
-  //    .expectValue('code', 'NotFoundError')
-  //    .expectValue('message', 'User not found')
-  //    .expectValue('userMessage', 'Nie znaleziono')
-  //    .end(function (err/*, res, body*/) {
-  //
-  //      if (err) {
-  //        console.warn(err, body);  //        throw err;
-  //      }
-  //
-  //      done();
-  //
-  //    });
-  //});
-  //
-  //it('should return error on create user without parameters', function (done) {
-  //
-  //  hippie()
-  //    .header('User-Agent', config.test.ua)
-  //    .header('x-auth-user-id', ANONYMOUS_USER_ID)
-  //    .json()
-  //    .header('Accept', config.test.accept)
-  //    .post(config.test.host + '/api/festivals')
-  //    .expectStatus(400)
-  //    .expectValue('code', 'BadRequestError')
-  //    .expectValue('message', 'name (string) is required')
-  //    .expectValue('userMessage', 'Przekazane dane są niepoprawne lub niepełne')
-  //    .end(function (err/*, res, body*/) {
-  //
-  //      if (err) {
-  //        console.warn(err, body);  //        throw err;
-  //      }
-  //
-  //      done();
-  //
-  //    });
-  //});
 
 });

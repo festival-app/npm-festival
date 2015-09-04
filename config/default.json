@@ -350,5 +350,18 @@
       ],
       "keepAlive": true
     }
+  },
+  "cache": {
+    "purge": {
+      "options": {
+        "hostname": "hostname",
+        "port": 443,
+        "path": "path",
+        "method": "PURGE",
+        "rejectUnauthorized": false,
+        "headers": {
+        }
+      }
+    }
   }
 }
