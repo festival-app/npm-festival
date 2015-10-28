@@ -1,29 +1,29 @@
 {
   "name": "festivals",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "All festivals in one place.",
   "main": "./lib/festivals.js",
   "dependencies": {
     "assert-plus": "^0.1.5",
-    "async": "^1.4.2",
+    "async": "^1.5.0",
     "config": "^1.16.0",
-    "elasticsearch": "^8.0.1",
-    "festivals-model": "festivals-platform/npm-festivals-model#466fd2f7980722469c47bd4e8753975044effc7c",
-    "firebase": "^2.2.9",
+    "elasticsearch": "^8.2.0",
+    "festivals-model": "0.1.9",
+    "firebase": "^2.3.1",
     "keen-js": "^3.2.7",
     "moment": "^2.10.6",
     "my-restify-api": "Zenedith/npm-my-restify-api#f79c698bfad002584d8c3359f7284594d0de1616",
-    "newrelic": "^1.22.0",
+    "newrelic": "^1.22.2",
     "node-uuid": "^1.4.3",
-    "tough-cookie": "^2.0.0",
-    "winston": "^1.0.1",
-    "winston-loggly": "^1.1.0"
+    "tough-cookie": "^2.2.0",
+    "winston": "^1.1.1",
+    "winston-loggly": "^1.2.0"
   },
   "devDependencies": {
-    "chai": "^3.2.0",
+    "chai": "^3.4.0",
     "hippie": "^0.4.0",
-    "istanbul": "^0.3.19",
-    "mocha": "^2.3.0",
+    "istanbul": "^0.4.0",
+    "mocha": "^2.3.3",
     "rewire": "^2.3.4"
   },
   "scripts": {
@@ -57,8 +57,8 @@
     "node": ">=0.10.0"
   },
   "readmeFilename": "README.md",
-  "_id": "festivals@0.1.1",
-  "_from": "festivals@^0.1.1",
+  "_id": "festivals@0.1.2",
+  "_from": "festivals@^0.1.2",
   "directories": {
     "test": "test"
   }
