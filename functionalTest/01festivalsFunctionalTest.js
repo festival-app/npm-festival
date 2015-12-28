@@ -14,6 +14,7 @@ describe('festivals functional test', function () {
       name: 'festival-name',
       description: 'festival-description',
       type: 'FANTASY',
+      status: 'CREATED',
       tags: ['festival-tag1', 'festival-tag2'],
       duration: {
         startAt: now.toISOString(),
@@ -45,6 +46,7 @@ describe('festivals functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .post(config.test.host + '/api/festivals')
@@ -53,6 +55,7 @@ describe('festivals functional test', function () {
       .expectValue('name', json.name)
       .expectValue('description', json.description)
       .expectValue('type', json.type)
+      .expectValue('status', json.status)
       .expectValue('tags', json.tags)
       .expectValue('mainImage.small', json.images[0].url)
       .expectValue('mainImage.medium', json.images[0].url)
@@ -89,6 +92,7 @@ describe('festivals functional test', function () {
       name: 'festival-name' + id,
       description: 'festival-description' + id,
       type: 'FANTASY',
+      status: 'CREATED',
       tags: ['festival-tag1' + id, 'festival-tag2' + id],
       duration: {
         startAt: now.toISOString(),
@@ -120,6 +124,7 @@ describe('festivals functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .put(config.test.host + '/api/festivals/' + funcTest.festivalId)
@@ -129,6 +134,7 @@ describe('festivals functional test', function () {
       .expectValue('name', json.name)
       .expectValue('description', json.description)
       .expectValue('type', json.type)
+      .expectValue('status', json.status)
       .expectValue('tags', json.tags)
       .expectValue('mainImage.small', json.images[0].url)
       .expectValue('mainImage.medium', json.images[0].url)
@@ -157,6 +163,7 @@ describe('festivals functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .get(config.test.host + '/api/festivals')
@@ -179,6 +186,7 @@ describe('festivals functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .get(config.test.host + '/api/festivals/' + funcTest.festivalId)

@@ -23,6 +23,7 @@ describe('news functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .post(config.test.host + '/api/festivals/' + funcTest.festivalId + '/news')
@@ -55,14 +56,13 @@ describe('news functional test', function () {
 
   it('should update festival news for id', function (done) {
 
-    var id = uuid.v4();
-
     var json = {
       name: 'updated-festival-' + funcTest.festivalId + '-news-name',
     };
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .put(config.test.host + '/api/festivals/' + funcTest.festivalId + '/news/' + funcTest.festivalNewsId)
@@ -88,6 +88,7 @@ describe('news functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .get(config.test.host + '/api/festivals/' + funcTest.festivalId + '/news/' + funcTest.festivalNewsId)
@@ -111,6 +112,7 @@ describe('news functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .get(config.test.host + '/api/festivals/' + funcTest.festivalId + '/news')
@@ -126,25 +128,6 @@ describe('news functional test', function () {
 
         done();
 
-      });
-  });
-
-  it('should delete news for id', function (done) {
-
-    hippie()
-      .header('User-Agent', config.test.ua)
-      .json()
-      .header('Accept', config.test.accept)
-      .del(config.test.host + '/api/festivals/' + funcTest.festivalId + '/news/' + funcTest.festivalNewsId)
-      .expectStatus(204)
-      .end(function (err, res, body) {
-
-        if (err) {
-          console.warn(err, body);
-          throw err;
-        }
-
-        done();
       });
   });
 

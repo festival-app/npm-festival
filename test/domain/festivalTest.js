@@ -15,7 +15,6 @@ describe('festival domain test', function () {
       url: 'http://'
     }
   ];
-  var publishedAt = 'publishedAt';
   var createdAt = 'createdAt';
   var updatedAt = 'updatedAt';
   var duration = {
@@ -26,6 +25,8 @@ describe('festival domain test', function () {
       street: 'street'
     }
   ];
+
+  var userId = 'userId';
 
   it('should create domain', function (done) {
 
@@ -39,9 +40,9 @@ describe('festival domain test', function () {
       images,
       duration,
       locations,
-      publishedAt,
       createdAt,
-      updatedAt
+      updatedAt,
+      userId
     );
 
     should.exist(festivalDomain);
@@ -56,6 +57,7 @@ describe('festival domain test', function () {
     festivalDomain.updatedAt.should.be.equal(updatedAt);
     festivalDomain.duration.should.be.equal(duration);
     festivalDomain.locations.should.be.equal(locations);
+    festivalDomain.userId.should.be.equal(userId);
 
     done();
   });
@@ -70,11 +72,11 @@ describe('festival domain test', function () {
       .withStatus(status)
       .withTags(tags)
       .withImages(images)
-      .withPublishedAt(publishedAt)
       .withCreatedAt(createdAt)
       .withUpdatedAt(updatedAt)
       .withDuration(duration)
       .withLocations(locations)
+      .withUserId(userId)
       .build();
 
     should.exist(festivalDomain);
@@ -89,6 +91,7 @@ describe('festival domain test', function () {
     festivalDomain.updatedAt.should.be.equal(updatedAt);
     festivalDomain.duration.should.be.equal(duration);
     festivalDomain.locations.should.be.equal(locations);
+    festivalDomain.userId.should.be.equal(userId);
 
     done();
   });

@@ -13,7 +13,7 @@ describe('festivals events functional test', function () {
     var json = {
       name: 'event-name',
       description: 'event-description',
-      status: 'INITIATED',
+      status: 'CREATED',
       tags: ['event-tag1', 'event-tag2'],
       duration: {
         startAt: now.toISOString(),
@@ -31,6 +31,7 @@ describe('festivals events functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .post(config.test.host + '/api/festivals/' + funcTest.festivalId + '/events')
@@ -73,7 +74,7 @@ describe('festivals events functional test', function () {
     var json = {
       name: 'event-name' + id,
       description: 'event-description' + id,
-      status: 'INITIATED',
+      status: 'CREATED',
       tags: ['event-tag1' + id, 'event-tag2' + id],
       duration: {
         startAt: now.toISOString(),
@@ -91,6 +92,7 @@ describe('festivals events functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .put(config.test.host + '/api/festivals/' + funcTest.festivalId + '/events/' + funcTest.festivalEventId)
@@ -127,6 +129,7 @@ describe('festivals events functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .get(config.test.host + '/api/festivals/' + funcTest.festivalId + '/events/' + funcTest.festivalEventId)
@@ -152,6 +155,7 @@ describe('festivals events functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .get(config.test.host + '/api/festivals/' + funcTest.festivalId + '/events')
@@ -169,70 +173,5 @@ describe('festivals events functional test', function () {
 
       });
   });
-
-  it('should delete festival places for id', function (done) {
-
-    hippie()
-      .header('User-Agent', config.test.ua)
-      .json()
-      .header('Accept', config.test.accept)
-      .del(config.test.host + '/api/festivals/' + funcTest.festivalId + '/events/' + funcTest.festivalEventId)
-      .expectStatus(204)
-      .end(function (err, res, body) {
-
-        if (err) {
-          console.warn(err, body);
-          throw err;
-        }
-
-        done();
-      });
-  });
-
-  //it('should return not found for invalid user id', function (done) {
-  //
-  //  hippie()
-  //    .header('User-Agent', config.test.ua)
-  //    .header('x-auth-user-id', ANONYMOUS_USER_ID)
-  //    .json()
-  //    .header('Accept', config.test.accept)
-  //    .get(config.test.host + '/api/festivals/' + INVALID_USER_ID)
-  //    .expectStatus(404)
-  //    .expectValue('code', 'NotFoundError')
-  //    .expectValue('message', 'User not found')
-  //    .expectValue('userMessage', 'Nie znaleziono')
-  //    .end(function (err, res, body) {
-  //
-  //      if (err) {
-  //        console.warn(err, body);  //        throw err;
-  //      }
-  //
-  //      done();
-  //
-  //    });
-  //});
-  //
-  //it('should return error on create user without parameters', function (done) {
-  //
-  //  hippie()
-  //    .header('User-Agent', config.test.ua)
-  //    .header('x-auth-user-id', ANONYMOUS_USER_ID)
-  //    .json()
-  //    .header('Accept', config.test.accept)
-  //    .post(config.test.host + '/api/festivals')
-  //    .expectStatus(400)
-  //    .expectValue('code', 'BadRequestError')
-  //    .expectValue('message', 'name (string) is required')
-  //    .expectValue('userMessage', 'Przekazane dane są niepoprawne lub niepełne')
-  //    .end(function (err, res, body) {
-  //
-  //      if (err) {
-  //        console.warn(err, body);  //        throw err;
-  //      }
-  //
-  //      done();
-  //
-  //    });
-  //});
 
 });

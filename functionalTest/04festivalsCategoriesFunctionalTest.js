@@ -8,10 +8,6 @@ describe('festivals categories functional test', function () {
 
   var categoryName = 'category-name-' + uuid.v4();
 
-  if (!funcTest.festivalId) {
-    funcTest.festivalId = '5bba1a77-d1c6-4f66-9884-04e2bf6c01dc';
-  }
-
   it('should create festival category (parent)', function (done) {
 
     var json = {
@@ -20,6 +16,7 @@ describe('festivals categories functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .post(config.test.host + '/api/festivals/' + funcTest.festivalId + '/categories')
@@ -52,6 +49,7 @@ describe('festivals categories functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .post(config.test.host + '/api/festivals/' + funcTest.festivalId + '/categories')
@@ -86,6 +84,7 @@ describe('festivals categories functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .put(config.test.host + '/api/festivals/' + funcTest.festivalId + '/categories/' + funcTest.festivalCategoryId)
@@ -111,6 +110,7 @@ describe('festivals categories functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .get(config.test.host + '/api/festivals/' + funcTest.festivalId + '/categories/' + funcTest.festivalCategoryId)
@@ -134,6 +134,7 @@ describe('festivals categories functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .get(config.test.host + '/api/festivals/' + funcTest.festivalId + '/categories')
@@ -156,6 +157,7 @@ describe('festivals categories functional test', function () {
 
     hippie()
       .header('User-Agent', config.test.ua)
+      .header('Authorization', 'Bearer ' + funcTest.token)
       .json()
       .header('Accept', config.test.accept)
       .get(config.test.host + '/api/festivals/' + funcTest.festivalId + '/categories?name=' + categoryName)
@@ -171,25 +173,6 @@ describe('festivals categories functional test', function () {
 
         done();
 
-      });
-  });
-
-  it('should delete festival category for id', function (done) {
-
-    hippie()
-      .header('User-Agent', config.test.ua)
-      .json()
-      .header('Accept', config.test.accept)
-      .del(config.test.host + '/api/festivals/' + funcTest.festivalId + '/categories/' + funcTest.festivalCategoryIdParent)
-      .expectStatus(204)
-      .end(function (err, res, body) {
-
-        if (err) {
-          console.warn(err, body);
-          throw err;
-        }
-
-        done();
       });
   });
 
