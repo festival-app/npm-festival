@@ -8,6 +8,23 @@
     "accept": "application/vnd.festivals.v1+json",
     "ua": "functional-test"
   },
+  "credentials": {
+    "user": "festivals.admin",
+    "password": "IAcjCsZgkzb5xo9kVAQX12o",
+    "clientId": "festivals-admin",
+    "clientSecret": "z7WycjBCPgNn6EofP1A0lsfCEBI563PqEXw",
+    "clientOptions": {
+      "hostname": "festivals.tech",
+      "port": 443,
+      "path": "/oauth/token",
+      "method": "POST",
+      "rejectUnauthorized": false,
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization" : "Basic ZmVzdGl2YWxzLWFkbWluOno3V3ljakJDUGdObjZFb2ZQMUEwbHNmQ0VCSTU2M1BxRVh3"
+      }
+    }
+  },
   "provider": {
     "selected": "fireabase",
     "selected2": "elasticsearch",
