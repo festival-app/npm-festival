@@ -10,3 +10,6 @@ test/
 *.ipr
 *.iws
 .idea
+release.sh
+config/runtime.json
+config/runtimes.json
