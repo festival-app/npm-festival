@@ -157,10 +157,7 @@ describe('elastic search provider test', function () {
       should.not.exist(err);
       should.exist(place);
 
-      place.id.should.be.equal(placeId);
-      place.name.should.be.equal(name);
-      place.openingTimes.should.be.equal(openingTimes);
-
+      place._id.should.be.equal(placeId);
       done();
     });
   });
@@ -204,17 +201,7 @@ describe('elastic search provider test', function () {
       should.not.exist(err);
       should.exist(event);
 
-      event.id.should.be.equal(eventId);
-      event.name.should.be.equal(name);
-      event.description.should.be.equal(description);
-      event.tags.should.be.equal(tags);
-      //event.images.should.be.equal(images);
-      event.duration.should.be.equal(duration);
-      event.place.should.be.equal(placeId);
-      event.category.should.be.equal(category);
-      event.createdAt.should.be.equal(createdAt);
-      event.updatedAt.should.be.equal(createdAt);
-
+      event._id.should.be.equal(eventId);
       done();
     });
   });
