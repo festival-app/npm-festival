@@ -11,7 +11,7 @@
     "festivals-model": "0.1.11",
     "firebase": "^2.4.0",
     "keen-js": "^3.4.0-rc2",
-    "moment": "^2.11.1",
+    "moment": "^2.11.2",
     "my-restify-api": "0.5.13",
     "newrelic": "^1.25.1",
     "node-uuid": "^1.4.7",
