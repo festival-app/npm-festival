@@ -1,30 +1,30 @@
 {
   "name": "festivals",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "description": "All festivals in one place.",
   "main": "./lib/festivals.js",
   "dependencies": {
-    "assert-plus": "^1.0.0",
-    "async": "^1.5.2",
-    "config": "^1.19.0",
-    "elasticsearch": "^10.1.3",
+    "assert-plus": "1.0.0",
+    "async": "1.5.2",
+    "config": "1.19.0",
+    "elasticsearch": "10.1.3",
     "festivals-model": "0.1.11",
-    "firebase": "^2.4.0",
-    "keen-js": "^3.4.0-rc2",
-    "moment": "^2.11.2",
+    "firebase": "2.4.1",
+    "keen-js": "3.4.0",
+    "moment": "2.11.2",
     "my-restify-api": "0.5.13",
-    "newrelic": "^1.25.1",
-    "node-uuid": "^1.4.7",
-    "tough-cookie": "^2.2.1",
-    "winston": "^2.1.1",
-    "winston-loggly": "^1.3.1"
+    "newrelic": "1.25.4",
+    "node-uuid": "1.4.7",
+    "tough-cookie": "2.2.1",
+    "winston": "2.2.0",
+    "winston-loggly": "1.3.1"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "hippie": "^0.4.0",
-    "istanbul": "^0.4.2",
-    "mocha": "^2.4.5",
-    "rewire": "^2.5.1"
+    "chai": "3.5.0",
+    "hippie": "0.4.0",
+    "istanbul": "0.4.2",
+    "mocha": "2.4.5",
+    "rewire": "2.5.1"
   },
   "scripts": {
     "prepublish": "npm prune",
@@ -54,11 +54,11 @@
   "license": "MIT",
   "homepage": "https://github.com/festivals-platform/npm-festivals",
   "engines": {
-    "node": ">=5.4.0"
+    "node": ">=5.6.0"
   },
   "readmeFilename": "README.md",
-  "_id": "festivals@0.1.5",
-  "_from": "festivals@^0.1.5",
+  "_id": "festivals@1.0.0",
+  "_from": "festivals@^1.0.0",
   "directories": {
     "test": "test"
   }

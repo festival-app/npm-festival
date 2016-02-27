@@ -27,6 +27,32 @@ npm install
 npm test
 ```
 
+## Dependencies
+
+- [assert-plus](https://github.com/mcavage/node-assert-plus): Extra assertions on top of node&#39;s assert module
+- [async](https://github.com/caolan/async): Higher-order functions and common patterns for asynchronous code
+- [config](https://github.com/lorenwest/node-config): Configuration control for production node deployments
+- [elasticsearch](https://github.com/elastic/elasticsearch-js): The official low-level Elasticsearch client for Node.js and the browser.
+- [festivals-model](https://github.com/festivals-tech/npm-festivals-model): Festivals app models.
+- [firebase](https://www.firebase.com/): Firebase library for Node.js
+- [keen-js](https://github.com/keen/keen-js): Keen-js
+- [moment](https://github.com/moment/moment): Parse, validate, manipulate, and display dates
+- [my-restify-api](https://github.com/Zenedith/npm-my-restify-api): My restify API backend
+- [newrelic](https://github.com/newrelic/node-newrelic): New Relic agent
+- [node-uuid](https://github.com/broofa/node-uuid): Rigorous implementation of RFC4122 (v1 and v4) UUIDs.
+- [tough-cookie](https://github.com/SalesforceEng/tough-cookie): RFC6265 Cookies and Cookie Jar for node.js
+- [winston](https://github.com/winstonjs/winston): A multi-transport async logging library for Node.js
+- [winston-loggly](https://github.com/indexzero/winston-loggly): A Loggly transport for winston
+
+## Dev Dependencies
+
+- [chai](https://github.com/chaijs/chai): BDD/TDD assertion library for node.js and the browser. Test framework agnostic.
+- [hippie](https://github.com/vesln/hippie): Simple end-to-end API testing
+- [istanbul](https://github.com/gotwarlost/istanbul): Yet another JS code coverage tool that computes statement, line, function and branch coverage with module loader hooks to transparently add coverage when running tests. Supports all JS coverage use cases including unit tests, server side functional tests
+- [mocha](https://github.com/mochajs/mocha): simple, flexible, fun test framework
+- [rewire](https://github.com/jhnns/rewire): Easy dependency injection for node.js unit testing
+
+
 ## Changelog
 
 [CHANGELOG](CHANGELOG.md)
@@ -35,7 +61,7 @@ npm test
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2015 Zenedith
+Copyright (c) 2015-2016 Zenedith
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
