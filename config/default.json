@@ -54,10 +54,6 @@
                   "index": "not_analyzed",
                   "type": "string"
                 },
-                "festival": {
-                  "index": "not_analyzed",
-                  "type": "string"
-                },
                 "name": {
                   "index": "not_analyzed",
                   "type": "string"
@@ -92,6 +88,10 @@
               "index": "not_analyzed",
               "type": "string"
             },
+            "status": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
             "tags": {
               "index": "not_analyzed",
               "type": "string"
@@ -103,6 +103,10 @@
             "updatedAt": {
               "format": "dateOptionalTime",
               "type": "date"
+            },
+            "userId": {
+              "index": "not_analyzed",
+              "type": "string"
             }
           }
         }
@@ -178,6 +182,10 @@
               "index": "not_analyzed",
               "type": "string"
             },
+            "publishedAt": {
+              "format": "dateOptionalTime",
+              "type": "date"
+            },
             "status": {
               "index": "not_analyzed",
               "type": "string"
@@ -198,42 +206,54 @@
       "index": "index-festivals",
       "type": "places",
       "mappings": {
-        "properties": {
-          "createdAt": {
-            "format": "dateOptionalTime",
-            "type": "date"
-          },
-          "festival": {
-            "index": "not_analyzed",
-            "type": "string"
-          },
-          "id": {
-            "index": "not_analyzed",
-            "type": "string"
-          },
-          "name": {
-            "index": "not_analyzed",
-            "type": "string"
-          },
-          "openingTimes": {
-            "properties": {
-              "finishAt": {
-                "format": "dateOptionalTime",
-                "type": "date"
-              },
-              "startAt": {
-                "format": "dateOptionalTime",
-                "type": "date"
+        "places": {
+          "properties": {
+            "coordinates": {
+              "properties": {
+                "lat": {
+                  "type": "double"
+                },
+                "lon": {
+                  "type": "double"
+                }
               }
+            },
+            "festival": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "createdAt": {
+              "format": "dateOptionalTime",
+              "type": "date"
+            },
+            "id": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "name": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "openingTimes": {
+              "properties": {
+                "finishAt": {
+                  "format": "dateOptionalTime",
+                  "type": "date"
+                },
+                "startAt": {
+                  "format": "dateOptionalTime",
+                  "type": "date"
+                }
+              }
+            },
+            "parent": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "updatedAt": {
+              "format": "dateOptionalTime",
+              "type": "date"
             }
-          },
-          "parent": {
-            "index": "not_analyzed",
-            "type": "string"
-          },
-          "updatedAt": {
-            "format": "dateOptionalTime",
-            "type": "date"
           }
         }
       }
@@ -283,6 +303,14 @@
               }
             },
             "name": {
+              "index": "not_analyzed",
+              "type": "string"
+            },
+            "publishedAt": {
+              "format": "dateOptionalTime",
+              "type": "date"
+            },
+            "status": {
               "index": "not_analyzed",
               "type": "string"
             },
