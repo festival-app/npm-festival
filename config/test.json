@@ -21,7 +21,7 @@
       "rejectUnauthorized": false,
       "headers": {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization" : "Basic ZmVzdGl2YWxzLWFkbWluOno3V3ljakJDUGdObjZFb2ZQMUEwbHNmQ0VCSTU2M1BxRVh3"
+        "Authorization": "Basic ZmVzdGl2YWxzLWFkbWluOno3V3ljakJDUGdObjZFb2ZQMUEwbHNmQ0VCSTU2M1BxRVh3"
       }
     }
   },
@@ -29,24 +29,29 @@
     "selected": "fireabase",
     "selected2": "elasticsearch",
     "firebase": {
-      "url": "https://festivals-travis.firebaseio.com"
-    },
-    "elasticsearch": {
-      "hosts": [
-        {
-          "protocol": "https",
-          "host": "festivals-3030631702.eu-west-1.bonsai.io",
-          "auth": "cw3kkac6zk:cjmvxi76p4",
-          "port": 443,
-          "weight": 1
-        }
-      ],
-      "sniffOnStart": false,
-      "sniffInterval": 0,
-      "requestTimeout": 5000,
-      "minSockets": 1,
-      "maxSockets": 11,
-      "keepAlive": true
+      "url": "https://festivals-travis.firebaseio.com",
+      "serviceAccount": {
+        "projectId": "festivals-travis",
+        "privateKey": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCjU6Cogu/Ai7wS\n1qhqxWI272T2di1Ht7R/juS6tSpFusEN+EM7MP+q7J3mfDJVH2JFLqSo/LeS6o79\nrUuCjqqKFXUIU8p32XuF2N3cKgnvMZBb0c34bNY8HG0XowbZkuH4EaBo57QCOjjD\newTWPRtndDyvnunN47ATs2PqP3kz4eZIzo3T59aIkygI8rUntr/pO+FusyTFd8pW\nIyrIH8S6XCGqO0tQXw7Hfxp4GWNpJfc5HE+mhnfL9RvPFgUg3uVXP0qGxdtR1JkV\noAgI0IKCzxG23k58TsAbmdw94VRarUYTvpyFv1+kDELuNPa9lYv0AgOWKWYsF9iL\nJcEPE+73AgMBAAECggEAJG/6zr1veZhzHAzRxAhHMhRUhPu2fGKKnU6mztSuGqJg\ngZpafXEgCOUDETGyFPWMefy+9Yhz+A3mWsf3qafkeivxUStIZ1aYzTKlxIGId9mp\n6CI1fm/hl8WLvRM86vtu+GYOUHko2rpcgZgHazh0za7L/y5H4Qwj8zE5YEBK7Pzk\njbyhndD3RhkLoKxP0Y7wI65FSy5f/stTo9p94n+dZLk+D0s1KeaeGJoNzz5KTsnS\nj4p8RfDlA4k57MUzfEJx479EoeB+6/aKkbJnjtl0C5DKqc0eUdQDDiwGuD3FEzHY\nAus62yJ1SWNjq85W6T3EX14c0MreFlQdm2UtR6tnQQKBgQDVfp2SVVRVsk1WCkgU\nK8pn2KNfGsvRzv153IrOaIKkbx0EkaTTXFaBxh40G/KCu4f6fc5U0TiGclHha6rQ\nB/PPKlv5FW0p6jYnzZ2UkBGuFkXe4L5caUkQYb1Ugyum0MhXu5owQf/bXGvriOWM\n6H9rl8piDrNLwpEoFISwWHpuVwKBgQDD2A4mk48xyE/6+I6SGoiHtrJwwhyH8Tgs\nzk076W+1o+s2yjrjXpRywWXUh9FWEzhOVcTMsHrfL4qnoKDVTBS88h/yBA16QryZ\n7uOPhEigwSAEg7sgVY0EGVZBTZ6hY1K+h/2FjxEMjjYGe6JS4qTiciFSO3XFyZhF\nAFd6+nzgYQKBgQDQWCPFrmgCyWIXWSlGJgX8mbm1Eh1dvrY2ujbrf6oediDHWKqV\naUMymfjXuX5Mfl4Q4bz9oL+c1Ot7JOso4NnZjej7hyFlCh+XcF0bogze6vV8r66V\n2FlpFzkAxJFQ1ebtVzL9bSsXE3ZuAMajYDEY+qSSVO48PMATcRKcVXwFOQKBgQCM\nATGkjEqK+TuMHBK4CfXep1ILYAlLebuB9H2sPeZZQPTO92V/08Zl/zIP7IRPd3AC\nODh3aBZ+5RrHWQKBWWFd7e2+cv07kOgJV4kguR2+pjGAaLfmlqI38vEBwD6N+1ZU\n1Rz9VNiIVEX0/n99p37eT17YzZ8VJVgQw/zF8rpBIQKBgHCaGPmQ9QXFY7JmrAIu\ng3ncR4LPTKmj5eZjIkH32doOxLlh15PbpkJ+pp41tAL1WTmHSjMK15a2Vnziy3Mh\nw4BYBusE07y4QY0FJQKff49zMIHiFksKjfI3PxoCbFt21XVqFlVun28i/c3FSq0B\nfYIX/PgE6are1u7qrtr/9OeO\n-----END PRIVATE KEY-----\n",
+        "clientEmail": "credentials@festivals-travis.iam.gserviceaccount.com"
+      },
+      "elasticsearch": {
+        "hosts": [
+          {
+            "protocol": "https",
+            "host": "festivals-3030631702.eu-west-1.bonsai.io",
+            "auth": "cw3kkac6zk:cjmvxi76p4",
+            "port": 443,
+            "weight": 1
+          }
+        ],
+        "sniffOnStart": false,
+        "sniffInterval": 0,
+        "requestTimeout": 5000,
+        "minSockets": 1,
+        "maxSockets": 11,
+        "keepAlive": true
+      }
     }
   }
 }
