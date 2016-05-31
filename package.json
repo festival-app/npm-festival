@@ -9,7 +9,7 @@
     "config": "1.20.4",
     "elasticsearch": "11.0.1",
     "festivals-model": "1.0.1",
-    "firebase": "2.4.2",
+    "firebase": "3.0.3",
     "keen-js": "3.4.1",
     "moment": "2.13.0",
     "my-restify-api": "0.6.1",
