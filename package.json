@@ -1,6 +1,6 @@
 {
   "name": "festivals",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "All festivals in one place.",
   "main": "./lib/festivals.js",
   "dependencies": {
@@ -55,8 +55,8 @@
     "node": ">=5.8.0"
   },
   "readmeFilename": "README.md",
-  "_id": "festivals@1.0.2",
-  "_from": "festivals@^1.0.2",
+  "_id": "festivals@1.1.0",
+  "_from": "festivals@^1.1.0",
   "directories": {
     "test": "test"
   }
