@@ -77,15 +77,6 @@ describe(providerName + ' provider test', function () {
       should.exist(festival);
 
       festival.id.should.be.equal(festivalId);
-      festival.name.should.be.equal(name);
-      festival.description.should.be.equal(description);
-      festival.tags.should.be.equal(tags);
-      festival.images.should.be.equal(images);
-      festival.createdAt.should.be.equal(createdAt);
-      festival.updatedAt.should.be.equal(createdAt);
-      festival.duration.should.be.equal(duration);
-      festival.locations.should.be.equal(locations);
-
       done();
     });
   });
@@ -114,11 +105,11 @@ describe(providerName + ' provider test', function () {
   it('should get festivals collection', function (done) {
 
     var searchFestivalsRequest = new SearchFestivalsRequestBuilder()
-      //.withName(name)
-      //.withCountry(country)
-      //.withStartAt(startAt)
-      //.withLimit(limit)
-      //.withOffset(offset)
+    //.withName(name)
+    //.withCountry(country)
+    //.withStartAt(startAt)
+    //.withLimit(limit)
+    //.withOffset(offset)
       .build();
 
     provider.getFestivals(searchFestivalsRequest, function (err, events) {
@@ -231,13 +222,13 @@ describe(providerName + ' provider test', function () {
   it('should get festival events collection', function (done) {
 
     var searchFestivalEventsRequest = new SearchFestivalEventsRequestBuilder()
-      //.withName(name)
-      //.withPlace(place)
-      //.withStartAt(startAt)
-      //.withFinishAt(finishAt)
-      //.withCategory(category)
-      //.withLimit(limit)
-      //.withOffset(offset)
+    //.withName(name)
+    //.withPlace(place)
+    //.withStartAt(startAt)
+    //.withFinishAt(finishAt)
+    //.withCategory(category)
+    //.withLimit(limit)
+    //.withOffset(offset)
       .build();
 
     provider.getFestivalEvents(festivalId, searchFestivalEventsRequest, function (err, events) {

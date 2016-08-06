@@ -1,6 +1,6 @@
 {
   "name": "festivals",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "All festivals in one place.",
   "main": "./lib/festivals.js",
   "dependencies": {
@@ -8,7 +8,7 @@
     "async": "2.0.1",
     "config": "1.21.0",
     "elasticsearch": "11.0.1",
-    "festivals-model": "1.0.1",
+    "festivals-model": "1.1.1",
     "firebase": "3.2.1",
     "keen-js": "3.4.1",
     "moment": "2.14.1",
@@ -55,8 +55,8 @@
     "node": ">=6.2.0"
   },
   "readmeFilename": "README.md",
-  "_id": "festivals@1.1.0",
-  "_from": "festivals@^1.1.0",
+  "_id": "festivals@1.1.1",
+  "_from": "festivals@^1.1.1",
   "directories": {
     "test": "test"
   }
