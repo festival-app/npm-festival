@@ -1,29 +1,9 @@
 {
   "test": {
-    "host1": "http://146.185.159.209",
-    "host2": "http://127.0.0.1:2997",
-    "host": "http://127.0.0.1:3000",
-    "host4": "https://festivals-app.herokuapp.com",
-    "host5": "https://festivals-platform.herokuapp.com",
+    "host": "https://festivals.tech",
+    "host2": "http://127.0.0.1:3000",
     "accept": "application/vnd.festivals.v1+json",
     "ua": "functional-test"
-  },
-  "credentials": {
-    "user": "festivals.admin",
-    "password": "IAcjCsZgkzb5xo9kVAQX12o",
-    "clientId": "festivals-admin",
-    "clientSecret": "z7WycjBCPgNn6EofP1A0lsfCEBI563PqEXw",
-    "clientOptions": {
-      "hostname": "festivals.tech",
-      "port": 443,
-      "path": "/oauth/token",
-      "method": "POST",
-      "rejectUnauthorized": false,
-      "headers": {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Basic ZmVzdGl2YWxzLWFkbWluOno3V3ljakJDUGdObjZFb2ZQMUEwbHNmQ0VCSTU2M1BxRVh3"
-      }
-    }
   },
   "provider": {
     "selected": "fireabase",

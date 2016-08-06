@@ -13,3 +13,4 @@ test/
 release.sh
 config/runtime.json
 config/runtimes.json
+config/test.json
