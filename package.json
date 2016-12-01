@@ -9,7 +9,7 @@
     "config": "1.24.0",
     "elasticsearch": "12.1.0",
     "festivals-model": "1.1.1",
-    "firebase": "3.6.1",
+    "firebase": "3.6.2",
     "keen-js": "3.4.1",
     "moment": "2.17.0",
     "my-restify-api": "0.6.3",
@@ -22,7 +22,7 @@
     "chai": "3.5.0",
     "hippie": "0.5.1",
     "istanbul": "0.4.5",
-    "mocha": "3.1.2"
+    "mocha": "3.2.0"
   },
   "scripts": {
     "prepublish": "npm prune",
