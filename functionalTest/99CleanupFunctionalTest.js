@@ -2,7 +2,7 @@ var funcTest = require('./initFunctionalTests');
 var config = require('config');
 var hippie = require('hippie');
 var moment = require('moment');
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 
 describe('festivals delete functional test', function () {
 

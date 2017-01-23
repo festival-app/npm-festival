@@ -1,5 +1,5 @@
 var config = require('config');
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 var moment = require('moment');
 var chai = require('chai');
 var should = chai.should();
