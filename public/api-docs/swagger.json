@@ -195,7 +195,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "news.id",
             "in": "path",
             "description": "News id",
             "required": true,
@@ -230,7 +230,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "news.id",
             "in": "path",
             "description": "News id",
             "required": true,
@@ -274,7 +274,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "news.id",
             "in": "path",
             "description": "News id",
             "required": true,
@@ -2099,8 +2099,7 @@
           }
         },
         "coordinates": {
-          "$ref": "#/definitions/CoordinatesResponse",
-          "description": "Coordinates"
+          "$ref": "#/definitions/CoordinatesResponse"
         }
       },
       "description": "Festival response",
@@ -2146,8 +2145,7 @@
           }
         },
         "coordinates": {
-          "$ref": "#/definitions/CoordinatesRequest",
-          "description": "Coordinates"
+          "$ref": "#/definitions/CoordinatesRequest"
         }
       },
       "description": "Festival response",
@@ -2218,12 +2216,10 @@
           }
         },
         "coordinates": {
-          "$ref": "#/definitions/CoordinatesResponse",
-          "description": "Coordinates"
+          "$ref": "#/definitions/CoordinatesResponse"
         },
         "mainImage": {
-          "$ref": "#/definitions/MainImageResponse",
-          "description": "Event main image"
+          "$ref": "#/definitions/MainImageResponse"
         },
         "createdAt": {
           "type": "string",
@@ -2262,8 +2258,7 @@
           }
         },
         "coordinates": {
-          "$ref": "#/definitions/CoordinatesRequest",
-          "description": "Coordinates"
+          "$ref": "#/definitions/CoordinatesRequest"
         },
         "images": {
           "type": "array",
@@ -2306,8 +2301,7 @@
           }
         },
         "coordinates": {
-          "$ref": "#/definitions/CoordinatesResponse",
-          "description": "Coordinates"
+          "$ref": "#/definitions/CoordinatesResponse"
         }
       },
       "description": "Festival response",
@@ -2435,8 +2429,7 @@
           "description": "Event images"
         },
         "duration": {
-          "$ref": "#/definitions/DurationRequest",
-          "description": "Event duration"
+          "$ref": "#/definitions/DurationRequest"
         },
         "place": {
           "type": "string",
@@ -2496,20 +2489,16 @@
           ]
         },
         "mainImage": {
-          "$ref": "#/definitions/MainImageResponse",
-          "description": "Event main image"
+          "$ref": "#/definitions/MainImageResponse"
         },
         "duration": {
-          "$ref": "#/definitions/DurationResponse",
-          "description": "Event duration"
+          "$ref": "#/definitions/DurationResponse"
         },
         "place": {
-          "$ref": "#/definitions/EventPlaceResponse",
-          "description": "Event place"
+          "$ref": "#/definitions/EventPlaceResponse"
         },
         "category": {
-          "$ref": "#/definitions/EventCategoryResponse",
-          "description": "Event category"
+          "$ref": "#/definitions/EventCategoryResponse"
         },
         "authors": {
           "type": "array",
@@ -2584,12 +2573,10 @@
           "description": "Festival tags"
         },
         "mainImage": {
-          "$ref": "#/definitions/MainImageResponse",
-          "description": "Festival main image"
+          "$ref": "#/definitions/MainImageResponse"
         },
         "duration": {
-          "$ref": "#/definitions/DurationResponse",
-          "description": "Festival duration"
+          "$ref": "#/definitions/DurationResponse"
         },
         "locations": {
           "type": "array",
@@ -2670,8 +2657,7 @@
           "description": "Festival images"
         },
         "duration": {
-          "$ref": "#/definitions/DurationRequest",
-          "description": "Festival duration"
+          "$ref": "#/definitions/DurationRequest"
         },
         "locations": {
           "type": "array",
@@ -2791,8 +2777,7 @@
           ]
         },
         "mainImage": {
-          "$ref": "#/definitions/MainImageResponse",
-          "description": "Main image"
+          "$ref": "#/definitions/MainImageResponse"
         },
         "authors": {
           "type": "array",

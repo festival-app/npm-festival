@@ -1,4 +1,4 @@
-swagger: "2.0"
+swagger: '2.0'
 host: festivals.tech
 basePath: /api
 info:
@@ -24,7 +24,7 @@ produces:
   - application/vnd.festivals.v1+xml
 security:
   - oauth2token:
-    - public
+      - public
 paths:
   /news:
     get:
@@ -37,7 +37,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - news:get
+            - 'news:get'
       parameters:
         - name: name
           description: name
@@ -71,10 +71,10 @@ paths:
           type: string
           in: query
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/NewsCollectionResponse"
+            $ref: '#/definitions/NewsCollectionResponse'
     post:
       tags:
         - news
@@ -87,30 +87,30 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - news:create
+            - 'news:create'
       parameters:
         - in: body
           name: newsRequest
           description: News object
           required: true
           schema:
-            $ref: "#/definitions/NewsRequest"
+            $ref: '#/definitions/NewsRequest'
       responses:
-        "201":
+        '201':
           description: successful operation
           schema:
-            $ref: "#/definitions/NewsResponse"
-        "400":
+            $ref: '#/definitions/NewsResponse'
+        '400':
           description: Bad request
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "406":
+        '406':
           description: The request you made is not acceptable
-        "422":
+        '422':
           description: Invalid parameter value
-  "/news/{news.id}":
+  '/news/{news.id}':
     get:
       tags:
         - news
@@ -121,19 +121,19 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - news:get
+            - 'news:get'
       parameters:
-        - name: id
+        - name: news.id
           in: path
           description: News id
           required: true
           type: string
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/NewsResponse"
-        "404":
+            $ref: '#/definitions/NewsResponse'
+        '404':
           description: News not found
     delete:
       tags:
@@ -143,21 +143,21 @@ paths:
       operationId: deleteNews
       security:
         - oauth2token:
-          - news:delete
+            - 'news:delete'
       parameters:
-        - name: id
+        - name: news.id
           in: path
           description: News id
           required: true
           type: string
       responses:
-        "204":
+        '204':
           description: successful operation
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: News not found
     put:
       tags:
@@ -171,9 +171,9 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - news:update
+            - 'news:update'
       parameters:
-        - name: id
+        - name: news.id
           in: path
           description: News id
           required: true
@@ -183,23 +183,23 @@ paths:
           description: News object
           required: true
           schema:
-            $ref: "#/definitions/NewsRequest"
+            $ref: '#/definitions/NewsRequest'
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/NewsResponse"
-        "400":
+            $ref: '#/definitions/NewsResponse'
+        '400':
           description: Bad request
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: News not found
-        "406":
+        '406':
           description: The request you made is not acceptable
-        "422":
+        '422':
           description: Invalid parameter value
   /festivals:
     get:
@@ -212,7 +212,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - festivals:get
+            - 'festivals:get'
       parameters:
         - name: name
           description: name
@@ -291,10 +291,10 @@ paths:
           type: string
           in: query
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/FestivalsCollectionResponse"
+            $ref: '#/definitions/FestivalsCollectionResponse'
     post:
       tags:
         - festivals
@@ -307,30 +307,30 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - festivals:create
+            - 'festivals:create'
       parameters:
         - in: body
           name: festivalRequest
           description: Festival object
           required: true
           schema:
-            $ref: "#/definitions/FestivalRequest"
+            $ref: '#/definitions/FestivalRequest'
       responses:
-        "201":
+        '201':
           description: successful operation
           schema:
-            $ref: "#/definitions/FestivalResponse"
-        "400":
+            $ref: '#/definitions/FestivalResponse'
+        '400':
           description: Bad request
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "406":
+        '406':
           description: The request you made is not acceptable
-        "422":
+        '422':
           description: Invalid parameter value
-  "/festivals/{id}":
+  '/festivals/{id}':
     get:
       tags:
         - festivals
@@ -341,7 +341,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - festivals:get
+            - 'festivals:get'
       parameters:
         - name: id
           in: path
@@ -349,11 +349,11 @@ paths:
           required: true
           type: string
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/FestivalResponse"
-        "404":
+            $ref: '#/definitions/FestivalResponse'
+        '404':
           description: Festival not found
     delete:
       tags:
@@ -363,7 +363,7 @@ paths:
       operationId: deleteFestival
       security:
         - oauth2token:
-          - festivals:delete
+            - 'festivals:delete'
       parameters:
         - name: id
           in: path
@@ -371,13 +371,13 @@ paths:
           required: true
           type: string
       responses:
-        "204":
+        '204':
           description: successful operation
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
     put:
       tags:
@@ -391,7 +391,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - festivals:update
+            - 'festivals:update'
       parameters:
         - name: id
           in: path
@@ -403,25 +403,25 @@ paths:
           description: Festival object
           required: true
           schema:
-            $ref: "#/definitions/FestivalRequest"
+            $ref: '#/definitions/FestivalRequest'
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/FestivalResponse"
-        "400":
+            $ref: '#/definitions/FestivalResponse'
+        '400':
           description: Bad request
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Festival not found
-        "406":
+        '406':
           description: The request you made is not acceptable
-        "422":
+        '422':
           description: Invalid parameter value
-  "/festivals/{id}/events":
+  '/festivals/{id}/events':
     get:
       tags:
         - festivals-events
@@ -432,7 +432,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - events:get
+            - 'events:get'
       parameters:
         - name: id
           in: path
@@ -501,11 +501,11 @@ paths:
           type: string
           in: query
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/EventsCollectionResponse"
-        "404":
+            $ref: '#/definitions/EventsCollectionResponse'
+        '404':
           description: Not found
     post:
       tags:
@@ -519,7 +519,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - events:create
+            - 'events:create'
       parameters:
         - name: id
           in: path
@@ -531,25 +531,25 @@ paths:
           description: Festival event object
           required: true
           schema:
-            $ref: "#/definitions/EventRequest"
+            $ref: '#/definitions/EventRequest'
       responses:
-        "201":
+        '201':
           description: successful operation
           schema:
-            $ref: "#/definitions/EventResponse"
-        "400":
+            $ref: '#/definitions/EventResponse'
+        '400':
           description: Bad request
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Festival not found
-        "406":
+        '406':
           description: The request you made is not acceptable
-        "422":
+        '422':
           description: Invalid parameter value
-  "/festivals/{id}/events/{event.id}":
+  '/festivals/{id}/events/{event.id}':
     get:
       tags:
         - festivals-events
@@ -560,7 +560,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - events:get
+            - 'events:get'
       parameters:
         - name: id
           in: path
@@ -573,10 +573,10 @@ paths:
           required: true
           type: string
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/EventResponse"
+            $ref: '#/definitions/EventResponse'
     delete:
       tags:
         - festivals-events
@@ -585,7 +585,7 @@ paths:
       operationId: deleteFestivalEvent
       security:
         - oauth2token:
-          - events:delete
+            - 'events:delete'
       parameters:
         - name: id
           in: path
@@ -598,13 +598,13 @@ paths:
           required: true
           type: string
       responses:
-        "204":
+        '204':
           description: successful operation
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
     put:
       tags:
@@ -618,7 +618,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - events:update
+            - 'events:update'
       parameters:
         - name: id
           in: path
@@ -635,23 +635,23 @@ paths:
           description: Festival event object
           required: true
           schema:
-            $ref: "#/definitions/EventRequest"
+            $ref: '#/definitions/EventRequest'
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/EventResponse"
-        "400":
+            $ref: '#/definitions/EventResponse'
+        '400':
           description: Bad request
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "406":
+        '406':
           description: The request you made is not acceptable
-        "422":
+        '422':
           description: Invalid parameter value
-  "/festivals/{id}/categories":
+  '/festivals/{id}/categories':
     get:
       tags:
         - festivals-categories
@@ -662,7 +662,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - categories:get
+            - 'categories:get'
       parameters:
         - name: id
           in: path
@@ -701,11 +701,11 @@ paths:
           type: string
           in: query
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/CategoriesCollectionResponse"
-        "404":
+            $ref: '#/definitions/CategoriesCollectionResponse'
+        '404':
           description: Festival not found
     post:
       tags:
@@ -719,7 +719,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - categories:create
+            - 'categories:create'
       parameters:
         - name: id
           in: path
@@ -731,25 +731,25 @@ paths:
           description: Festival category object
           required: true
           schema:
-            $ref: "#/definitions/CategoryRequest"
+            $ref: '#/definitions/CategoryRequest'
       responses:
-        "201":
+        '201':
           description: successful operation
           schema:
-            $ref: "#/definitions/CategoryResponse"
-        "400":
+            $ref: '#/definitions/CategoryResponse'
+        '400':
           description: Bad request
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Festival not found
-        "406":
+        '406':
           description: The request you made is not acceptable
-        "422":
+        '422':
           description: Invalid parameter value
-  "/festivals/{id}/categories/{category.id}":
+  '/festivals/{id}/categories/{category.id}':
     get:
       tags:
         - festivals-categories
@@ -760,7 +760,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - categories:get
+            - 'categories:get'
       parameters:
         - name: id
           in: path
@@ -773,11 +773,11 @@ paths:
           required: true
           type: string
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/CategoryResponse"
-        "404":
+            $ref: '#/definitions/CategoryResponse'
+        '404':
           description: Not found
     delete:
       tags:
@@ -787,7 +787,7 @@ paths:
       operationId: deleteFestivalCategory
       security:
         - oauth2token:
-          - categories:delete
+            - 'categories:delete'
       parameters:
         - name: id
           in: path
@@ -800,13 +800,13 @@ paths:
           required: true
           type: string
       responses:
-        "204":
+        '204':
           description: successful operation
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
     put:
       tags:
@@ -820,7 +820,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - categories:update
+            - 'categories:update'
       parameters:
         - name: id
           in: path
@@ -837,25 +837,25 @@ paths:
           description: Festival category object
           required: true
           schema:
-            $ref: "#/definitions/CategoryRequest"
+            $ref: '#/definitions/CategoryRequest'
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/CategoryResponse"
-        "400":
+            $ref: '#/definitions/CategoryResponse'
+        '400':
           description: Bad request
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "406":
+        '406':
           description: The request you made is not acceptable
-        "422":
+        '422':
           description: Invalid parameter value
-  "/festivals/{id}/places":
+  '/festivals/{id}/places':
     get:
       tags:
         - festivals-places
@@ -866,7 +866,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - places:get
+            - 'places:get'
       parameters:
         - name: id
           in: path
@@ -905,11 +905,11 @@ paths:
           type: string
           in: query
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/PlacesCollectionResponse"
-        "404":
+            $ref: '#/definitions/PlacesCollectionResponse'
+        '404':
           description: Festival not found
     post:
       tags:
@@ -923,7 +923,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - places:create
+            - 'places:create'
       parameters:
         - name: id
           in: path
@@ -935,25 +935,25 @@ paths:
           description: Festival place object
           required: true
           schema:
-            $ref: "#/definitions/PlaceRequest"
+            $ref: '#/definitions/PlaceRequest'
       responses:
-        "201":
+        '201':
           description: successful operation
           schema:
-            $ref: "#/definitions/PlaceResponse"
-        "400":
+            $ref: '#/definitions/PlaceResponse'
+        '400':
           description: Bad request
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "406":
+        '406':
           description: The request you made is not acceptable
-        "422":
+        '422':
           description: Invalid parameter value
-  "/festivals/{id}/places/{place.id}":
+  '/festivals/{id}/places/{place.id}':
     get:
       tags:
         - festivals-places
@@ -964,7 +964,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - places:get
+            - 'places:get'
       parameters:
         - name: id
           in: path
@@ -977,11 +977,11 @@ paths:
           required: true
           type: string
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/PlaceResponse"
-        "404":
+            $ref: '#/definitions/PlaceResponse'
+        '404':
           description: Festival not found
     delete:
       tags:
@@ -991,7 +991,7 @@ paths:
       operationId: deleteFestivalPlace
       security:
         - oauth2token:
-          - places:delete
+            - 'places:delete'
       parameters:
         - name: id
           in: path
@@ -1004,13 +1004,13 @@ paths:
           required: true
           type: string
       responses:
-        "204":
+        '204':
           description: successful operation
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
     put:
       tags:
@@ -1024,7 +1024,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - places:update
+            - 'places:update'
       parameters:
         - name: id
           in: path
@@ -1041,25 +1041,25 @@ paths:
           description: Festival place object
           required: true
           schema:
-            $ref: "#/definitions/PlaceRequest"
+            $ref: '#/definitions/PlaceRequest'
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/PlaceResponse"
-        "400":
+            $ref: '#/definitions/PlaceResponse'
+        '400':
           description: Bad request
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "406":
+        '406':
           description: The request you made is not acceptable
-        "422":
+        '422':
           description: Invalid parameter value
-  "/festivals/{id}/news":
+  '/festivals/{id}/news':
     get:
       tags:
         - festivals-news
@@ -1070,7 +1070,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - news:get
+            - 'news:get'
       parameters:
         - name: id
           in: path
@@ -1104,10 +1104,10 @@ paths:
           type: string
           in: query
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/NewsCollectionResponse"
+            $ref: '#/definitions/NewsCollectionResponse'
     post:
       tags:
         - festivals-news
@@ -1120,7 +1120,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - news:create
+            - 'news:create'
       parameters:
         - name: id
           in: path
@@ -1132,23 +1132,23 @@ paths:
           description: News object
           required: true
           schema:
-            $ref: "#/definitions/NewsRequest"
+            $ref: '#/definitions/NewsRequest'
       responses:
-        "201":
+        '201':
           description: successful operation
           schema:
-            $ref: "#/definitions/NewsResponse"
-        "400":
+            $ref: '#/definitions/NewsResponse'
+        '400':
           description: Bad request
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "406":
+        '406':
           description: The request you made is not acceptable
-        "422":
+        '422':
           description: Invalid parameter value
-  "/festivals/{id}/news/{news.id}":
+  '/festivals/{id}/news/{news.id}':
     get:
       tags:
         - festivals-news
@@ -1159,7 +1159,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - news:get
+            - 'news:get'
       parameters:
         - name: id
           in: path
@@ -1172,11 +1172,11 @@ paths:
           required: true
           type: string
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/NewsResponse"
-        "404":
+            $ref: '#/definitions/NewsResponse'
+        '404':
           description: News not found
     delete:
       tags:
@@ -1186,7 +1186,7 @@ paths:
       operationId: deleteFestivalNews
       security:
         - oauth2token:
-          - news:delete
+            - 'news:delete'
       parameters:
         - name: id
           in: path
@@ -1199,13 +1199,13 @@ paths:
           required: true
           type: string
       responses:
-        "204":
+        '204':
           description: successful operation
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: News not found
     put:
       tags:
@@ -1219,7 +1219,7 @@ paths:
         - application/vnd.festivals.v1+json
       security:
         - oauth2token:
-          - news:update
+            - 'news:update'
       parameters:
         - name: id
           in: path
@@ -1236,51 +1236,51 @@ paths:
           description: News object
           required: true
           schema:
-            $ref: "#/definitions/NewsRequest"
+            $ref: '#/definitions/NewsRequest'
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/NewsResponse"
-        "400":
+            $ref: '#/definitions/NewsResponse'
+        '400':
           description: Bad request
-        "401":
+        '401':
           description: Unauthorized
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: News not found
-        "406":
+        '406':
           description: The request you made is not acceptable
-        "422":
+        '422':
           description: Invalid parameter value
 securityDefinitions:
   oauth2token:
     type: oauth2
     flow: implicit
-    authorizationUrl: https://vehicle-history.io/oauth/authorization
+    authorizationUrl: 'https://vehicle-history.io/oauth/authorization'
     scopes:
       public: public API scope
-      news:update: permission to update news
-      news:delete: permission to delete news
-      news:get: permission to get news
-      news:create: permission to create news
-      places:update: permission to update places
-      places:delete: permission to delete places
-      places:get: permission to get places
-      places:create: permission to create places
-      categories:update: permission to update categories
-      categories:delete: permission to delete categories
-      categories:get: permission to get categories
-      categories:create: permission to create categories
-      events:update: permission to update events
-      events:delete: permission to delete events
-      events:get: permission to get events
-      events:create: permission to create events
-      festivals:update: permission to update festivals
-      festivals:delete: permission to delete festivals
-      festivals:get: permission to get festivals
-      festivals:create: permission to create festivals
+      'news:update': permission to update news
+      'news:delete': permission to delete news
+      'news:get': permission to get news
+      'news:create': permission to create news
+      'places:update': permission to update places
+      'places:delete': permission to delete places
+      'places:get': permission to get places
+      'places:create': permission to create places
+      'categories:update': permission to update categories
+      'categories:delete': permission to delete categories
+      'categories:get': permission to get categories
+      'categories:create': permission to create categories
+      'events:update': permission to update events
+      'events:delete': permission to delete events
+      'events:get': permission to get events
+      'events:create': permission to create events
+      'festivals:update': permission to update festivals
+      'festivals:delete': permission to delete festivals
+      'festivals:get': permission to get festivals
+      'festivals:create': permission to create festivals
 definitions:
   CoordinatesRequest:
     properties:
@@ -1386,10 +1386,9 @@ definitions:
         type: array
         description: Location opening times
         items:
-          $ref: "#/definitions/DurationResponse"
+          $ref: '#/definitions/DurationResponse'
       coordinates:
-        $ref: "#/definitions/CoordinatesResponse"
-        description: Coordinates
+        $ref: '#/definitions/CoordinatesResponse'
     description: Festival response
     required:
       - name
@@ -1421,10 +1420,9 @@ definitions:
         type: array
         description: Location opening times
         items:
-          $ref: "#/definitions/DurationRequest"
+          $ref: '#/definitions/DurationRequest'
       coordinates:
-        $ref: "#/definitions/CoordinatesRequest"
-        description: Coordinates
+        $ref: '#/definitions/CoordinatesRequest'
     description: Festival response
     required:
       - name
@@ -1473,13 +1471,11 @@ definitions:
         type: array
         description: Festival place opening times
         items:
-          $ref: "#/definitions/DurationResponse"
+          $ref: '#/definitions/DurationResponse'
       coordinates:
-        $ref: "#/definitions/CoordinatesResponse"
-        description: Coordinates
+        $ref: '#/definitions/CoordinatesResponse'
       mainImage:
-        $ref: "#/definitions/MainImageResponse"
-        description: Event main image
+        $ref: '#/definitions/MainImageResponse'
       createdAt:
         type: string
         description: Festival place createdAt
@@ -1506,14 +1502,13 @@ definitions:
         type: array
         description: Festival place opening times
         items:
-          $ref: "#/definitions/DurationRequest"
+          $ref: '#/definitions/DurationRequest'
       coordinates:
-        $ref: "#/definitions/CoordinatesRequest"
-        description: Coordinates
+        $ref: '#/definitions/CoordinatesRequest'
       images:
         type: array
         items:
-          $ref: "#/definitions/ImageRequest"
+          $ref: '#/definitions/ImageRequest'
         description: Images
     description: Festival response
     required:
@@ -1533,15 +1528,14 @@ definitions:
         type: array
         description: Place breadcrumbs
         items:
-          $ref: "#/definitions/PlaceResponse"
+          $ref: '#/definitions/PlaceResponse'
       openingTimes:
         type: array
         description: Place opening times
         items:
-          $ref: "#/definitions/DurationResponse"
+          $ref: '#/definitions/DurationResponse'
       coordinates:
-        $ref: "#/definitions/CoordinatesResponse"
-        description: Coordinates
+        $ref: '#/definitions/CoordinatesResponse'
     description: Festival response
     required:
       - id
@@ -1596,7 +1590,7 @@ definitions:
         type: array
         description: Event category breadcrumbs
         items:
-          $ref: "#/definitions/CategoryResponse"
+          $ref: '#/definitions/CategoryResponse'
     description: Festival category response
     required:
       - id
@@ -1632,11 +1626,10 @@ definitions:
       images:
         type: array
         items:
-          $ref: "#/definitions/ImageRequest"
+          $ref: '#/definitions/ImageRequest'
         description: Event images
       duration:
-        $ref: "#/definitions/DurationRequest"
-        description: Event duration
+        $ref: '#/definitions/DurationRequest'
       place:
         type: string
         description: Event place
@@ -1646,7 +1639,7 @@ definitions:
       authors:
         type: array
         items:
-          $ref: "#/definitions/AuthorRequest"
+          $ref: '#/definitions/AuthorRequest'
         description: Event authors
     description: Event request
     required:
@@ -1681,21 +1674,17 @@ definitions:
           - CANCELED
           - MOVED
       mainImage:
-        $ref: "#/definitions/MainImageResponse"
-        description: Event main image
+        $ref: '#/definitions/MainImageResponse'
       duration:
-        $ref: "#/definitions/DurationResponse"
-        description: Event duration
+        $ref: '#/definitions/DurationResponse'
       place:
-        $ref: "#/definitions/EventPlaceResponse"
-        description: Event place
+        $ref: '#/definitions/EventPlaceResponse'
       category:
-        $ref: "#/definitions/EventCategoryResponse"
-        description: Event category
+        $ref: '#/definitions/EventCategoryResponse'
       authors:
         type: array
         items:
-          $ref: "#/definitions/AuthorResponse"
+          $ref: '#/definitions/AuthorResponse'
         description: Event authors
       publishedAt:
         type: string
@@ -1748,16 +1737,14 @@ definitions:
           type: string
         description: Festival tags
       mainImage:
-        $ref: "#/definitions/MainImageResponse"
-        description: Festival main image
+        $ref: '#/definitions/MainImageResponse'
       duration:
-        $ref: "#/definitions/DurationResponse"
-        description: Festival duration
+        $ref: '#/definitions/DurationResponse'
       locations:
         type: array
         description: Festival locations
         items:
-          $ref: "#/definitions/LocationResponse"
+          $ref: '#/definitions/LocationResponse'
       publishedAt:
         type: string
         description: Festival publishedAt
@@ -1811,16 +1798,15 @@ definitions:
       images:
         type: array
         items:
-          $ref: "#/definitions/ImageRequest"
+          $ref: '#/definitions/ImageRequest'
         description: Festival images
       duration:
-        $ref: "#/definitions/DurationRequest"
-        description: Festival duration
+        $ref: '#/definitions/DurationRequest'
       locations:
         type: array
         description: Festival locations
         items:
-          $ref: "#/definitions/LocationRequest"
+          $ref: '#/definitions/LocationRequest'
     description: Festival request
     required:
       - name
@@ -1836,7 +1822,7 @@ definitions:
       festivals:
         type: array
         items:
-          $ref: "#/definitions/FestivalResponse"
+          $ref: '#/definitions/FestivalResponse'
     description: Festivals collection
     required:
       - total
@@ -1849,7 +1835,7 @@ definitions:
       events:
         type: array
         items:
-          $ref: "#/definitions/EventResponse"
+          $ref: '#/definitions/EventResponse'
     description: Events collection
     required:
       - total
@@ -1862,7 +1848,7 @@ definitions:
       categories:
         type: array
         items:
-          $ref: "#/definitions/CategoryResponse"
+          $ref: '#/definitions/CategoryResponse'
     description: Festival categories collection
     required:
       - total
@@ -1875,7 +1861,7 @@ definitions:
       places:
         type: array
         items:
-          $ref: "#/definitions/PlaceResponse"
+          $ref: '#/definitions/PlaceResponse'
     description: Festival places collection
     required:
       - total
@@ -1900,12 +1886,11 @@ definitions:
           - PUBLISHED
           - CANCELED
       mainImage:
-        $ref: "#/definitions/MainImageResponse"
-        description: Main image
+        $ref: '#/definitions/MainImageResponse'
       authors:
         type: array
         items:
-          $ref: "#/definitions/AuthorResponse"
+          $ref: '#/definitions/AuthorResponse'
         description: Event authors
       tags:
         type: array
@@ -1950,12 +1935,12 @@ definitions:
       images:
         type: array
         items:
-          $ref: "#/definitions/ImageRequest"
+          $ref: '#/definitions/ImageRequest'
         description: Images
       authors:
         type: array
         items:
-          $ref: "#/definitions/AuthorRequest"
+          $ref: '#/definitions/AuthorRequest'
         description: Event authors
       tags:
         type: array
@@ -1976,7 +1961,7 @@ definitions:
       news:
         type: array
         items:
-          $ref: "#/definitions/NewsResponse"
+          $ref: '#/definitions/NewsResponse'
     description: News collection
     required:
       - total
