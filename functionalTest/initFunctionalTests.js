@@ -1,68 +1,28 @@
 process.env.NODE_ENV = 'test';
 
-var querystring = require('querystring');
-var config = require('config');
-var http = require('https');
-
 module.exports = {
   token: null,
-  festivalId: null,
-  festivalPlaceId: null,
+  festivalId: '86addde3-61b3-40c2-bfc0-4fafac0d624b',
+  festivalPlaceId: '1',
   festivalPlaceIdParent: null,
-  festivalCategoryId: null,
+  festivalCategoryId: '2',
   festivalCategoryIdParent: null,
   festivalEventId: null,
   newsId: null,
   festivalNewsId: null
 };
 
-var postData = querystring.stringify({
-  'username': config.credentials.user,
-  'password': config.credentials.password,
-  'client_id': config.credentials.clientId,
-  'grant_type': 'password'
-});
-
 before(function (done) {
-  var req = http.request(config.credentials.clientOptions, function (res) {
-    if (res.statusCode !== 200) {
-      console.log('unexpected status for token: ' + res.statusCode);
-    }
 
-    res.setEncoding('utf8');
+  module.exports.token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiJkN2U1YWIyOWJhMmY0OGNjOTU2MWY5ODZkNTA3MmEzZiIsInN1YiI6ImQ2MDgzNWY1LTYzNTEtNDdmNy1hNGNmLTE4ZjM5ODdjZjNhNSIsInNjb3BlIjpbImZlc3RpdmFsczpjcmVhdGUiLCJuZXdzOmNyZWF0ZSIsImNhdGVnb3JpZXM6ZGVsZXRlIiwiYWRtaW4iLCJwbGFjZXM6Z2V0IiwibmV3czp1cGRhdGUiLCJjYXRlZ29yaWVzOnVwZGF0ZSIsInBsYWNlczpkZWxldGUiLCJmZXN0aXZhbHM6dXBkYXRlIiwicGxhY2VzOnVwZGF0ZSIsImNhdGVnb3JpZXM6Y3JlYXRlIiwiZXZlbnRzOmdldCIsImNhdGVnb3JpZXM6Z2V0IiwicGxhY2VzOmNyZWF0ZSIsIm9wZW5pZCIsImV2ZW50czpjcmVhdGUiLCJmZXN0aXZhbHM6ZGVsZXRlIiwiZmVzdGl2YWxzOmdldCIsIm5ld3M6ZGVsZXRlIiwibmV3czpnZXQiLCJldmVudHM6dXBkYXRlIiwiZXZlbnRzOmRlbGV0ZSJdLCJjbGllbnRfaWQiOiJmZXN0aXZhbHMtYWRtaW4iLCJjaWQiOiJmZXN0aXZhbHMtYWRtaW4iLCJhenAiOiJmZXN0aXZhbHMtYWRtaW4iLCJncmFudF90eXBlIjoicGFzc3dvcmQiLCJ1c2VyX2lkIjoiZDYwODM1ZjUtNjM1MS00N2Y3LWE0Y2YtMThmMzk4N2NmM2E1Iiwib3JpZ2luIjoidWFhIiwidXNlcl9uYW1lIjoicHlya29uIiwiZW1haWwiOiJqYWNlay53b2RhQHB5cmtvbi5wbCIsImF1dGhfdGltZSI6MTQ5MDk5NjA4NiwicmV2X3NpZyI6ImVlMmI0NDQ4IiwiaWF0IjoxNDkwOTk2MDg2LCJleHAiOjE0OTEwMzkyODYsImlzcyI6Imh0dHBzOi8vZmVzdGl2YWxzLnRlY2gvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZmVzdGl2YWxzLWFkbWluIiwib3BlbmlkIl19.Wvwh1Mf8OeS1LvnKypg5WqK2bYeFf2-DhQDT9SrQf8Z7cHSCaDzHAoKBL0CF0GQQnRN92DT0V0fdfPvMevE9QtkWMsv9nPCRBZXefrndsuRjp1-6hfLieM4Uet3b6dJ2N1paVI0hrbNgUB3WhkdvH_rhadw5n5HcMcBb9omnjihtyoBliw8Ei91N9-FRQtl1GpcwPGgOqlw4OdVHc4QlxqOhPujtc8vzPd2mOMF9jFzvoeVYal2DtQyxWZumaSGzE8_oFEAywJzHfHb4y1AIaVabAeEuSRnXSbKS7YshaRpmZxHwEvtiTdD1xEmq9Tp1fpxqCE7xccIQQWwk8rKTSQ';
 
-    var data = '';
+  console.log('Starting server for functional tests ..');
+  var app = require('../lib/app');
 
-    res.on('end', function () {
+  app.startServer(function (err, port) {
+    console.log('Starting server on port %d ..[done]', port);
 
-      var json = JSON.parse(data);
-
-      if (json.access_token) {
-        module.exports.token = json.access_token;
-
-        console.log('Starting server for functional tests ..');
-        var app = require('../lib/app');
-
-        app.startServer(function (err, port) {
-          console.log('Starting server on port %d ..[done]', port);
-          done();
-        });
-      } else {
-        done(new Error('Unable to get token'));
-      }
-    });
-
-    res.on('data', function (d) {
-      data += d;
-    });
+    setTimeout(done, 1000);
 
   });
-
-  req.on('error', function (e) {
-    console.log('problem with auth token request: ' + e.message);
-    done(e);
-  });
-
-  req.write(postData);
-  req.end();
 });
