@@ -1,13 +1,16 @@
 {
   "test": {
-    "host": "https://festivals.tech",
-    "host2": "http://127.0.0.1:3000",
+    "host1": "https://festivals.tech",
+    "host": "http://127.0.0.1:3000",
     "accept": "application/vnd.festivals.v1+json",
     "ua": "functional-test"
   },
   "provider": {
-    "selected": "fireabase",
+    "selected": "mongodb",
     "selected2": "elasticsearch",
+    "mongodb": {
+      "url": "mongodb://festivals:festivals@ds145230.mlab.com:45230/festivals"
+    },
     "firebase": {
       "url": "https://festivals-travis.firebaseio.com",
       "serviceAccount": {
