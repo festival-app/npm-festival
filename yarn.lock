@@ -1043,9 +1043,15 @@ mongo-uuid@0.0.4:
     mongodb "^2.2.19"
     uuid "^3.0.1"
 
+<<<<<<< HEAD
 mongodb-core@2.1.10:
   version "2.1.10"
   resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-2.1.10.tgz#eb290681d196d3346a492161aa2ea0905e63151b"
+=======
+mongodb-core@2.1.9:
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-2.1.9.tgz#85aa71ee4fb716196e06b787557bf139f801daf5"
+>>>>>>> 16543652e9ddf9a090ee98eacc59ac727e170ccc
   dependencies:
     bson "~1.0.4"
     require_optional "~1.0.0"
@@ -1054,6 +1060,7 @@ mongodb-moment@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/mongodb-moment/-/mongodb-moment-1.0.1.tgz#4b27cb687f5b7c4a706b62fbfed798f9f5f79ce4"
 
+<<<<<<< HEAD
 mongodb@2.2.26, mongodb@^2.2.19:
   version "2.2.26"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.2.26.tgz#1bd50c557c277c98e1a05da38c9839c4922b034a"
@@ -1061,6 +1068,15 @@ mongodb@2.2.26, mongodb@^2.2.19:
     es6-promise "3.2.1"
     mongodb-core "2.1.10"
     readable-stream "2.2.7"
+=======
+mongodb@2.2.25, mongodb@^2.2.19:
+  version "2.2.25"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.2.25.tgz#d3b25dad00eda2bdfcbc996210ba082ac686a6b6"
+  dependencies:
+    es6-promise "3.2.1"
+    mongodb-core "2.1.9"
+    readable-stream "2.1.5"
+>>>>>>> 16543652e9ddf9a090ee98eacc59ac727e170ccc
 
 ms@0.7.1, ms@^0.7.1:
   version "0.7.1"
@@ -1222,16 +1238,28 @@ readable-stream@1.0.27-1:
     isarray "0.0.1"
     string_decoder "~0.10.x"
 
+<<<<<<< HEAD
 readable-stream@2.2.7, readable-stream@^2.0.1, readable-stream@^2.2.2:
   version "2.2.7"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.2.7.tgz#07057acbe2467b22042d36f98c5ad507054e95b1"
   dependencies:
     buffer-shims "~1.0.0"
+=======
+readable-stream@2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.1.5.tgz#66fa8b720e1438b364681f2ad1a63c618448c9d0"
+  dependencies:
+    buffer-shims "^1.0.0"
+>>>>>>> 16543652e9ddf9a090ee98eacc59ac727e170ccc
     core-util-is "~1.0.0"
     inherits "~2.0.1"
     isarray "~1.0.0"
     process-nextick-args "~1.0.6"
+<<<<<<< HEAD
     string_decoder "~1.0.0"
+=======
+    string_decoder "~0.10.x"
+>>>>>>> 16543652e9ddf9a090ee98eacc59ac727e170ccc
     util-deprecate "~1.0.1"
 
 "readable-stream@>=1.0.33-1 <1.1.0-0":
@@ -1587,7 +1615,15 @@ util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
 
+<<<<<<< HEAD
 uuid@3.0.1, uuid@^3.0.1:
+=======
+uuid@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.0.tgz#6728fc0459c450d796a99c31837569bdf672d728"
+
+uuid@^3.0.1:
+>>>>>>> 16543652e9ddf9a090ee98eacc59ac727e170ccc
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
 

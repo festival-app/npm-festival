@@ -2,10 +2,10 @@ process.env.NODE_ENV = 'test';
 
 module.exports = {
   token: null,
-  festivalId: null,
-  festivalPlaceId: null,
+  festivalId: '86addde3-61b3-40c2-bfc0-4fafac0d624b',
+  festivalPlaceId: '1',
   festivalPlaceIdParent: null,
-  festivalCategoryId: null,
+  festivalCategoryId: '2',
   festivalCategoryIdParent: null,
   festivalEventId: null,
   newsId: null,
