@@ -11,7 +11,7 @@
     "elasticsearch": "14.0.0",
     "festivals-model": "1.1.1",
     "firebase": "4.6.2",
-    "firebase-admin": "5.5.0",
+    "firebase-admin": "5.5.1",
     "keen-js": "4.3.0",
     "moment": "2.19.2",
     "mongo-uuid": "1.0.0",
