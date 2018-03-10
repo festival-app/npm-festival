@@ -10,24 +10,24 @@
     "config": "1.30.0",
     "elasticsearch": "14.1.0",
     "festivals-model": "1.1.1",
-    "firebase": "4.10.1",
-    "firebase-admin": "5.9.1",
+    "firebase": "4.11.0",
+    "firebase-admin": "5.10.0",
     "keen-js": "4.3.0",
     "moment": "2.21.0",
     "mongo-uuid": "1.0.0",
-    "mongodb": "3.0.3",
+    "mongodb": "3.0.4",
     "mongodb-moment": "1.0.1",
     "my-restify-api": "0.6.6",
-    "newrelic": "2.9.0",
+    "newrelic": "3.0.0",
     "uuid": "3.2.1",
-    "winston": "2.4.0",
+    "winston": "3.0.0-rc2",
     "winston-loggly": "1.3.1"
   },
   "devDependencies": {
     "chai": "4.1.2",
     "hippie": "0.5.1",
     "istanbul": "0.4.5",
-    "mocha": "5.0.1"
+    "mocha": "5.0.4"
   },
   "scripts": {
     "start": "node api.js",
