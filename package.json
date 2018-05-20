@@ -8,17 +8,17 @@
     "async": "2.6.0",
     "bson-ext": "2.0.0",
     "config": "1.30.0",
-    "elasticsearch": "14.2.2",
+    "elasticsearch": "15.0.0",
     "festivals-model": "1.1.1",
-    "firebase": "5.0.1",
-    "firebase-admin": "5.12.0",
+    "firebase": "5.0.3",
+    "firebase-admin": "5.12.1",
     "keen-js": "4.3.1",
     "moment": "2.22.1",
     "mongo-uuid": "1.0.0",
-    "mongodb": "3.0.8",
+    "mongodb": "3.1.0-beta4",
     "mongodb-moment": "1.0.1",
     "my-restify-api": "0.6.6",
-    "newrelic": "4.1.0",
+    "newrelic": "4.1.1",
     "uuid": "3.2.1",
     "winston": "3.0.0-rc2",
     "winston-loggly": "1.3.1"
@@ -27,7 +27,7 @@
     "chai": "4.1.2",
     "hippie": "0.5.1",
     "istanbul": "0.4.5",
-    "mocha": "5.1.1"
+    "mocha": "5.2.0"
   },
   "scripts": {
     "start": "node api.js",
